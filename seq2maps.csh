@@ -14,6 +14,9 @@ setenv HHLIB /cluster/project1/ProCovar/jgreener/soft/hh-suite
 setenv HHBUILD /cluster/project1/ProCovar/jgreener/soft/hh-suite/build
 setenv HHDB /cluster/project1/ProCovar/jgreener/uniclust30_2018_08/uniclust30_2018_08
 
+# Set this to point to the CCMPred bin directory
+set ccmpreddir = ~/ccmpred/bin
+
 set bindir = $dmpfolddir/bin
 set bindir2 = $dmpfolddir/external_bin
 
@@ -43,11 +46,11 @@ if (`cat $target.aln | wc -l` >= 5) then
     endif
     if (! -e $target.evfold) then
         echo "Running FreeContact"
-    $bindir2/freecontact -a $ncpu < $target.aln > $target.evfold
+        $bindir2/freecontact -a $ncpu < $target.aln > $target.evfold
     endif
     if (! -e $target.ccmpred) then
         echo "Running CCMPred"
-    $bindir2/ccmpred -t $ncpu $target.aln $target.ccmpred
+        $ccmpreddir/ccmpred -t $ncpu $target.aln $target.ccmpred
     endif
 else
     echo "Fewer than 5 sequences in alignment, not running PSICOV/FreeContact/CCMPred"
