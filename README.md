@@ -3,6 +3,7 @@
 ## NB this repo is under development and is not ready for production use
 
 Fast de novo protein model generation from covarying sequences using predicted distances and iterative model building.
+
 See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 
 ## Requirements
@@ -18,9 +19,13 @@ This repo also includes other software in binary form:
 - PSIPRED
 - PSICOV
 - FreeContact
+- Various utility scripts, the source of which is in `src`
 
 ## Installation
 
+As it makes use of a lot of different software, installation can be a little tricky.
+However we have aimed to make it as straightforward as possible.
+These instructions should work for a Linux system:
 ...
 
 ## Usage

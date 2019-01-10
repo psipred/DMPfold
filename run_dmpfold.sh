@@ -204,3 +204,5 @@ if [ -e CLUSTER_005.pdb ]; then
     ./qmodope_mainens CLUSTER_005.pdb
     mv best_qdope.pdb final_5.pdb
 fi
+
+rm dope.scr qmodcheck qmodope_mainens modcheckpot.dat
