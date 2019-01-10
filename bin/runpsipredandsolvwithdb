@@ -1,0 +1,96 @@
+#!/bin/tcsh
+
+# This is a simple script which will carry out all of the basic steps
+# required to make a PSIPRED V4 prediction. Note that it assumes that the
+# following programs are in the appropriate directories:
+# blastpgp - PSIBLAST executable (from NCBI toolkit)
+# makemat - IMPALA utility (from NCBI toolkit)
+# psipred - PSIPRED V4 program
+# psipass2 - PSIPRED V4 program
+
+# NOTE: Script modified to be more cluster friendly (DTJ April 2008)
+
+# The name of the BLAST data bank
+set dbname = $2
+
+# Where the NCBI programs have been installed
+set ncbidir = /cluster/project1/ProCovar/jgreener/soft/blastold-2.2.9
+
+# Where the PSIPRED V4 programs have been installed
+set execdir = /cluster/project1/ProCovar/jgreener/soft/psipred/bin
+
+# Where the PSIPRED V4 data files have been installed
+set datadir = /cluster/project1/ProCovar/jgreener/soft/psipred/data
+
+# Where the solvpred executable is found
+set solvpreddir = /cluster/project1/ProCovar/jgreener/soft/metapsicov/bin
+
+# Where the solvpred data is found
+set solvpreddata = /cluster/project1/ProCovar/jgreener/soft/metapsicov/data
+
+set basename = $1:r
+set rootname = $basename:t
+
+# Generate a "unique" temporary filename root
+set hostid = `hostid`
+set tmproot = psitmp$$$hostid
+
+\cp -f $1 $tmproot.fasta
+
+echo "Running PSI-BLAST with sequence" $1 "..."
+
+$ncbidir/blastpgp -a 12 -b 0 -j 3 -h 0.001 -d $dbname -i $tmproot.fasta -C $tmproot.chk >& $tmproot.blast
+
+if ($status != 0) then
+    cat $tmproot.blast
+    echo "FATAL: Error whilst running blastpgp - script terminated!"
+    exit 1
+endif
+
+echo "Predicting secondary structure..."
+
+echo $tmproot.chk > $tmproot.pn
+echo $tmproot.fasta > $tmproot.sn
+
+$ncbidir/makemat -P $tmproot
+
+if ($status != 0) then
+    echo "FATAL: Error whilst running makemat - script terminated!"
+    exit 1
+endif
+
+echo Pass1 ...
+
+$execdir/psipred $tmproot.mtx $datadir/weights.dat $datadir/weights.dat2 $datadir/weights.dat3 > $rootname.ss
+
+if ($status != 0) then
+    echo "FATAL: Error whilst running psipred - script terminated!"
+    exit 1
+endif
+
+echo Pass2 ...
+
+$execdir/psipass2 $datadir/weights_p2.dat 1 1.0 1.0 $rootname.ss2 $rootname.ss > $rootname.horiz
+
+if ($status != 0) then
+    echo "FATAL: Error whilst running psipass2 - script terminated!"
+    exit 1
+endif
+
+echo Solvation pass ...
+
+$solvpreddir/solvpred $tmproot.mtx $solvpreddata/weights_solv.dat > $rootname.solv
+
+if ($status != 0) then
+    echo "FATAL: Error whilst running solvpred - script terminated!"
+    exit 1
+endif
+
+# Remove temporary files
+
+echo Cleaning up ...
+\rm -f $tmproot.* error.log
+
+echo "Final output files:" $rootname.ss2 $rootname.horiz $rootname.solv
+echo "Finished."
+
