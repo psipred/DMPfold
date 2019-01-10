@@ -1,0 +1,5 @@
+language: bash
+
+script:
+    - cat README.md
+    - pip freeze
