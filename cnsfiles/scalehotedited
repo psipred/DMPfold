@@ -1,0 +1,76 @@
+! module file: scalehot
+!
+! CNS MODULE
+! **********
+!
+! Authors: Gregory L. Warren and Axel T. Brunger
+!
+! copyright Yale University
+!
+! version 2/25/98
+!
+! Function:
+!    This module sets the NMR restraint data weight 
+!    for high temperature dynamics
+!
+! Requirements:
+!    See the top level script file for the 
+!    defined parameter(s) nmr and md. 
+! 
+!
+
+module { scalehot }
+( 
+   &md=md;                   {INPUT: md parameters}
+   &nmr=nmr;                 {INPUT: nmr restraints parameters}
+   &input.noe.scale=input.noe.scale;    {INPUT: noe weight}
+   &input.cdih.scale=input.cdih.scale;  {INPUT: cdih weight}
+)
+
+checkversion 1.3
+
+set message ? end
+evaluate ($message_old=$result)
+set echo ? end
+evaluate ($echo_old=$result)
+if ( $log_level = verbose ) then
+  set echo=on message=normal end
+else
+  set echo=off message=off end
+end if
+
+   noe 
+      scale * &input.noe.scale
+   end
+! start: edited by Badri - 4/22/2014     
+    evaluate($newScale = &input.noe.scale * 5)
+    noe
+        scale N2 $newScale
+    end
+! end: edited by Badri - 4/22/2014  
+   restraints dihedral
+      scale = &input.cdih.scale
+   end
+   evaluate ($count = 1)
+   while (&exist%nmr.dani.file.$count=true) loop nloop
+      evaluate ($clsname = "D"+encode($count))
+      if (&nmr.dani.file.$count # "" ) then
+         dani
+            class $$clsname force &nmr.dani.force.init.$count
+         end
+      end if
+      evaluate ($count = $count + 1)
+   end loop nloop
+
+   evaluate ($count = 1)
+   while (&exist%nmr.sani.file.$count=true) loop nloop
+      evaluate ($clsname = "S"+encode($count))
+      if (&nmr.sani.file.$count # "" ) then
+         sani
+            class $$clsname force &nmr.sani.force.init.$count
+         end
+      end if
+      evaluate ($count = $count + 1)
+   end loop nloop
+
+set message=$message_old echo=$echo_old end

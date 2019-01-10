@@ -43,11 +43,11 @@ if (`cat $target.aln | wc -l` >= 5) then
     endif
     if (! -e $target.evfold) then
         echo "Running FreeContact"
-	$bindir2/freecontact -a $ncpu < $target.aln > $target.evfold
+    $bindir2/freecontact -a $ncpu < $target.aln > $target.evfold
     endif
     if (! -e $target.ccmpred) then
         echo "Running CCMPred"
-	$bindir2/ccmpred -t $ncpu $target.aln $target.ccmpred
+    $bindir2/ccmpred -t $ncpu $target.aln $target.ccmpred
     endif
 else
     echo "Fewer than 5 sequences in alignment, not running PSICOV/FreeContact/CCMPred"

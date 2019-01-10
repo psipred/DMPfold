@@ -7,10 +7,21 @@ See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 
 ## Requirements
 
-- hhsuite with database
+You will need to have the following software installed:
+
+- HH-suite with database
+- CCMPred
+- CNS
+
+This repo also includes other software in binary form:
+
+- PSIPRED
 - PSICOV
-- freecontact
-- CCMpred
+- FreeContact
+
+## Installation
+
+...
 
 ## Usage
 

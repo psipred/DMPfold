@@ -1,0 +1,100 @@
+! module file: scalecoolsetup
+!
+! CNS MODULE
+! **********
+!
+! Authors: Gregory L. Warren and Axel T. Brunger
+!
+! copyright Yale University
+!
+! version 2/25/98
+!
+! Function:
+!    This module sets up the NMR restraint data weighting 
+!    scheme for either the first or second slow-cooling 
+!    dynamics sections
+!
+! Requirements:
+!    See the top level script file for the 
+!    defined parameter(s). 
+! 
+!
+
+module { scalecoolsetup }
+( 
+   &kdani=kdani;             {INPUT: dani force and class numbers}
+   &ksani=ksani;             {INPUT: sani force and class numbers}
+   &nmr=nmr;                 {INPUT: nmr restraints parameters}
+   &input.noe.scale=input.noe.scale;    {INPUT: noe weight}
+   &input.cdih.scale=input.cdih.scale;  {INPUT: cdih weight}
+   &input.ncycle=input.ncycle;          {INPUT: number of dynamics cycles}
+)
+
+checkversion 1.3
+
+set message ? end
+evaluate ($message_old=$result)
+set echo ? end
+evaluate ($echo_old=$result)
+if ( $log_level = verbose ) then
+  set echo=on message=normal end
+else
+  set echo=off message=off end
+end if
+
+   noe 
+      scale * &input.noe.scale
+   end
+
+! start: edited by Badri - 4/22/2014     
+    evaluate($newScale = &input.noe.scale * 5)
+    noe
+        scale N2 $newScale
+    end
+! end: edited by Badri - 4/22/2014     
+
+   restraints dihedral 
+      scale = &input.cdih.scale 
+   end
+
+   evaluate ($count = 1)
+   while (&exist%nmr.dani.file.$count=true) loop nloop
+      if (&nmr.dani.file.$count # "" ) then
+         if (&kdani.cart.flag=true) then
+            evaluate (&kdani.start=1.0)
+            evaluate (&kdani.finish=&nmr.dani.force.finl.$count)
+         elseif (&kdani.inter.flag=true) then
+            evaluate (&kdani.start=&nmr.dani.force.init.$count)
+            evaluate (&kdani.finish=1.0)
+         else
+            evaluate (&kdani.start=&nmr.dani.force.init.$count)
+            evaluate (&kdani.finish=&nmr.dani.force.finl.$count)
+         end if
+         evaluate (&kdani.$count  = &kdani.start)
+         evaluate (&kdani.fac.$count = (&kdani.finish/
+                                        &kdani.start)^(1/&input.ncycle))
+      end if
+      evaluate ($count = $count + 1)
+   end loop nloop
+
+   evaluate ($count = 1)
+   while (&exist%nmr.sani.file.$count=true) loop nloop
+      if (&nmr.sani.file.$count # "" ) then
+         if (&ksani.cart.flag=true) then
+            evaluate (&ksani.start=1.0)
+            evaluate (&ksani.finish=&nmr.sani.force.finl.$count)
+         elseif (&ksani.inter.flag=true) then
+            evaluate (&ksani.start=&nmr.sani.force.init.$count)
+            evaluate (&ksani.finish=1.0)
+         else
+            evaluate (&ksani.start=&nmr.sani.force.init.$count)
+            evaluate (&ksani.finish=&nmr.sani.force.finl.$count)
+         end if
+         evaluate (&ksani.$count  = &ksani.start)
+         evaluate (&ksani.fac.$count = (&ksani.finish/
+                                        &ksani.start)^(1/&input.ncycle))
+      end if
+      evaluate ($count = $count + 1)
+   end loop nloop
+
+set message=$message_old echo=$echo_old end
