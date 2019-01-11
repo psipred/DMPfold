@@ -1,7 +1,8 @@
 language: bash
 
 script:
-  - pwd
-  - ls
-  - cd ~; ls
-  - sudo apt-get install -y hhblits
+  - sudo apt-get install -y hhsuite
+  - git clone --recursive https://github.com/soedinglab/CCMpred.git
+  - cd CCMpred
+  - cmake .
+  - make
