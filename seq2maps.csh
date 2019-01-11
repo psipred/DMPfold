@@ -10,9 +10,9 @@ set ncpu = 1
 set dmpfolddir = ~/dmpfold
 
 # Set the following to point to the relevant HH-suite locations
-setenv HHLIB /cluster/project1/ProCovar/jgreener/soft/hh-suite
-setenv HHBUILD /cluster/project1/ProCovar/jgreener/soft/hh-suite/build
-setenv HHDB /cluster/project1/ProCovar/jgreener/uniclust30_2018_08/uniclust30_2018_08
+setenv HHLIB ~/hh-suite
+setenv HHBUILD ~/hh-suite/build
+setenv HHDB ~/uniclust30_2018_08/uniclust30_2018_08
 
 # Set this to point to the CCMPred bin directory
 set ccmpreddir = ~/ccmpred/bin
