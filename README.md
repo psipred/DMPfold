@@ -11,9 +11,9 @@ See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 As it makes use of a lot of different software, installation can be a little fiddly.
 However we have aimed to make it as straightforward as possible.
 These instructions should work for a Linux system:
-- Install HH-suite and the uniclust30 database.
-- Install CCMPred.
-- Install CNS.
+- Install [HH-suite](https://github.com/soedinglab/hh-suite) and the uniclust30 database.
+- Install [CCMPred](https://github.com/soedinglab/CCMpred).
+- Install [CNS](http://cns-online.org/v1.3).
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, FreeContact, various utility scripts with the code in `src`). This should run okay but may need separate compilation if issues arise.
 - Change lines 10/13/14/15/18 in `seq2maps.csh` and lines 10/13 in `run_dmpfold.sh` to point to the installed locations of the above software.
 
