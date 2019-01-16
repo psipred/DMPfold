@@ -9,5 +9,12 @@ script:
   - cd ..
   - sudo apt-get install -y freecontact
   - python -c "import sys; print(sys.version_info)"
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p ./miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
   - which conda
+  - python -c "import sys; print(sys.version_info)"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda info -a
   - conda install modeller
+  - python -c "import modeller"
