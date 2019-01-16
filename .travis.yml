@@ -20,5 +20,6 @@ script:
   - conda config --set always_yes yes --set changeps1 no
   - conda info -a
   - ./miniconda/bin/conda info -a
+  - conda config --add channels salilab
   - conda install modeller
   - python -c "import modeller"
