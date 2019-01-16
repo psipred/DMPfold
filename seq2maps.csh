@@ -11,11 +11,14 @@ set dmpfolddir = ~/dmpfold
 
 # Set the following to point to the relevant HH-suite locations
 setenv HHLIB ~/hh-suite
-setenv HHBUILD ~/hh-suite/build
+setenv HHBIN ~/hh-suite/bin
 setenv HHDB ~/uniclust30_2018_08/uniclust30_2018_08
 
 # Set this to point to the CCMPred bin directory
-set ccmpreddir = ~/ccmpred/bin
+set ccmpreddir = ~/CCMpred/bin
+
+# Set this to point to the FreeContact command
+set freecontactcmd = ~/freecontact/bin/freecontact
 
 set bindir = $dmpfolddir/bin
 set bindir2 = $dmpfolddir/external_bin
@@ -24,7 +27,7 @@ set seqfile = $1
 set target = $1:t:r
 
 echo "Running HHblits"
-$HHBUILD/bin/hhblits -i $seqfile -d $HHDB -o $target.hhr -oa3m $target.a3m -e 0.01 -n 3 -cpu $ncpu -diff inf -cov 10 -Z 10000 -B 10000
+$HHBIN/hhblits -i $seqfile -d $HHDB -o $target.hhr -oa3m $target.a3m -e 0.01 -n 3 -cpu $ncpu -diff inf -cov 10 -Z 10000 -B 10000
 
 cat $seqfile > $target.temp.fasta
 
@@ -46,7 +49,7 @@ if (`cat $target.aln | wc -l` >= 5) then
     endif
     if (! -e $target.evfold) then
         echo "Running FreeContact"
-        $bindir2/freecontact -a $ncpu < $target.aln > $target.evfold
+        $freecontactcmd -a $ncpu < $target.aln > $target.evfold
     endif
     if (! -e $target.ccmpred) then
         echo "Running CCMPred"
