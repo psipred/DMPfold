@@ -13,7 +13,7 @@ script:
   - bash miniconda.sh -b -p ./miniconda
   - echo $PATH
   - echo $HOME
-  - export PATH="$HOME/miniconda/bin:$PATH"
+  - export PATH="$HOME/build/psipred/DMPfold/miniconda/bin:$PATH"
   - echo $PATH
   - which conda
   - python -c "import sys; print(sys.version_info)"
