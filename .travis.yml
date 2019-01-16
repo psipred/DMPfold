@@ -1,20 +1,24 @@
 language: bash
 
 script:
-  - sudo apt-get install -y hhsuite
-  - git clone --recursive https://github.com/soedinglab/CCMpred.git
-  - cd CCMpred
-  - cmake .
-  - make
-  - cd ..
-  - sudo apt-get install -y freecontact
+  - #sudo apt-get install -y hhsuite
+  - #git clone --recursive https://github.com/soedinglab/CCMpred.git
+  - #cd CCMpred
+  - #cmake .
+  - #make
+  - #cd ..
+  - #sudo apt-get install -y freecontact
   - python -c "import sys; print(sys.version_info)"
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p ./miniconda
+  - echo $PATH
+  - echo $HOME
   - export PATH="$HOME/miniconda/bin:$PATH"
+  - echo $PATH
   - which conda
   - python -c "import sys; print(sys.version_info)"
   - conda config --set always_yes yes --set changeps1 no
   - conda info -a
+  - ./miniconda/bin/conda info -a
   - conda install modeller
   - python -c "import modeller"
