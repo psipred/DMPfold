@@ -20,8 +20,8 @@ These instructions should work for a Linux system:
 - Install [CNS](http://cns-online.org/v1.3).
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda`.
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation if issues arise.
-- You also need access to the legacy BLAST `blastpgp` executable. We will look to update this to BLAST+ soon.
-- Change lines 10/13/14/15/18/21 in `seq2maps.csh`, lines 10/13 in `run_dmpfold.sh` and lines x/y in `bin/runpsipredandsolvwithdb` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh`.
+- You also need access to the legacy BLAST software. We will look to update this to BLAST+ soon.
+- Change lines 10/13/14/15/18/21 in `seq2maps.csh`, lines 10/13 in `run_dmpfold.sh` and lines 4/7 in `bin/runpsipredandsolvwithdb` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh`.
 
 You may need to set `ulimit -s unlimited` to get `seq2maps.csh` to work.
 Check the continuous integration [logs](https://travis-ci.org/psipred/DMPfold) for additional tips and a step-by-step install on Ubuntu.
