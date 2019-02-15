@@ -13,7 +13,7 @@ See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 As it makes use of a lot of different software, installation can be a little fiddly.
 However we have aimed to make it as straightforward as possible.
 These instructions should work for a Linux system:
-- Make sure you have Python 3 with [PyTorch](https://pytorch.org), NumPy and SciPy installed. DMPfold has been tested on Python 3.6 and 3.7.
+- Make sure you have Python 3 with [PyTorch](https://pytorch.org) 0.4 or later, NumPy and SciPy installed. DMPfold has been tested on Python 3.6 and 3.7.
 - Install [HH-suite](https://github.com/soedinglab/hh-suite) and the uniclust30 database, unless you are getting your alignments from elsewhere.
 - Install [FreeContact](https://rostlab.org/owiki/index.php/FreeContact).
 - Install [CCMPred](https://github.com/soedinglab/CCMpred).
@@ -21,6 +21,7 @@ These instructions should work for a Linux system:
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda`.
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation if issues arise.
 - Change lines 10/13/14/15/18/21 in `seq2maps.csh` and lines 10/13 in `run_dmpfold.sh` to point to the installed locations of the above software.
+Check the continuous integration [logs](https://travis-ci.org/psipred/DMPfold) for additional tips and a step-by-step install on Ubuntu.
 
 ## Usage
 

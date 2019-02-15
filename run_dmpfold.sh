@@ -7,7 +7,7 @@
 #  number of cycles (optional) and models per cycle (optional)
 
 # Set this to point to the DMPfold directory
-dmpfolddir=~/dmpfold
+dmpfolddir=~/DMPfold
 
 # Set this to point to the CNS setup script
 source ~/cns_solve_1.3/cns_solve_env.sh
