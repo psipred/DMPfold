@@ -22,13 +22,11 @@ ncycles=3
 # Number of models per cycle
 nmodels=50
 
-lowperc1=0.34
-highperc1=0.92
-lowperc2=0.24
-highperc2=0.97
+perc1=0.42
+perc2=0.43
 hbrange=4
-hbprob1=0.68
-hbprob2=0.5
+hbprob1=0.85
+hbprob2=0.85
 
 if [ "$#" -lt 2 ]; then
     echo "Usage: run_dmpfold.sh target.fasta target.21c target.map outdir [ncycles nmodels-per-cycle]"
@@ -51,8 +49,8 @@ if [ "$#" -gt 5 ]; then
 fi
 
 if [ "$#" -gt 7 ]; then
-    lowperc1=$7
-    highperc1=$8
+    perc1=$7
+    perc2=$8
 fi
 
 if [ -e $outdir ]; then
@@ -80,7 +78,7 @@ fi
 
 python $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
-cat rawdistpred.current | perl $bindir/dist2dualbound.pl $lowperc1 $highperc1 > contacts.current
+cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc1 > contacts.current
 
 if [ $? -ne 0 ]; then
     echo "Distance prediction failed!"
@@ -94,7 +92,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-python $dmpfolddir/nn/torpred/pytorch_torcovpred_pred.py $targmap > dihedral.tbl
+python $dmpfolddir/nn/torpred/pytorch_torcov_pred.py $targ21c $targmap > dihedral.tbl
 
 if [ $? -ne 0 ]; then
     echo "Torsion angle prediction failed!"
@@ -115,7 +113,7 @@ until [ $counter -gt $ncycles ]; do
 
         python $dmpfolddir/nn/dmp-softmax/pytorch_dmp_iterdistpred_cb.py $targ21c $targmap best_qdope.pdb > rawdistpred.current
 
-        cat rawdistpred.current | perl $bindir/dist2dualbound.pl $lowperc2 $highperc2 > contacts.current
+        cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc2 > contacts.current
 
         if [ $? -ne 0 ]; then
             echo "Iterated distance prediction failed!"
