@@ -30,7 +30,7 @@ Check the continuous integration [logs](https://travis-ci.org/psipred/DMPfold) f
 
 Example of running on CASP12 target T0864:
 
-- `csh seq2maps.csh T0864.fasta` to run HHblits, PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats. Outputs 21c and map files.
+- `csh seq2maps.csh T0864.fasta` to run HHblits, PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats. Outputs `.21c` and `.map` files.
 - `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864` to run DMPfold, where the last parameter is an output directory that will be created. The final model is `final_1.pdb` and other structures may be generated as `final_2.pdb` to `final_5.pdb`.
 
 Running `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864 5 20` instead runs 5 iterations with 20 models per iteration (default is 3 and 50).
