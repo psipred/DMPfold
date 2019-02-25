@@ -19,9 +19,14 @@ script:
   - python -c "import torch"
   - curl $CNSURL -o cns_solve_1.3.tgz # Install CNS
   - tar -zxvf cns_solve_1.3.tgz
-  - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh # Modify installed locations
-  - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
+  - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh # Modify installed locations
+  - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - bash run_dmpfold.sh example/PF10963.fasta example/PF10963.21c example/PF10963.map ./PF10963 3 5 # Run DMPfold
   - head PF10963/final_1.pdb # Check output
+  - curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign
+  - chmod +x TMalign
+  - ./TMalign PF10963/final_1.pdb example/3FGX.pdb
+  - tma=$(./TMalign PF10963/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
+  - if (( $(echo "$tma >= 0.9" | bc -l) )); then echo "Correct fold"; else echo "Incorrect fold"; exit 1; fi # Throw an error if the model is the wrong fold
