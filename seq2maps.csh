@@ -3,7 +3,7 @@
 # Form input files for DMPfold from a single sequence
 # Argument is a FASTA file with a single sequence
 
-# Set the number of CPUs to use for HHblits, PSICOV, FreeContact and CCMPred
+# Set the number of CPUs to use for HHblits, PSICOV, FreeContact and CCMpred
 set ncpu = 1
 
 # Set this to point to the DMPfold directory
@@ -14,7 +14,7 @@ setenv HHLIB ~/hh-suite
 setenv HHBIN ~/hh-suite/bin
 setenv HHDB ~/uniclust30_2018_08/uniclust30_2018_08
 
-# Set this to point to the CCMPred bin directory
+# Set this to point to the CCMpred bin directory
 set ccmpreddir = ~/CCMpred/bin
 
 # Set this to point to the FreeContact command
@@ -52,11 +52,11 @@ if (`cat $target.aln | wc -l` >= 5) then
         $freecontactcmd -a $ncpu < $target.aln > $target.evfold
     endif
     if (! -e $target.ccmpred) then
-        echo "Running CCMPred"
+        echo "Running CCMpred"
         $ccmpreddir/ccmpred -t $ncpu $target.aln $target.ccmpred
     endif
 else
-    echo "Fewer than 5 sequences in alignment, not running PSICOV/FreeContact/CCMPred"
+    echo "Fewer than 5 sequences in alignment, not running PSICOV/FreeContact/CCMpred"
     \rm -f $target.psicov $target.evfold $target.ccmpred
     touch $target.psicov $target.evfold $target.ccmpred
 endif
