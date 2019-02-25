@@ -10,7 +10,7 @@ script:
   - #sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
-  - export PATH="$HOME/build/psipred/DMPfold/miniconda/bin:$PATH"
+  - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
   - conda config --set always_yes yes --set changeps1 no
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-9.21/modlib/modeller/config.py
@@ -18,7 +18,7 @@ script:
   - python -c "import torch"
   - curl $CNSURL -o cns_solve_1.3.tgz # Install CNS
   - tar -zxvf cns_solve_1.3.tgz
-  - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=\$HOME\/build\/psipred\/DMPfold/" run_dmpfold.sh # Modify installed locations
-  - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env_sh/source \$HOME\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
+  - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh # Modify installed locations
+  - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - bash run_dmpfold.sh example/PF10963.fasta example/PF10963.21c example/PF10963.map ./PF10963 3 5 # Run DMPfold
   - head PF10963/final_1.pdb # Check output
