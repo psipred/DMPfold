@@ -27,7 +27,7 @@ script:
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
-  - cat seq2maps.sh # Temp
+  - cat seq2maps.csh # Temp
   - cat run_dmpfold.sh # Temp
   - cp example/PF10963.a3m .
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files
