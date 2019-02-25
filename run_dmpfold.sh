@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# DMPfold version 0.5
+# DMPfold
 # Iteratively generates models using CNS and deep neural nets to
 #  generate updated constraints
 # Arguments are FASTA file, 21c file, map file, out directory,

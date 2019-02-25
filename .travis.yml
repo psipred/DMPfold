@@ -1,13 +1,13 @@
 language: bash
 
 script:
-  - #sudo apt-get install -y hhsuite # Install HH-suite
-  - #git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMPred
-  - #cd CCMpred
-  - #cmake .
-  - #make
-  - #cd ..
-  - #sudo apt-get install -y freecontact # Install FreeContact
+  - sudo apt-get install -y hhsuite # Install HH-suite
+  - git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMPred
+  - cd CCMpred
+  - cmake .
+  - make
+  - cd ..
+  - sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
   - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
@@ -29,4 +29,4 @@ script:
   - chmod +x TMalign
   - ./TMalign PF10963/final_1.pdb example/3FGX.pdb
   - tma=$(./TMalign PF10963/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
-  - if (( $(echo "$tma >= 0.9" | bc -l) )); then echo "Correct fold"; else echo "Incorrect fold"; exit 1; fi # Throw an error if the model is the wrong fold
+  - if (( $(echo "$tma >= 0.5" | bc -l) )); then echo "Correct fold, TMalign score $tma"; else echo "Incorrect fold, TMalign score $tma"; exit 1; fi # Throw an error if the model is the wrong fold
