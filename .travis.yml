@@ -21,8 +21,8 @@ script:
   - tar -zxvf cns_solve_1.3.tgz
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
-  - which -a make # Temp
-  - cd src; make alnstats; mv alnstats ../bin; cd .. # alnstats needs recompiling for autobuild
+  - which -a ulimit
+  - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
   - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = ~\/build\/psipred\/CCMpred\/bin/" seq2maps.csh
   - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
