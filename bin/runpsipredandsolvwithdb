@@ -1,4 +1,4 @@
-#!/bin/tcsh
+#!/bin/csh
 
 # Set this to point to the DMPfold directory
 set dmpfolddir = ~/dmpfold

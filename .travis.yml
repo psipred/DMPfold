@@ -1,12 +1,14 @@
 language: bash
 
 script:
+  - ./external_bin/psicov # Temp
   - sudo apt-get install -y hhsuite # Install HH-suite
   - git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMPred
   - cd CCMpred
   - cmake .
   - make
   - cd ..
+  - ls -l CCMPred/bin # Temp
   - sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
@@ -21,7 +23,9 @@ script:
   - tar -zxvf cns_solve_1.3.tgz
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
-  - which -a ulimit
+  - ./external_bin/psicov # Temp
+  - sudo apt-get install -y libgomp1 # Install libgomp1
+  - ./external_bin/psicov # Temp
   - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
   - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = ~\/build\/psipred\/CCMpred\/bin/" seq2maps.csh
