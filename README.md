@@ -19,7 +19,7 @@ These instructions should work for a Linux system:
 - Install [CCMPred](https://github.com/soedinglab/CCMpred).
 - Install [CNS](http://cns-online.org/v1.3).
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda install modeller -c salilab`.
-- Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation if issues arise.
+- Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation if issues arise. Some other standard programs, such as csh shell, are assumed.
 - You also need access to the legacy BLAST software. We will look to update this to BLAST+ soon.
 - Change lines 10/13/14/15/18/21 in `seq2maps.csh`, lines 10/13 in `run_dmpfold.sh` and lines 4/7 in `bin/runpsipredandsolvwithdb` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh`.
 

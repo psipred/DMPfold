@@ -20,8 +20,6 @@ script:
   - tar -zxvf cns_solve_1.3.tgz
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh # Modify installed locations
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
-  - which -a dirname
-  - which -a basename
-  - which -a csh
+  - sudo apt-get install -y csh # Install csh shell
   - bash run_dmpfold.sh example/PF10963.fasta example/PF10963.21c example/PF10963.map ./PF10963 3 5 # Run DMPfold
   - head PF10963/final_1.pdb # Check output
