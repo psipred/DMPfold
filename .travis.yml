@@ -30,18 +30,17 @@ script:
   - sudo apt-get install -y libgomp1 # Install libgomp1
   - find / name -name libgomp.so.1 # Temp
   - ./external_bin/psicov # Temp
-  - mkdir ncbi_bin
-  - curl $DEPENDENCYURL/blastpgp -o ncbi_bin/blastpgp
-  - curl $DEPENDENCYURL/makemat -o ncbi_bin/makemat
-  - ls -l ncbi_bin # Temp
-  - chmod +x ncbi_bin/blastpgp ncbi_bin/makemat
-  - ls -l ncbi_bin # Temp
+  - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz
+  - tar -xvf ncbi_legacy.tgz
+  - ls -l ncbi_legacy # Temp
+  - chmod +x ncbi_legacy/blastpgp ncbi_legacy/makemat
+  - ls -l ncbi_legacy # Temp
   - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
-  - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = ~\/build\/psipred\/CCMpred\/bin/" seq2maps.csh
+  - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
   - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" bin/runpsipredandsolvwithdb
-  - sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_bin/" bin/runpsipredandsolvwithdb
+  - sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
   - cat bin/runpsipredandsolvwithdb # Temp
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
