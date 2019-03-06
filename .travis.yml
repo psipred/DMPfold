@@ -21,8 +21,7 @@ script:
   - tar -zxvf cns_solve_1.3.tgz
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
-  - ./external_bin/psicov # Temp
-  - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz
+  - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz # Install legacy NCBI BLAST software
   - tar -zxvf ncbi_legacy.tgz
   - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
@@ -35,8 +34,7 @@ script:
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
   - cp example/PF10963.a3m .
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files
-  - du -h PF10963.psicov # Temp
-  - du -h PF10963.map PF10963.21c
+  - du -h PF10963.* # Check files generated okay
   - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963 3 5 # Run DMPfold
   - head PF10963/final_1.pdb
   - curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign # Download TMalign
