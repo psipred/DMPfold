@@ -9,6 +9,8 @@ script:
   - make
   - cd ..
   - ls -l CCMpred/bin # Temp
+  - ./CCMpred/bin/ccmpred # Temp
+  - /home/travis/build/psipred/CCMpred/bin/ccmpred # Temp
   - sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
@@ -24,11 +26,15 @@ script:
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
   - ./external_bin/psicov # Temp
+  - find / name -name libgomp.so.1 # Temp
   - sudo apt-get install -y libgomp1 # Install libgomp1
+  - find / name -name libgomp.so.1 # Temp
   - ./external_bin/psicov # Temp
   - mkdir ncbi_bin
   - curl $DEPENDENCYURL/blastpgp -o ncbi_bin/blastpgp
   - curl $DEPENDENCYURL/makemat -o ncbi_bin/makemat
+  - ls -l ncbi_bin # Temp
+  - chmod +x ncbi_bin/blastpgp ncbi_bin/makemat
   - ls -l ncbi_bin # Temp
   - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
