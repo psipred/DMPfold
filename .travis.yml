@@ -1,16 +1,12 @@
 language: bash
 
 script:
-  - ./external_bin/psicov # Temp
   - sudo apt-get install -y hhsuite # Install HH-suite
   - git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMpred
   - cd CCMpred
   - cmake .
   - make
   - cd ..
-  - ls -l CCMpred/bin # Temp
-  - ./CCMpred/bin/ccmpred # Temp
-  - /home/travis/build/psipred/CCMpred/bin/ccmpred # Temp
   - sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
@@ -26,27 +22,20 @@ script:
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
   - ./external_bin/psicov # Temp
-  - find / name -name libgomp.so.1 # Temp
-  - sudo apt-get install -y libgomp1 # Install libgomp1
-  - find / name -name libgomp.so.1 # Temp
-  - ./external_bin/psicov # Temp
   - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz
-  - tar -xvf ncbi_legacy.tgz
-  - ls -l ncbi_legacy # Temp
-  - chmod +x ncbi_legacy/blastpgp ncbi_legacy/makemat
-  - ls -l ncbi_legacy # Temp
+  - tar -zxvf ncbi_legacy.tgz
   - ulimit -s unlimited
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
   - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
   - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" bin/runpsipredandsolvwithdb
   - sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
-  - cat bin/runpsipredandsolvwithdb # Temp
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
   - cp example/PF10963.a3m .
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files
+  - du -h PF10963.psicov # Temp
   - du -h PF10963.map PF10963.21c
   - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963 3 5 # Run DMPfold
   - head PF10963/final_1.pdb
