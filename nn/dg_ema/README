@@ -1,0 +1,12 @@
+Predict TMalign score of a DMPfold model
+
+Example: `python pytorch_dgema_pred.py 145 1513 -0.091953 -80.918533`
+
+Inputs are sequence length, effective sequence count, distprob score normalised, distprob score raw
+
+Output:
+0.00043878747965209186 0.005102249328047037 0.07046771794557571 0.2950115501880646 0.28477931022644043 0.2158059924840927 0.11615872383117676 0.010935140773653984 0.0008923363056965172 0.00040813343366608024 0.45335297298588567 0.34420034289360046
+
+Cols 1-10: Softmax probs for TM-score bins 0-0.1, 0.1-0.2 ... 0.9-1.0
+Col 11: Estimated TM-score (expected TM-score based on above probs)
+Col 12: Prob (TM > 0.5) (sum of last 5 probs)

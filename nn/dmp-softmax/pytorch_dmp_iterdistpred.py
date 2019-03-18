@@ -50,7 +50,7 @@ def main():
                 pdb_fields = [line[:6], line[6:11], line[12:16], line[17:20], line[21], line[22:26], line[30:38], line[38:46], line[46:54]]
                 coords.append(np.array([float(pdb_fields[6]), float(pdb_fields[7]), float(pdb_fields[8])]))
             if line[:3] == 'END':
-                assert length == len(coords)
+                assert length == len(coords), "Number of residues in PDB and 21c files differ - does your FASTA file match the map/21c file?"
                 cv = np.asarray(coords)
                 initdmat = squareform(0.1*pdist(cv, 'euclidean')).astype(np.float32).reshape(1,1,length,length)
 
