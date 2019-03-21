@@ -61,6 +61,7 @@ def main():#
                 print("assign (resid {} and name c) (resid {} and name n) (resid {} and name ca) (resid {} and name c) 1.0 {:.2f} {:.2f} 2  ! phi".format(wi, wi+1, wi+1, wi+1, phi, err_phi))
             if wi < length-1:
                 print("assign (resid {} and name n) (resid {} and name ca) (resid {} and name c) (resid {} and name n) 1.0 {:.2f} {:.2f} 2  ! psi".format(wi+1, wi+1, wi+1, wi+2, psi, err_psi))
+                # To our knowledge the below line is never actually called
                 if abs(omega) < 10.0:
                     print("assign (resid {} and name ca) (resid {} and name c) (resid {} and name n) (resid {} and name ca) 1.0 {:.2f} {:.2f} 2  ! omega".format(wi+1, wi+1, wi+2, wi+2, omega, err_omega))
                     
