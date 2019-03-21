@@ -34,3 +34,9 @@ Example of running on CASP12 target T0864:
 - `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864` to run DMPfold, where the last parameter is an output directory that will be created. The final model is `final_1.pdb` and other structures may be generated as `final_2.pdb` to `final_5.pdb`.
 
 Running `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864 5 20` instead runs 5 iterations with 20 models per iteration (default is 3 and 50).
+
+## Pfam models
+
+Models for the 1,475 Pfam families modelled in the paper can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_models.tgz).
+
+The directory `pfam` in this repository contains text files with the lists from Figure 4A of the paper and target sequences for modelled families.
