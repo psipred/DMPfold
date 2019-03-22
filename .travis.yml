@@ -27,6 +27,9 @@ script:
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
   - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
   - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
+  - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" aln2maps.csh
+  - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" aln2maps.csh
+  - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" aln2maps.csh
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" bin/runpsipredandsolvwithdb
   - sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
