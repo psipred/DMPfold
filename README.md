@@ -28,11 +28,14 @@ Check the continuous integration [setup script](.travis.yml) and [logs](https://
 
 ## Usage
 
-Example of running on CASP12 target T0864:
+Example of running on CASP12 target T0864.
+First you need to generate the `.21c` and `.map` files.
+This can be done in one of two ways:
+- From a single sequence: `csh seq2maps.csh T0864.fasta` to run HHblits, PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats.
+- From an alignment: `csh aln2maps.csh T0864.aln` to run PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats. The file `T0864.aln` has one sequence per line with the ungapped target sequence as the first line.
 
-- `csh seq2maps.csh T0864.fasta` to run HHblits, PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats. Outputs `.21c` and `.map` files.
-- `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864` to run DMPfold, where the last parameter is an output directory that will be created. The final model is `final_1.pdb` and other structures may or may not be generated as `final_2.pdb` to `final_5.pdb`.
-
+Then run `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864` to run DMPfold, where the last parameter is an output directory that will be created.
+The final model is `final_1.pdb` and other structures may or may not be generated as `final_2.pdb` to `final_5.pdb` if they are significantly different.
 Running `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864 5 20` instead runs 5 iterations with 20 models per iteration (default is 3 and 50).
 
 ## Data
