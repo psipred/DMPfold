@@ -33,12 +33,20 @@ script:
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
   - cp example/PF10963.a3m .
-  - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files
+  - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files from single sequence
   - du -h PF10963.* # Check files generated okay
-  - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963 3 5 # Run DMPfold
-  - head PF10963/final_1.pdb
+  - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
+  - head PF10963_fasta/final_1.pdb
   - curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign # Download TMalign
   - chmod +x TMalign
-  - ./TMalign PF10963/final_1.pdb example/3FGX.pdb # Check model accuracy
-  - tma=$(./TMalign PF10963/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
+  - ./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb # Check model accuracy
+  - tma=$(./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
+  - if (( $(echo "$tma >= 0.5" | bc -l) )); then echo "Correct fold, TMalign score $tma"; else echo "Incorrect fold, TMalign score $tma"; exit 1; fi # Throw an error if the model is the wrong fold
+  - rm PF10963.*
+  - csh aln2maps.csh example/PF10963.aln # Generate map and 21c files from alignment
+  - du -h PF10963.* # Check files generated okay
+  - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_aln 3 5 # Run DMPfold on new inputs
+  - head PF10963_aln/final_1.pdb
+  - ./TMalign PF10963_aln/final_1.pdb example/3FGX.pdb # Check model accuracy
+  - tma=$(./TMalign PF10963_aln/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
   - if (( $(echo "$tma >= 0.5" | bc -l) )); then echo "Correct fold, TMalign score $tma"; else echo "Incorrect fold, TMalign score $tma"; exit 1; fi # Throw an error if the model is the wrong fold
