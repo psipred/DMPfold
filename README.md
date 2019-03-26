@@ -41,5 +41,7 @@ Running `sh run_dmpfold.sh T0864.fasta T0864.21c T0864.map ./T0864 5 20` instead
 ## Data
 
 Models for the 1,475 [Pfam](http://pfam.xfam.org) families modelled in the paper can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_models.tgz).
+Alignments for the Pfam families without available templates can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_alignments.tgz).
+The format is one sequence per line with the ungapped target sequence as the first line.
 
 The directory [pfam](pfam) in this repository contains text files with the lists from Figure 4A of the paper and target sequences for modelled families.
