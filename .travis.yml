@@ -19,6 +19,9 @@ script:
   - python -c "import torch"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS
   - tar -zxvf cns_solve_1.3.tgz
+  - cd cnsfiles # Download and patch CNS scripts
+  - sh installscripts.sh
+  - cd ..
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
   - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz # Install legacy NCBI BLAST software

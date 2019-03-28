@@ -1,0 +1,106 @@
+68c68
+< {===>} par.1="CNS_TOPPAR:protein-allhdg5-4.param";
+---
+> {===>} par.1="CNS_TOPPAR:protein.param";
+75c75
+< {===>} struct.1="il8.mtf";
+---
+> {===>} struct.1="extended.mtf";
+82c82
+< {===>} pdb.in.file.1="il8.pdb";
+---
+> {===>} pdb.in.file.1="extended.pdb";
+106c106
+< {===>} pdb.dg.count=10;
+---
+> {===>} pdb.dg.count=_NMODELS_;
+110c110
+< {===>} md.seed=82364;
+---
+> {===>} md.seed=_SEED_;
+121c121
+< {===>} pdb.end.count=10;
+---
+> {===>} pdb.end.count=_NMODELS_;
+136c136
+< {===>} flg.calc.ave.struct=true;
+---
+> {===>} flg.calc.ave.struct=false;
+139c139
+< {===>} flg.calc.ave.accpt=true;
+---
+> {===>} flg.calc.ave.accpt=false;
+155,156c155
+< {===>} md.dg.select=(name ca or name ha or name n or name hn
+< 		        or name c or name cb* or name cg*);
+---
+> {===>} md.dg.select=(name ca or name cb or name n or name hn or name c or name o);
+177c176
+< {===>} md.dg.scale=100.;
+---
+> {===>} md.dg.scale=100;
+197c196
+< {* number of steps for high temperature dyanmics *}
+---
+> {* number of steps for high temperature dynamics *}
+210c209
+< {===>} md.cool.init.rad=0.9;
+---
+> {===>} md.cool.init.rad=1.0;
+212c211
+< {===>} md.cool.fina.rad=0.8;
+---
+> {===>} md.cool.fina.rad=0.85;
+214c213
+< {===>} md.cool.noe=50;
+---
+> {===>} md.cool.noe=25;
+216c215
+< {===>} md.hot.cdih=5;
+---
+> {===>} md.hot.cdih=7;
+218c217
+< {===>} md.cool.cdih=200;
+---
+> {===>} md.cool.cdih=50;
+225c224
+< {===>} md.pow.noe=50;
+---
+> {===>} md.pow.noe=10;
+227c226
+< {===>} md.pow.cdih=400;
+---
+> {===>} md.pow.cdih=300;
+229c228
+< {===>} md.pow.step=200;
+---
+> {===>} md.pow.step=15000;
+241c240
+< {===>} nmr.noe.file.1="il8_noe.tbl";
+---
+> {===>} nmr.noe.file.1="contact.tbl";
+243c242
+< {===>} nmr.noe.file.2="";
+---
+> {===>} nmr.noe.file.2="ssnoe.tbl";
+272c271
+< {===>} nmr.noe.hbnd.file="il8_hbonds.tbl";
+---
+> {===>} nmr.noe.hbnd.file="hbond.tbl";
+464c463
+< {===>} nmr.cdih.file="il8_dihe.tbl";
+---
+> {===>} nmr.cdih.file="dihedral.tbl";
+483c482
+< {===>} pdb.out.name="dg";
+---
+> {===>} pdb.out.name="_TARGET_NAME_";
+571a571,578
+> noe
+>   ceiling=1000
+>   asymptote N1 1.0
+>   sqconstant N1 1.0
+>   sqexponent N1 2
+>   soexponent N1 2
+>   rswitch N1 0.25
+> end

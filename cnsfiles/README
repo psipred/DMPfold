@@ -1,0 +1,6 @@
+This script copies and patches the CNS input files from the distribution site.
+
+Usage: sh installscripts.sh
+
+If your machine does not have an internet connection, you can also just copy and patch the files manually
+from your CNS installation directory if you prefer.

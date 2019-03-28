@@ -1,0 +1,97 @@
+10d9
+< 
+12d10
+< 
+14d11
+< 
+16,17c13
+< {===>} structure_file="il8.mtf";
+< 
+---
+> {===>} structure_file="extended.mtf";
+19c15
+< {===>} par_1="CNS_TOPPAR:protein-allhdg5-4.param";
+---
+> {===>} par_1="CNS_TOPPAR:protein.param";
+24d19
+< 
+26d20
+< 
+29d22
+< 
+31d23
+< 
+33c25
+< {===>} output_coor="il8_extended.pdb";
+---
+> {===>} output_coor="extended.pdb";
+38d29
+< 
+40d30
+< 
+42d31
+< 
+44d32
+< 
+46d33
+< 
+64d50
+< 
+69,70d54
+< 
+< 
+72d55
+< 
+77d59
+< 
+85d66
+< 
+91c72
+<    minimize lbfgs nstep=200 nprint=10 end
+---
+>    minimize lbfgs nstep=200 nprint=200 end
+94,95d74
+< 
+< 
+99d77
+< 
+125d102
+< 
+127d103
+< 
+135,136c111
+<    minimize lbfgs nstep=200 nprint=10 end
+< 
+---
+>    minimize lbfgs nstep=200 nprint=200 end
+149c124
+<       minimize lbfgs nstep=200 nprint=10 end
+---
+>       minimize lbfgs nstep=200 nprint=200 end
+159,161c134,135
+<    minimize lbfgs nstep=300 nprint=10 end   
+<    minimize lbfgs nstep=300 nprint=10 end
+< 
+---
+>    minimize lbfgs nstep=300 nprint=300 end   
+>    minimize lbfgs nstep=300 nprint=300 end
+164d137
+< 
+166d138
+< 
+172d143
+< 
+178d148
+< 
+184d153
+< 
+187d155
+< 
+192d159
+< 
+194d160
+< 
+203d168
+< 
+205d169
+< 

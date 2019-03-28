@@ -17,8 +17,9 @@ These instructions should work for a Linux system:
 - Install [HH-suite](https://github.com/soedinglab/hh-suite) and the uniclust30 database, unless you are getting your alignments from elsewhere.
 - Install [FreeContact](https://rostlab.org/owiki/index.php/FreeContact).
 - Install [CCMpred](https://github.com/soedinglab/CCMpred).
-- Install [CNS](http://cns-online.org/v1.3). Change the `nrestraints = 20000` line in `cns_solve_1.3/modules/nmr/readdata` to a larger number, e.g. `nrestraints = 30000`, to allow DMPfold to run on larger structures.
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda install modeller -c salilab`.
+- Install [CNS](http://cns-online.org/v1.3). Change the `nrestraints = 20000` line in `cns_solve_1.3/modules/nmr/readdata` to a larger number, e.g. `nrestraints = 30000`, to allow DMPfold to run on larger structures.
+- Download and patch the required CNS scripts by changing into the `cnsfiles` directory and running `sh installscripts.sh`.
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation using the makefile if issues arise. Some other standard programs, such as csh shell, are assumed.
 - You also need access to the legacy BLAST software, in particular `blastpgp` and `makemat`. We will look to update this to BLAST+ soon.
 - Change lines 10/13-15/18/21 in `seq2maps.csh`, lines 11/14/17 in `aln2maps.csh`, lines 4/7 in `bin/runpsipredandsolvwithdb` and lines 10/13 in `run_dmpfold.sh` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh` and `aln2maps.csh`.
