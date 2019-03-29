@@ -46,4 +46,4 @@ Additional models for the remainder of the dark Pfam families can be downloaded 
 Alignments for the Pfam families without available templates can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_alignments.tgz).
 The format is one sequence per line with the ungapped target sequence as the first line.
 
-The directory [pfam](pfam) in this repository contains text files with the lists from Figure 4A of the paper and target sequences for modelled families.
+The directory [pfam](pfam) in this repository contains text files with the lists from Figure 4A of the paper, target sequences for modelled families and data for modelled families (sequence length, effective sequence count, distogram satisfaction scores, estimated TM-score and probability TM-score >= 0.5).
