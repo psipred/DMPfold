@@ -1,10 +1,8 @@
 # DMPfold
 
-## NB this repo is under development and is not ready for production use
-
 [![Build Status](https://travis-ci.org/psipred/DMPfold.svg?branch=master)](https://travis-ci.org/psipred/DMPfold)
 
-Fast de novo protein model generation from covarying sequences using predicted distances and iterative model building.
+Extending genome-scale de novo protein modelling coverage using iterative deep learning-based prediction of structural constraints
 
 See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 
