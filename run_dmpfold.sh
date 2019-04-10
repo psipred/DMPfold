@@ -100,9 +100,9 @@ if [ $? -ne 0 ]; then
 fi
 
 ln -s $dmpfolddir/modcheck/dope.scr .
-ln -s $dmpfolddir/modcheck/qmodcheck . 
-ln -s $dmpfolddir/modcheck/qmodope_mainens . 
 ln -s $dmpfolddir/modcheck/modcheckpot.dat .
+ln -s $bindir/qmodcheck .
+ln -s $bindir/qmodope_mainens .
 
 counter=1
 until [ $counter -gt $ncycles ]; do
@@ -203,4 +203,4 @@ if [ -e CLUSTER_005.pdb ]; then
     mv best_qdope.pdb final_5.pdb
 fi
 
-rm dope.scr qmodcheck qmodope_mainens modcheckpot.dat
+rm dope.scr modcheckpot.dat qmodcheck qmodope_mainens
