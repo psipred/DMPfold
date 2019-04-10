@@ -11,13 +11,13 @@ CC		= cc
 CFLAGS		= -O
 LIBS		= -lm
 
-all:		aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck qmodcheck_mainens tmclust alnstats dmp_makepredmaps qmodope_mainens distcompareprob
+all:		aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens distcompareprob
 
 install:
-		/bin/cp aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck qmodcheck_mainens tmclust alnstats dmp_makepredmaps qmodope_mainens ../bin
+		/bin/cp aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens ../bin
 
 clean:
-		/bin/rm -f aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck qmodcheck_mainens tmclust alnstats dmp_makepredmaps qmodope_mainens *.o
+		/bin/rm -f aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens *.o
 
 psipred:	sspred_avpred.c ssdefs.h sspred_net.h
 		$(CC) $(CFLAGS) sspred_avpred.c $(LIBS) -o psipred
@@ -57,9 +57,6 @@ pdbhfilt:	pdbhfilt.c
 
 qmodcheck:	qmodcheck.c
 		$(CC) $(CFLAGS) qmodcheck.c $(LIBS) -o qmodcheck
-
-qmodcheck_mainens:	qmodcheck_mainens.c
-		$(CC) $(CFLAGS) qmodcheck_mainens.c $(LIBS) -o qmodcheck_mainens
 
 tmclust:	tmclust.c
 		$(CC) $(CFLAGS) tmclust.c $(LIBS) -o tmclust
