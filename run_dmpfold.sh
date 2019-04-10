@@ -101,8 +101,8 @@ fi
 
 ln -s $dmpfolddir/modcheck/dope.scr .
 ln -s $dmpfolddir/modcheck/modcheckpot.dat .
-ln -s $dmpfolddir/modcheck/qmodcheck .
-ln -s $dmpfolddir/modcheck/qmodope_mainens .
+ln -s $bindir/qmodcheck .
+ln -s $bindir/qmodope_mainens .
 
 counter=1
 until [ $counter -gt $ncycles ]; do
