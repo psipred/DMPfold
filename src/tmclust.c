@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <float.h>
 
 #define MAXNSTRUC 50000
 
@@ -13,7 +14,7 @@
 #endif
 
 #define BIG ((float)1.0e10)
-#define SMALL ((float)1.0e-3)
+#define SMALL ((float)1.0e-5)
 #define ZERO ((float)0.0)
 #define HALF ((float)0.5)
 #define ONE ((float)1.0)
@@ -189,143 +190,323 @@ void
 }
 
 
-#define ROTATE(a,i,j,k,l) (g=a[i][j],h=a[k][l],a[i][j]=g-s*(h+g*tau),a[k][l]=h+s*(g-h*tau))
 
-int             jacobi(float a[6][6], float d[6], float v[6][6], int *nrot)
+/* Eigen decomposition code for symmetric 6x6 matrix, taken/modified from the public
+   domain Java Matrix library JAMA. */
+
+#define NDIM 6
+
+#define hypot2(x, y) (sqrt((x)*(x)+(y)*(y)))
+
+/* Symmetric Householder reduction to tridiagonal form. */
+
+void tred2(double V[NDIM][NDIM], double d[NDIM], double e[NDIM]) 
 {
-    int             j, iq, ip, i;
-    float           tresh, theta, tau, t, sm, s, h, g, c, b[6], z[6];
+    int i, j, k;
+    
+    for (j = 0; j < NDIM; j++)
+	d[j] = V[NDIM-1][j];
 
-    for (ip = 0; ip < 6; ip++)
-    {
-	for (iq = 0; iq < 6; iq++)
-	    v[ip][iq] = ZERO;
-	v[ip][ip] = 1.0;
-    }
+    /* Householder reduction to tridiagonal form. */
 
-    for (ip = 0; ip < 6; ip++)
+    for (i = NDIM-1; i > 0; i--)
     {
-	b[ip] = d[ip] = a[ip][ip];
-	z[ip] = ZERO;
-    }
+	/* Scale to avoid under/overflow. */
 
-    *nrot = 0;
-    for (i = 0; i < 50; i++)
-    {
-	sm = ZERO;
-	for (ip = 0; ip < 5; ip++)
+	double scale = 0.0;
+	double h = 0.0;
+	
+	for (k = 0; k < i; k++)
+	    scale = scale + fabs(d[k]);
+	
+	if (scale == 0.0)
 	{
-	    for (iq = ip + 1; iq < 6; iq++)
-		sm += fabs(a[ip][iq]);
-	}
-	if (sm == ZERO)
-	    return 0;
-	if (i < 3)
-	    tresh = 0.2 * sm / 36;
-	else
-	    tresh = ZERO;
-	for (ip = 0; ip < 5; ip++)
-	{
-	    for (iq = ip + 1; iq < 6; iq++)
+	    e[i] = d[i-1];
+	    
+	    for (j = 0; j < i; j++)
 	    {
-		g = 100.0F * fabs(a[ip][iq]);
-		if (i > 3 && fabs(d[ip]) + g == fabs(d[ip])
-		    && fabs(d[iq]) + g == fabs(d[iq]))
-		    a[ip][iq] = ZERO;
-		else
-		    if (fabs(a[ip][iq]) > tresh)
-		    {
-			h = d[iq] - d[ip];
-			if (fabs(h) + g == fabs(h))
-			    t = (a[ip][iq]) / h;
-			else
-			{
-			    theta = 0.5 * h / (a[ip][iq]);
-			    t = 1.0F / (fabs(theta) + sqrtf(1.0F + theta * theta));
-			    if (theta < ZERO)
-				t = -t;
-			}
-			c = 1.0F / sqrtf(1.0F + t * t);
-			s = t * c;
-			tau = s / (1.0F + c);
-			h = t * a[ip][iq];
-			z[ip] -= h;
-			z[iq] += h;
-			d[ip] -= h;
-			d[iq] += h;
-			a[ip][iq] = ZERO;
-			for (j = 0; j <= ip - 1; j++)
-			{
-			    ROTATE(a, j, ip, j, iq);
-			}
-			for (j = ip + 1; j <= iq - 1; j++)
-			{
-			    ROTATE(a, ip, j, j, iq);
-			}
-			for (j = iq + 1; j < 6; j++)
-			{
-			    ROTATE(a, ip, j, iq, j);
-			}
-			for (j = 0; j < 6; j++)
-			{
-			    ROTATE(v, j, ip, j, iq);
-			}
-			++(*nrot);
-		    }
+		d[j] = V[i-1][j];
+		V[i][j] = 0.0;
+		V[j][i] = 0.0;
 	    }
 	}
-	for (ip = 0; ip < 6; ip++)
+	else
 	{
-	    b[ip] += z[ip];
-	    d[ip] = b[ip];
-	    z[ip] = ZERO;
+	    /* Generate Householder vector. */
+
+	    for (k = 0; k < i; k++)
+	    {
+		d[k] /= scale;
+		h += d[k] * d[k];
+	    }
+	    
+	    double f = d[i-1];
+	    double g = sqrt(h);
+	    
+	    if (f > 0)
+		g = -g;
+	    
+	    e[i] = scale * g;
+	    h = h - f * g;
+	    d[i-1] = f - g;
+	    
+	    for (j = 0; j < i; j++)
+		e[j] = 0.0;
+
+	    /* Apply similarity transformation to remaining columns. */
+
+	    for (j = 0; j < i; j++)
+	    {
+		f = d[j];
+		V[j][i] = f;
+		g = e[j] + V[j][j] * f;
+
+		for (k = j+1; k <= i-1; k++)
+		{
+		    g += V[k][j] * d[k];
+		    e[k] += V[k][j] * f;
+		}
+		
+		e[j] = g;
+	    }
+	    
+	    f = 0.0;
+	    
+	    for (j = 0; j < i; j++)
+	    {
+		e[j] /= h;
+		f += e[j] * d[j];
+	    }
+	    
+	    double hh = f / (h + h);
+	    
+	    for (j = 0; j < i; j++)
+		e[j] -= hh * d[j];
+	    
+	    for (j = 0; j < i; j++)
+	    {
+		f = d[j];
+		g = e[j];
+		
+		for (k = j; k <= i-1; k++)
+		    V[k][j] -= (f * e[k] + g * d[k]);
+		
+		d[j] = V[i-1][j];
+		
+		V[i][j] = 0.0;
+	    }
 	}
+	
+	d[i] = h;
     }
-    return 1;
-}
+    
 
-#undef ROTATE
+    /* Accumulate transformations. */
 
-/*
- * function eigsrt 
- *
- * Given the eigenvalues d[n] and eignevectors v[n][n] as output from jacobi
- * this routine sourts the eigenvalues into descending order and rearranges
- * the columns of v correspondingly 
- */
-void            eigsrt(float d[6], float v[6][6])
-{
-    int             k, j, i;
-    float           p;
-
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < NDIM-1; i++)
     {
-	p = d[k = i];
-	for (j = i + 1; j < 6; j++)
-	    if (d[j] >= p)
-		p = d[k = j];
+	V[NDIM-1][i] = V[i][i];
+	
+	V[i][i] = 1.0;
+	
+	double h = d[i+1];
+	
+	if (h != 0.0)
+	{
+	    for (k = 0; k <= i; k++)
+		d[k] = V[k][i+1] / h;
+	    
+	    for (j = 0; j <= i; j++)
+	    {
+		double g = 0.0;
+		
+		for (k = 0; k <= i; k++)
+		    g += V[k][i+1] * V[k][j];
+		
+		for (k = 0; k <= i; k++)
+		    V[k][j] -= g * d[k];
+	    }
+	}
+	
+	for (k = 0; k <= i; k++)
+	    V[k][i+1] = 0.0;
+    }
+    
+    for (j = 0; j < NDIM; j++)
+    {
+	d[j] = V[NDIM-1][j];
+	V[NDIM-1][j] = 0.0;
+    }
+    
+    V[NDIM-1][NDIM-1] = 1.0;
+    
+    e[0] = 0.0;
+}
+ 
+
+/* Symmetric tridiagonal QL algorithm. */
+
+void tql2(double V[NDIM][NDIM], double d[NDIM], double e[NDIM]) 
+{
+    int i, j, k, l, m;
+    double f = 0.0;
+    double tst1 = 0.0;
+    double eps = DBL_EPSILON;
+    
+    for (i = 1; i < NDIM; i++)
+	e[i-1] = e[i];
+    
+    e[NDIM-1] = 0.0;
+    
+    for (l = 0; l < NDIM; l++)
+    {
+	/* Find small subdiagonal element */
+
+	tst1 = MAX(tst1,fabs(d[l]) + fabs(e[l]));
+	
+	int m = l;
+	
+	while (m < NDIM)
+	{
+	    if (fabs(e[m]) <= eps*tst1)
+		break;
+	    
+	    m++;
+	}
+	
+
+	/* If m == l, d[l] is an eigenvalue, otherwise, iterate. */
+
+	if (m > l)
+	{
+	    int iter = 0;
+	    
+	    do
+	    {
+		iter = iter + 1;
+
+		/* Compute implicit shift */
+
+		double g = d[l];
+		double p = (d[l+1] - g) / (2.0 * e[l]);
+		double r = hypot2(p,1.0);
+		
+		if (p < 0)
+		    r = -r;
+		
+		d[l] = e[l] / (p + r);
+		d[l+1] = e[l] * (p + r);
+		
+		double dl1 = d[l+1];
+		double h = g - d[l];
+		
+		for (i = l+2; i < NDIM; i++)
+		    d[i] -= h;
+		
+		f = f + h;
+
+		/* Implicit QL transformation. */
+
+		p = d[m];
+		
+		double c = 1.0;
+		double c2 = c;
+		double c3 = c;
+		double el1 = e[l+1];
+		double s = 0.0;
+		double s2 = 0.0;
+		
+		for (i = m-1; i >= l; i--)
+		{
+		    c3 = c2;
+		    c2 = c;
+		    s2 = s;
+		    g = c * e[i];
+		    h = c * p;
+		    r = hypot2(p,e[i]);
+		    e[i+1] = s * r;
+		    s = e[i] / r;
+		    c = p / r;
+		    p = c * d[i] - s * g;
+		    d[i+1] = h + s * (c * g + s * d[i]);
+
+		    /* Accumulate transformation. */
+
+		    for (k = 0; k < NDIM; k++)
+		    {
+			h = V[k][i+1];
+			V[k][i+1] = s * V[k][i] + c * h;
+			V[k][i] = c * V[k][i] - s * h;
+		    }
+		}
+		
+		p = -s * s2 * c3 * el1 * e[l] / dl1;
+		e[l] = s * p;
+		d[l] = c * p;
+		
+		/* Check for convergence. */
+		
+	    } while (fabs(e[l]) > eps*tst1);
+	}
+	
+	d[l] = d[l] + f;
+	e[l] = 0.0;
+    }
+    
+    /* Sort eigenvalues and corresponding vectors. */
+
+    for (i = 0; i < NDIM-1; i++)
+    {
+	double p = d[i];
+
+	k = i;
+	
+	for (j = i+1; j < NDIM; j++)
+	    if (d[j] > p)
+	    {
+		k = j;
+		p = d[j];
+	    }
+	
 	if (k != i)
 	{
 	    d[k] = d[i];
 	    d[i] = p;
-	    for (j = 0; j < 6; j++)
+	    
+	    for (j = 0; j < NDIM; j++)
 	    {
-		p = v[j][i];
-		v[j][i] = v[j][k];
-		v[j][k] = p;
+		p = V[j][i];
+		V[j][i] = V[j][k];
+		V[j][k] = p;
 	    }
 	}
     }
 }
 
-int
-                lsq_fit(float u[3][3], Transform R)
+
+void eigen_decomposition(double A[NDIM][NDIM], double d[NDIM], double V[NDIM][NDIM]) 
 {
-    float du;
-    float           omega[6][6], vom[6][6];
-    float           dom[6], h[3][3], k[3][3], sign;
-    const float root2 = sqrt(2.0);
+    int i, j;
+    double e[NDIM];
+    
+    for (i = 0; i < NDIM; i++)
+	for (j = 0; j < NDIM; j++)
+	    V[i][j] = A[i][j];
+    
+    tred2(V, d, e);
+    tql2(V, d, e);
+}
+
+
+int
+                lsq_fit(double u[3][3], Transform R)
+{
+    double           du, omega[6][6], vom[6][6];
+    double           dom[6], root2, h[3][3], k[3][3], sign;
     int             i, j, l, rot;
+
+    /* Constant */
+    root2 = sqrt(2.0);
 
     for (i = 0; i < 3; i++)
 	for (j = 0; j < 3; j++)
@@ -336,14 +517,14 @@ int
 	    omega[i][j] = 0;
 
     /* Calculate determinant of U */
-    du = (double) u[0][0] * u[1][1] * u[2][2] - u[0][0] * u[1][2] * u[2][1]
+    du = u[0][0] * u[1][1] * u[2][2] - u[0][0] * u[1][2] * u[2][1]
 	- u[0][1] * u[1][0] * u[2][2] + u[0][1] * u[1][2] * u[2][0]
 	+ u[0][2] * u[1][0] * u[2][1] - u[0][2] * u[1][1] * u[2][0];
 
     /* If determinant is zero return */
-    if (fabs(du) < 1.0e-5)
+    if (fabs(du) < SMALL)
 	return TRUE;
-    
+
     /* Make metric matrix omega */
     for (i = 0; i < 3; i++)
 	for (j = 0; j < 3; j++)
@@ -355,14 +536,10 @@ int
 	}
 
     /* Diagonalise matrix */
-    if (jacobi(omega, dom, vom, &rot))
-	return TRUE;
-
-    /* Sort by eigenvalues */
-    eigsrt(dom, vom);
+    eigen_decomposition(omega, dom, vom);
 
     /* Check for degeneracy */
-    if (du <= ZERO && fabs(dom[2] - dom[5]) < 1.0e-5)
+    if (du <= ZERO && fabs(dom[2] - dom[5]) < SMALL)
 	return TRUE;
 
     /* Determine h and k */
@@ -389,8 +566,9 @@ int
     for (i = 0; i < 3; i++)
 	for (j = 0; j < 3; j++)
 	    R[i][j] = k[j][0] * h[i][0] + k[j][1] * h[i][1] + du * k[j][2] * h[i][2];
+
     R[0][3] = R[1][3] = R[2][3] = R[3][0] = R[3][1] = R[3][2] = ZERO;
-    R[3][3] = ONE;
+    R[3][3] = 1.0;
 
     return FALSE;
 }
@@ -425,7 +603,7 @@ void
     struct pdbatm **atmptr;
 {
     int             i, token=ENDENT, namino, aac, resnum = 0, blksize;
-    float           x, y, z, u[3][3];
+    float           x, y, z;
     char            atmnam[5], chain = '?';
     struct pdbatm  *atom = *atmptr;
 
@@ -483,15 +661,16 @@ void
     *atmptr = atom;
 }
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     int             i, j, k, ii, jj, kk, l, n, nmax = 0, at1, at2, nequiv, eqlen;
     int             first, last, blksize, hashval, moda, modb, modc, repnum, nclust, modnum;
     int    clustflg[MAXNSTRUC];
     unsigned int    filepos[MAXNSTRUC];
     char            fname[80];
-    float           x, y, z, d, r, rsq, rmsd, u[3][3], **tmscmat, cutoff, maxrmsd = 6.0, matchsum[MAXNSTRUC];
+    float           x, y, z, d, r, rsq, rmsd, **tmscmat, cutoff, maxrmsd = 6.0, matchsum[MAXNSTRUC];
     float           maxclusc, tmsc, besttm, d0sq, tmsccut = 0.5, tmsccut2 = 0.6;
+    double          u[3][3];
     FILE           *ifp, *ofp, *rfp;
     Point           new, CG_a, CG_b;
     Transform       fr_xf;
@@ -601,7 +780,7 @@ main(int argc, char **argv)
     for (moda=0; moda<nmodels; moda++)
 	if (!clustflg[moda])
 	    for (modb=moda+1; modb<nmodels; modb++)
-		if (!clustflg[modb] && tmscmat[moda][modb] > 0.99F)
+		if (!clustflg[modb] && tmscmat[moda][modb] > 0.999F)
 		{
 		    printf("Repeated structure removed: %d\n", modb+1);
 		    clustflg[modb] = 3;

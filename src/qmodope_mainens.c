@@ -1,4 +1,4 @@
-/* Protein Chain Superposition - by David Jones, February 1992 */
+/* QMODOPE - Run QMODCHECK + DOPE on protein structure ensemble - by David T. Jones, February 2008 */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -135,265 +135,6 @@ void
     exit(-1);
 }
 
-/* Allocate matrix */
-void           *allocmat(int rows, int columns, int size, int clrflg)
-{
-    int             i;
-    void          **p;
-
-    p = (void **) malloc(rows * sizeof(void *));
-
-    if (p == NULL)
-	fail("allocmat: malloc [] failed!");
-    if (clrflg)
-    {
-	for (i = 0; i < rows; i++)
-	    if ((p[i] = calloc(columns, size)) == NULL)
-		fail("allocmat: calloc [][] failed!");
-    }
-    else
-	for (i = 0; i < rows; i++)
-	    if ((p[i] = malloc(columns * size)) == NULL)
-		fail("allocmat: malloc [][] failed!");
-
-    return p;
-}
-
-void            freemat(void *p, int rows)
-{
-    int             i;
-
-    for (i = rows - 1; i >= 0; i--)
-	free(((void **) p)[i]);
-    free(p);
-}
-
-/* Apply a Transform matrix to a point */
-void
-                transform_point(transform, p, tp)
-    Transform       transform;	/* transform to apply to the point */
-    Point           p;		/* the point to transform */
-    Point           tp;		/* the returned point after transformation */
-{
-    int             i, j;
-    Point           temp;
-
-    temp[0] = p[0] + transform[0][3];
-    temp[1] = p[1] + transform[1][3];
-    temp[2] = p[2] + transform[2][3];
-    tp[0] = dotprod(transform[0], temp);
-    tp[1] = dotprod(transform[1], temp);
-    tp[2] = dotprod(transform[2], temp);
-
-#if 0
-    printf("%g %g %g\n%g %g %g\n\n", p[0], p[1], p[2], tp[0], tp[1], tp[2]);
-#endif
-}
-
-
-#define ROTATE(a,i,j,k,l) g=a[i][j];h=a[k][l];a[i][j]=g-s*(h+g*tau);\
-	a[k][l]=h+s*(g-h*tau);
-
-int             jacobi(float a[6][6], float d[6], float v[6][6], int *nrot)
-{
-    int             j, iq, ip, i;
-    float           tresh, theta, tau, t, sm, s, h, g, c, b[6], z[6];
-
-    for (ip = 0; ip < 6; ip++)
-    {
-	for (iq = 0; iq < 6; iq++)
-	    v[ip][iq] = ZERO;
-	v[ip][ip] = 1.0;
-    }
-    for (ip = 0; ip < 6; ip++)
-    {
-	b[ip] = d[ip] = a[ip][ip];
-	z[ip] = ZERO;
-    }
-    *nrot = 0;
-    for (i = 0; i < 50; i++)
-    {
-	sm = ZERO;
-	for (ip = 0; ip < 5; ip++)
-	{
-	    for (iq = ip + 1; iq < 6; iq++)
-		sm += fabs(a[ip][iq]);
-	}
-	if (sm == ZERO)
-	    return 0;
-	if (i < 3)
-	    tresh = 0.2 * sm / 36;
-	else
-	    tresh = ZERO;
-	for (ip = 0; ip < 5; ip++)
-	{
-	    for (iq = ip + 1; iq < 6; iq++)
-	    {
-		g = 100.0 * fabs(a[ip][iq]);
-		if (i > 3 && fabs(d[ip]) + g == fabs(d[ip])
-		    && fabs(d[iq]) + g == fabs(d[iq]))
-		    a[ip][iq] = ZERO;
-		else
-		if (fabs(a[ip][iq]) > tresh)
-		{
-		    h = d[iq] - d[ip];
-		    if (fabs(h) + g == fabs(h))
-			t = (a[ip][iq]) / h;
-		    else
-		    {
-			theta = 0.5 * h / (a[ip][iq]);
-			t = 1.0 / (fabs(theta) + sqrt(1.0 + theta * theta));
-			if (theta < ZERO)
-			    t = -t;
-		    }
-		    c = 1.0 / sqrt(1 + t * t);
-		    s = t * c;
-		    tau = s / (1.0 + c);
-		    h = t * a[ip][iq];
-		    z[ip] -= h;
-		    z[iq] += h;
-		    d[ip] -= h;
-		    d[iq] += h;
-		    a[ip][iq] = ZERO;
-		    for (j = 0; j <= ip - 1; j++)
-		    {
-			ROTATE(a, j, ip, j, iq)
-		    }
-		    for (j = ip + 1; j <= iq - 1; j++)
-		    {
-			ROTATE(a, ip, j, j, iq)
-		    }
-		    for (j = iq + 1; j < 6; j++)
-		    {
-			ROTATE(a, ip, j, iq, j)
-		    }
-		    for (j = 0; j < 6; j++)
-		    {
-			ROTATE(v, j, ip, j, iq)
-		    }
-		    ++(*nrot);
-		}
-	    }
-	}
-	for (ip = 0; ip < 6; ip++)
-	{
-	    b[ip] += z[ip];
-	    d[ip] = b[ip];
-	    z[ip] = ZERO;
-	}
-    }
-    return 1;
-}
-
-#undef ROTATE
-
-/*
- * function eigsrt 
- *
- * Given the eigenvalues d[n] and eignevectors v[n][n] as output from jacobi
- * this routine sourts the eigenvalues into descending order and rearranges
- * the columns of v correspondingly 
- */
-void            eigsrt(float d[6], float v[6][6])
-{
-    int             k, j, i;
-    float           p;
-
-    for (i = 0; i < 5; i++)
-    {
-	p = d[k = i];
-	for (j = i + 1; j < 6; j++)
-	    if (d[j] >= p)
-		p = d[k = j];
-	if (k != i)
-	{
-	    d[k] = d[i];
-	    d[i] = p;
-	    for (j = 0; j < 6; j++)
-	    {
-		p = v[j][i];
-		v[j][i] = v[j][k];
-		v[j][k] = p;
-	    }
-	}
-    }
-}
-
-int
-                lsq_fit(float u[3][3], Transform R)
-{
-    float           du, omega[6][6], vom[6][6];
-    float           dom[6], root2, h[3][3], k[3][3], sign;
-    int             i, j, l, rot;
-
-    /* Constant */
-    root2 = sqrt(2.0);
-
-    for (i = 0; i < 3; i++)
-	for (j = 0; j < 3; j++)
-	    R[i][j] = ZERO;
-
-    for (i = 0; i < 6; i++)
-	for (j = 0; j < 6; j++)
-	    omega[i][j] = 0;
-
-    /* Calculate determinate of U */
-    du = u[0][0] * u[1][1] * u[2][2] - u[0][0] * u[1][2] * u[2][1]
-	- u[0][1] * u[1][0] * u[2][2] + u[0][1] * u[1][2] * u[2][0]
-	+ u[0][2] * u[1][0] * u[2][1] - u[0][2] * u[1][1] * u[2][0];
-
-    /* If determinant is zero return */
-    if (fabs(du) < 1.0e-5)
-	return TRUE;
-
-    /* Make metric matrix omega */
-    for (i = 0; i < 3; i++)
-	for (j = 0; j < 3; j++)
-	{
-	    omega[i][j] = ZERO;
-	    omega[i + 3][j + 3] = ZERO;
-	    omega[i + 3][j] = u[j][i];
-	    omega[i][j + 3] = u[i][j];
-	}
-
-    /* Diagonalise matrix */
-    if (jacobi(omega, dom, vom, &rot))
-	return TRUE;
-
-    /* Sort by eigenvalues */
-    eigsrt(dom, vom);
-
-    /* Check for degeneracy */
-    if (du <= ZERO && fabs(dom[2] - dom[5]) < 1.0e-5)
-	return TRUE;
-
-    /* Determine h and k */
-    for (i = 0; i < 3; i++)
-	for (j = 0; j < 3; j++)
-	{
-	    h[i][j] = root2 * vom[i][j];
-	    k[i][j] = root2 * vom[i + 3][j];
-	}
-    sign = h[0][0] * h[1][1] * h[2][2] - h[0][0] * h[1][2] * h[2][1]
-	- h[0][1] * h[1][0] * h[2][2] + h[0][1] * h[1][2] * h[2][0]
-	+ h[0][2] * h[1][0] * h[2][1] - h[0][2] * h[1][1] * h[2][0];
-    if (sign <= ZERO)
-	for (i = 0; i < 3; i++)
-	{
-	    h[i][2] = -h[i][2];
-	    k[i][2] = -k[i][2];
-	}
-
-    /* Determine rotation matrix */
-    du /= fabs(du);
-    for (i = 0; i < 3; i++)
-	for (j = 0; j < 3; j++)
-	    R[i][j] = k[j][0] * h[i][0] + k[j][1] * h[i][1] + du * k[j][2] * h[i][2];
-    R[0][3] = R[1][3] = R[2][3] = R[3][0] = R[3][1] = R[3][2] = ZERO;
-    R[3][3] = ONE;
-
-    return FALSE;
-}
 
 /* Get atomic coordinates from ATOM records */
 void
@@ -494,7 +235,8 @@ int
     return 0;
 }
 
-main(int argc, char **argv)
+
+int main(int argc, char **argv)
 {
     int             i, j, k, nres;
     int             blksize, hashval, nmatch, moda, modb, ret;
@@ -552,8 +294,8 @@ main(int argc, char **argv)
 
 	pclose(dfp);
 
-	sprintf(cmdstr, "./qmodcheck temp.pdb | tail -1 > qmod.tmp");
-//	sprintf(cmdstr, "./qmodcheck qmod_temp.pdb A | tail -1");
+	sprintf(cmdstr, "qmodcheck temp.pdb | tail -1 > qmod.tmp");
+//	sprintf(cmdstr, "qmodcheck qmod_temp.pdb A | tail -1");
 	
 	ret = system(cmdstr);
 
