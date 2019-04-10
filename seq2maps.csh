@@ -20,8 +20,10 @@ set ccmpreddir = ~/CCMpred/bin
 # Set this to point to the FreeContact command
 set freecontactcmd = ~/freecontact/bin/freecontact
 
+# Set this to point to the legacy BLAST bin directory
+set ncbidir = ~/blast/bin
+
 set bindir = $dmpfolddir/bin
-set bindir2 = $dmpfolddir/external_bin
 
 set seqfile = $1
 set target = $1:t:r
@@ -31,7 +33,7 @@ $HHBIN/hhblits -i $seqfile -d $HHDB -o $target.hhr -oa3m $target.a3m -e 0.01 -n 
 
 cat $seqfile > $target.temp.fasta
 
-$bindir2/formatdb -i $target.a3m -t $target.a3m
+$ncbidir/formatdb -i $target.a3m -t $target.a3m
 
 if (! -e $target.temp.solv) then
     echo "Running PSIPRED & SOLVPRED"
