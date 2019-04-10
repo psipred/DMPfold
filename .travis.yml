@@ -26,7 +26,10 @@ script:
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
   - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz # Install legacy NCBI BLAST software
   - tar -zxvf ncbi_legacy.tgz
-  - ulimit -s unlimited
+  - cd src # Test compilation of source files
+  - make
+  - ls
+  - cd ..
   - sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
   - sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
   - sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
@@ -41,6 +44,7 @@ script:
   - sed -i "s/source ~\/cns_solve_1.3\/cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
   - cp example/PF10963.a3m .
+  - ulimit -s unlimited
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files from single sequence
   - du -h PF10963.* # Check files generated okay
   - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
