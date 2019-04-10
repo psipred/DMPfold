@@ -37,7 +37,7 @@ endif
 if (`cat $alnfile | wc -l` >= 5) then
     if (! -e $target.psicov) then
         echo "Running PSICOV"
-        $bindir2/psicov -z $ncpu -o -d 0.03 $alnfile > $target.psicov
+        $bindir/psicov -z $ncpu -o -d 0.03 $alnfile > $target.psicov
     endif
     if (! -e $target.evfold) then
         echo "Running FreeContact"
