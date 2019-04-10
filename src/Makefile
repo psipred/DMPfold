@@ -14,10 +14,10 @@ LIBS		= -lm
 all:		aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens distcompareprob
 
 install:
-		/bin/cp aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens ../bin
+		/bin/cp aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens distcompareprob ../bin
 
 clean:
-		/bin/rm -f aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens *.o
+		/bin/rm -f aln2fasta contact2noe cov21stats fasta2tlc hbond2noe hbond2ssnoe pdbhfilt qmodcheck tmclust alnstats dmp_makepredmaps qmodope_mainens distcompareprob *.o
 
 psipred:	sspred_avpred.c ssdefs.h sspred_net.h
 		$(CC) $(CFLAGS) sspred_avpred.c $(LIBS) -o psipred
