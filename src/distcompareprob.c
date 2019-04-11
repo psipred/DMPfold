@@ -269,7 +269,7 @@ int main(int argc, char **argv)
     Transform       fr_xf;
 
     if (argc < 2)
-	fail("usage : distcompare ensemble.pdb distogramlist {param1}");
+	fail("usage : distcompareprob ensemble.pdb distogramlist {param1}");
 
     ifp = fopen(argv[2], "r");	/* Open contact file in TEXT mode */
     if (!ifp)
