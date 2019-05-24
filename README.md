@@ -16,7 +16,7 @@ These instructions should work for a Linux system:
 - Install [FreeContact](https://rostlab.org/owiki/index.php/FreeContact).
 - Install [CCMpred](https://github.com/soedinglab/CCMpred).
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda install modeller -c salilab`.
-- Install [CNS](http://cns-online.org/v1.3). Change the `nrestraints = 20000` line in `cns_solve_1.3/modules/nmr/readdata` to a larger number, e.g. `nrestraints = 30000`, to allow DMPfold to run on larger structures.
+- Install [CNS](http://cns-online.org/v1.3). We found we had to follow the steps outlined [here](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/14) to get this working, and had to install the `flex-devel` package via our system package manager. Change the `nrestraints = 20000` line in `cns_solve_1.3/modules/nmr/readdata` to a larger number, e.g. `nrestraints = 30000`, and rebuild CNS to allow DMPfold to run on larger structures.
 - Download and patch the required CNS scripts by changing into the `cnsfiles` directory and running `sh installscripts.sh`.
 - Install the [legacy BLAST](https://tinyurl.com/y57hq2wo) software, in particular `formatdb`, `blastpgp` and `makemat`. We may update this to BLAST+ in the future.
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation using the makefile if issues arise. Some other standard programs, such as csh shell, are assumed.
