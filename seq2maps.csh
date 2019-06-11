@@ -7,7 +7,7 @@
 set ncpu = 1
 
 # Set this to point to the DMPfold directory
-set dmpfolddir = ~/dmpfold
+set dmpfolddir = ~/DMPfold
 
 # Set the following to point to the relevant HH-suite locations
 setenv HHLIB ~/hh-suite

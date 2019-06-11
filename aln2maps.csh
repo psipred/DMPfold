@@ -8,7 +8,7 @@
 set ncpu = 1
 
 # Set this to point to the DMPfold directory
-set dmpfolddir = ~/dmpfold
+set dmpfolddir = ~/DMPfold
 
 # Set this to point to the CCMpred bin directory
 set ccmpreddir = ~/CCMpred/bin
