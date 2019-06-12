@@ -28,6 +28,8 @@ set bindir = $dmpfolddir/bin
 set seqfile = $1
 set target = $1:t:r
 
+limit stacksize unlimited
+
 echo "Running HHblits"
 $HHBIN/hhblits -i $seqfile -d $HHDB -o $target.hhr -oa3m $target.a3m -e 0.01 -n 3 -cpu $ncpu -diff inf -cov 10 -Z 10000 -B 10000
 

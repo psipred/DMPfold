@@ -24,6 +24,8 @@ set bindir = $dmpfolddir/bin
 set alnfile = $1
 set target = $1:t:r
 
+limit stacksize unlimited
+
 echo ">$target" > $target.temp.fasta
 head -1 $alnfile >> $target.temp.fasta
 

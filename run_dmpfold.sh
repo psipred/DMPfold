@@ -10,7 +10,7 @@
 dmpfolddir=~/DMPfold
 
 # Set this to point to the CNS setup script
-source ~/cns_solve_1.3/cns_solve_env.sh
+source ~/cns_solve_1.3/.cns_solve_env_sh
 
 bindir=$dmpfolddir/bin
 cnsdir=$dmpfolddir/cnsfiles
