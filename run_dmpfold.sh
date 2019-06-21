@@ -111,7 +111,7 @@ until [ $counter -gt $ncycles ]; do
         \mv rawdistpred.current rawdistpred.$((counter - 1))
         \mv hbcontacts.current hbcontacts.$((counter - 1))
 
-        python $dmpfolddir/nn/dmp-softmax/pytorch_dmp_iterdistpred_cb.py $targ21c $targmap best_qdope.pdb > rawdistpred.current
+        python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_iterdistpred_cb.py $targ21c $targmap best_qdope.pdb > rawdistpred.current
 
         cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc2 > contacts.current
 
@@ -120,7 +120,7 @@ until [ $counter -gt $ncycles ]; do
             exit 1
         fi
 
-        python $dmpfolddir/nn/dmp-hb/pytorch_iterdmp_hbpred.py $targ21c $targmap best_qdope.pdb | sort -g -r -k 5 | perl $bindir/problistcontacts.pl $hbrange $hbprob2 > hbcontacts.current
+        python3 $dmpfolddir/nn/dmp-hb/pytorch_iterdmp_hbpred.py $targ21c $targmap best_qdope.pdb | sort -g -r -k 5 | perl $bindir/problistcontacts.pl $hbrange $hbprob2 > hbcontacts.current
 
         if [ $? -ne 0 ]; then
             echo "Iterated hydrogen bond prediction failed!"
