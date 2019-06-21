@@ -76,7 +76,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-python $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
+python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
 cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc1 > contacts.current
 
@@ -85,14 +85,14 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-python $dmpfolddir/nn/dmp-hb/pytorch_dmp_hbpred.py $targ21c $targmap | sort -g -r -k 5 | perl $bindir/listcontacts.pl $hbrange $hbprob1 > hbcontacts.current
+python3 $dmpfolddir/nn/dmp-hb/pytorch_dmp_hbpred.py $targ21c $targmap | sort -g -r -k 5 | perl $bindir/listcontacts.pl $hbrange $hbprob1 > hbcontacts.current
 
 if [ $? -ne 0 ]; then
     echo "Hydrogen bond prediction failed!"
     exit 1
 fi
 
-python $dmpfolddir/nn/torpred/pytorch_torcov_pred.py $targ21c $targmap > dihedral.tbl
+python3 $dmpfolddir/nn/torpred/pytorch_torcov_pred.py $targ21c $targmap > dihedral.tbl
 
 if [ $? -ne 0 ]; then
     echo "Torsion angle prediction failed!"
