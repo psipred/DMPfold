@@ -30,6 +30,10 @@
 < {===>} prot_sequence_infile_1="amy_start.seq";
 ---
 > {===>} prot_sequence_infile_1="input.seq";
+60c48
+< {===>} prot_segid_1="";
+---
+> {===>} prot_segid_1="A";
 63d50
 < 
 70d56
