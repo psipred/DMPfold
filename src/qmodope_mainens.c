@@ -269,7 +269,7 @@ int main(int argc, char **argv)
 	ofp = fopen("temp.pdb", "w");
 	for (i = 0; i < natoms[nmodels]; i++)
 	{
-	    fprintf(ofp, "ATOM   %4d %s %s  %4d    %8.3f%8.3f%8.3f%6.2f%6.2f\n",
+	    fprintf(ofp, "ATOM   %4d %s %s A%4d    %8.3f%8.3f%8.3f%6.2f%6.2f\n", /* Modified by Joe to add chain ID A */
 		    i + 1, atoms[nmodels][i].atmnam, rnames[atoms[nmodels][i].aac], atoms[nmodels][i].resnum, atoms[nmodels][i].pos[0], atoms[nmodels][i].pos[1], atoms[nmodels][i].pos[2], 1.0, 1.0);
 	}
 	fprintf(ofp, "TER\nEND\n");
