@@ -279,7 +279,7 @@ int main(int argc, char **argv)
 
 	fflush(stdout);
 
-	sprintf(cmdstr, "python dope.scr | tail -1");
+	sprintf(cmdstr, "python3 dope.scr | tail -1"); /* Modified by Joe to change python path */
 
 	dfp = popen(cmdstr, "r");
 
