@@ -546,7 +546,7 @@ void            read_dat(char *colname, char *pairname, char *psiname, char *evf
     target.smean /= (float)nres;
 }
 
-main(int argc, char **argv)
+int main(int argc, char **argv)
 {
     int             i, j, niters;
     FILE *ifp;
