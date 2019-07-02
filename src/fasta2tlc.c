@@ -23,7 +23,7 @@ int
     return (isalpha(ch) ? aacvs[ch & 31] : 22);
 }
 
-main()
+int main()
 {
     char ch, id[80], desc[1024], seq[5000];
     int i, nres=0;
@@ -40,4 +40,6 @@ main()
 
     for (i=0; i<nres; i++)
 	printf("%s%s", rnames[seq[i]], i%13 != 12 ? " " : "\n");
+	
+   return 0;
 }
