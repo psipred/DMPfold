@@ -324,4 +324,5 @@ int main(int argc, char **argv)
     }
 
     fclose(ifp);
+    return 0;
 }
