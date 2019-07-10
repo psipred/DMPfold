@@ -156,6 +156,17 @@ until [ $counter -gt $ncycles ]; do
         echo "CNS execution failed!"
         exit 1
     fi
+    lc=$(grep "NOE-ERR: allocation for NOE-restraints exceeded" dgsa.log | wc -l)
+    if [ $lc -gt 0 ]; then
+        echo "Looks like you need to increase nrestraints in cns_solve_1.3/modules/nmr/readdata to a higher number to deal with this length of sequence."
+        exit 1
+    fi
+    lc=$(grep "CSTRAN-ERR: allocation for assignments exceeded" dgsa.log | wc -l)
+    if [ $lc -gt 0 ]; then
+        echo "Looks like you need to increase nassign in cns_solve_1.3/modules/nmr/readdata to a higher number to deal with this length of sequence."
+        exit 1
+    fi
+
     for file in ${target}_[1-9]*.pdb; do
         $bindir/pdbhfilt < $file | $bindir/pdborder | grep ATOM >> ensemble.$counter.pdb
         echo END >> ensemble.$counter.pdb
