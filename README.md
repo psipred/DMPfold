@@ -11,7 +11,7 @@ See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
 As it makes use of a lot of different software, installation can be a little fiddly.
 However we have aimed to make it as straightforward as possible.
 These instructions should work for a Linux system:
-- Make sure you have Python 3 with [PyTorch](https://pytorch.org) 0.4 or later, NumPy and SciPy installed. GPU setup is optional for Pytorch - it won't speed things up much because running the network isn't a time-consuming step. DMPfold has been tested on Python 3.6 and 3.7.
+- Make sure you have Python 3 with [PyTorch](https://pytorch.org) 0.4 or later, NumPy and SciPy installed. GPU setup is optional for Pytorch - it won't speed things up much because running the network isn't a time-consuming step. DMPfold has been tested on Python 3.6 and 3.7. The command `python3` should point to the Python that you want to use.
 - Install [HH-suite](https://github.com/soedinglab/hh-suite) and the uniclust30 database, unless you are getting your alignments from elsewhere.
 - Install [FreeContact](https://rostlab.org/owiki/index.php/FreeContact).
 - Install [CCMpred](https://github.com/soedinglab/CCMpred).
