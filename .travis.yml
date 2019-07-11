@@ -22,6 +22,10 @@ script:
   - cd cnsfiles # Download and patch CNS scripts
   - sh installscripts.sh
   - cd ..
+  - git clone https://github.com/weizhongli/cdhit.git # Install CD-HIT
+  - cd cdhit
+  - make
+  - cd ..
   - sudo apt-get install -y csh # Install csh shell
   - sudo apt-get install -y libgfortran3 # Install libgfortran3
   - curl $DEPENDENCYURL/ncbi_legacy.tgz -o ncbi_legacy.tgz # Install legacy NCBI BLAST software
@@ -42,6 +46,8 @@ script:
   - sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
   - sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
+  - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" predict_tmscore.sh
+  - sed -i "s/cdhitcmd=~\/cdhit\/cd-hit/cdhitcmd=.\/cdhit\/cd-hit/" predict_tmscore.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
   - cp example/PF10963.a3m .
   - ulimit -s unlimited
@@ -49,6 +55,7 @@ script:
   - du -h PF10963.* # Check files generated okay
   - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
   - head PF10963_fasta/final_1.pdb
+  - bash predict_tmscore.sh example/PF10963.fasta PF10963.aln PF10963_fasta/final_1.pdb PF10963_fasta/rawdistpred.1 # Predict TM-score
   - curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign # Download TMalign
   - chmod +x TMalign
   - ./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb # Check model accuracy
