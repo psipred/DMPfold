@@ -10,3 +10,5 @@ Output:
 Cols 1-10: Softmax probs for TM-score bins 0-0.1, 0.1-0.2 ... 0.9-1.0
 Col 11: Estimated TM-score (expected TM-score based on above probs)
 Col 12: Prob (TM > 0.5) (sum of last 5 probs)
+
+See predict_tmscore.sh for a script to run this predictor
