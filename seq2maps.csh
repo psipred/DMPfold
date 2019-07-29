@@ -3,6 +3,13 @@
 # Form input files for DMPfold from a single sequence
 # Argument is a FASTA file with a single sequence
 
+# By David T. Jones, Jun 2018
+
+# Copyright (C) 2018 University College London
+
+# License: GPLv3
+
+
 # Set the number of CPUs to use for HHblits, PSICOV, FreeContact and CCMpred
 set ncpu = 1
 
