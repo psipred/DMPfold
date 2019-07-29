@@ -1,5 +1,13 @@
 #!/usr/bin/env python
 
+# Predict model quality from alignment statistics and distogram satisfaction scores
+
+# By David T. Jones, Jan 2019
+
+# Copyright (C) 2019 University College London
+
+# License: GPLv3
+
 from __future__ import print_function
 
 import sys
@@ -36,8 +44,6 @@ def main():
         inputs = torch.tensor([values])
         output = F.softmax(network(inputs)/1.2515, dim=1)
 
-        #        print(output)
-        #        print(torch.sum(output[0,5:]).item())
         tmscore = 0.0
         for c in range(10):
             tmscore += output[0,c].item() * (0.05 + c * 0.1)
