@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 
+# Predict 2nd+ stage distance CB distances
+
+# By David T. Jones, Jan 2019
+
+# Copyright (C) 2019 University College London
+
+# License: GPLv3
+
+
 from __future__ import print_function
 
 import sys
