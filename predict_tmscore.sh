@@ -3,6 +3,13 @@
 # Predict the TM-score of a model generated using DMPfold
 # Arguments are target sequence, aln file, model to score and initial distance predictions
 
+# By Joe Greener, Jun 2019
+
+# Copyright (C) 2019 University College London
+
+# License: GPLv3
+
+
 # Set this to point to the DMPfold directory
 dmpfolddir=~/DMPfold
 
