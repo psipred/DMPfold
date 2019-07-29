@@ -2,7 +2,7 @@
 
 # Predict main chain H-bond donors & acceptors using previous seed model distance inputs
 
-# By David T. Jones, Jan 2019 */
+# By David T. Jones, Jan 2019
 
 # Copyright (C) 2019 University College London
 
