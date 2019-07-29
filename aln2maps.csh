@@ -4,6 +4,15 @@
 # Argument is a text file with a single sequence per line and
 #  the ungapped target sequence as the first line
 
+# Predict main chain H-bond donors & acceptors using previous seed model distance inputs
+
+# By David T. Jones, Jun 2018
+
+# Copyright (C) 2018 University College London
+
+# License: GPLv3
+
+
 # Set the number of CPUs to use for HHblits, PSICOV, FreeContact and CCMpred
 set ncpu = 1
 
