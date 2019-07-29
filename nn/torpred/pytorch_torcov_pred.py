@@ -1,7 +1,13 @@
 #!/usr/bin/env python
 
-# Secondary structure prediction with long range information using Deep Residual Network
-# by David T. Jones 2018
+# Predict main chain torsion angles from DMP input maps
+
+# By David T. Jones, Jan 2019 */
+
+# Copyright (C) 2019 University College London
+
+# License: GPLv3
+
 
 from __future__ import print_function
 

@@ -1,3 +1,11 @@
+# Neural network definition file
+
+# By David T. Jones, Jan 2019 */
+
+# Copyright (C) 2019 University College London
+
+# License: GPLv3
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
