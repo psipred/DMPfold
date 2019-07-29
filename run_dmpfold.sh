@@ -6,6 +6,12 @@
 # Arguments are FASTA file, 21c file, map file, out directory,
 #  number of cycles (optional) and models per cycle (optional)
 
+# Original script by David T. Jones, June 2018
+
+# Copyright (C) 2018 University College London
+
+# License: GPLv3
+
 # Set this to point to the DMPfold directory
 dmpfolddir=~/DMPfold
 
