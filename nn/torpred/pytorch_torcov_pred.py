@@ -2,7 +2,7 @@
 
 # Predict main chain torsion angles from DMP input maps
 
-# By David T. Jones, Jan 2019 */
+# By David T. Jones, Jan 2019
 
 # Copyright (C) 2019 University College London
 
