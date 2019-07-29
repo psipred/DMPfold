@@ -1,9 +1,11 @@
-/* METAPSICOV - Neural Network Prediction of Contacts */
+/* DMP (DeepMetaPSICOV) - Neural Network Prediction of Contacts */
 
-/* Copyright (C) 2000 David T. Jones - Created : January 2000 */
-/* Original Neural Network code Copyright (C) 1990 David T. Jones */
+/* makepredmaps - output convnet input map file from raw input files */
 
-/* Average Prediction Module */
+/* David Jones, Feb 2018 */
+
+/* Copyright (C) 2018 University College London */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -553,7 +555,7 @@ int main(int argc, char **argv)
 
     /* malloc_debug(3); */
     if (argc < 10)
-	fail("usage : deepmetapsicov colstats-file pairstats-file psicov-file evfold-file ccmpred-file ss2-file solv-file mapoutputfile fixedparamoutfile");
+	fail("usage : makepredmaps colstats-file pairstats-file psicov-file evfold-file ccmpred-file ss2-file solv-file mapoutputfile fixedparamoutfile");
     
     read_dat(argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7]);
 

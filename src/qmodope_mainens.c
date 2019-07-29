@@ -1,5 +1,7 @@
 /* QMODOPE - Run QMODCHECK + DOPE on protein structure ensemble - by David T. Jones, February 2008 */
 
+/* Copyright (C) 2018 University College London */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>

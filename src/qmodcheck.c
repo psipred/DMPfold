@@ -1,14 +1,12 @@
+/* QMODCHECK - evaluate protein model quality using statistical potentials */
+
+/* David Jones, April 2002 */
+
+/* Copyright (C) 2002 University College London */
+
 #define bestDCUTOFF 12.0F
 
 #define DCUTOFF 15.0F
-
-#define noRASMOL
-
-/***************************************************
- *                    MODCHECK                     *
- *         By David T. Jones    April 2002         *
- *             UCL Bioinformatics Unit             *
- ***************************************************/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -1138,54 +1136,6 @@ void
 	    distmat[i][j][CA_CA] = distmat[j][i][CA_CA] = dv;
 	}
 
-
-#if 0
-    at1 = NATOM;
-    at2 = OATOM;
-    for (i = 0; i < nres; i++)
-	for (j = 0; j < nres; j++)
-	{
-	    dv = sqrt(SQR(x[i][at1] - x[j][at2]) + SQR(y[i][at1] - y[j][at2]) + SQR(z[i][at1] - z[j][at2]));
-	    distmat[i][j][N_O] = distmat[j][i][O_N] = dv;
-	}
-
-    at1 = CBATOM;
-    at2 = NATOM;
-    for (i = 0; i < nres; i++)
-	for (j = i + 1; j < nres; j++)
-	{
-	    dv = sqrt(SQR(x[i][at1] - x[j][at2]) + SQR(y[i][at1] - y[j][at2]) + SQR(z[i][at1] - z[j][at2]));
-	    distmat[i][j][CB_N] = distmat[j][i][N_CB] = dv;
-	}
-
-    at1 = CBATOM;
-    at2 = OATOM;
-    for (i = 0; i < nres; i++)
-	for (j = i + 1; j < nres; j++)
-	{
-	    dv = sqrt(SQR(x[i][at1] - x[j][at2]) + SQR(y[i][at1] - y[j][at2]) + SQR(z[i][at1] - z[j][at2]));
-	    distmat[i][j][CB_O] = distmat[j][i][O_CB] = dv;
-	}
-
-    at1 = NATOM;
-    at2 = CBATOM;
-    for (i = 0; i < nres; i++)
-	for (j = i + 1; j < nres; j++)
-	{
-	    dv = sqrt(SQR(x[i][at1] - x[j][at2]) + SQR(y[i][at1] - y[j][at2]) + SQR(z[i][at1] - z[j][at2]));
-	    distmat[i][j][N_CB] = distmat[j][i][CB_N] = dv;
-	}
-
-    at1 = OATOM;
-    at2 = CBATOM;
-    for (i = 0; i < nres; i++)
-	for (j = i + 1; j < nres; j++)
-	{
-	    dv = sqrt(SQR(x[i][at1] - x[j][at2]) + SQR(y[i][at1] - y[j][at2]) + SQR(z[i][at1] - z[j][at2]));
-	    distmat[i][j][O_CB] = distmat[j][i][CB_O] = dv;
-	}
-#endif
-
     for (i = 0; i < nres; i++)
 	tcbooi[i] = 0;
 
@@ -1245,32 +1195,6 @@ int main(int argc, char **argv)
 	for (a = 0; a < 4; a++)
 	    for (b = 0; b < 4; b++)
 		diffdist[i][a][b] = maxdist[i][a][b] - mindist[i][a][b];
-
-#if 0
-    for (i=0; i<20; i++)
-	printf("%f %f\n", i*0.5, -pairpot(ALA, ALA, CBATOM, CBATOM, 4, i*0.5));
-    putchar('\n');
-    for (i=0; i<40; i++)
-	printf("%d %f\n", i, -pairpot(LEU, ILE, CBATOM, CBATOM, 20, (float)i));
-    putchar('\n');
-    for (i=0; i<40; i++)
-	printf("%d %f\n", i, -pairpot(GLU, ARG, CBATOM, CBATOM, 20, (float)i));
-    putchar('\n');
-    for (i=0; i<40; i++)
-	printf("%d %f\n", i, -pairpot(ASP, ASP, CBATOM, CBATOM, 20, (float)i));
-    putchar('\n');
-    for (i=OOIMIN; i<=OOIMAX; i+=1)
-	printf("%d %f\n", i, -ooi_de[PHE][i]);
-    putchar('\n');
-    for (i=OOIMIN; i<=OOIMAX; i+=1)
-	printf("%d %f\n", i, -ooi_de[ASP][i]);
-    putchar('\n');
-#endif
-
-#ifdef RASMOL
-    /* Start rasmol if available */
-    rfp = popen("rasmol", "w");
-#endif
 
     distmat = allocmat(MAXSEQLEN, MAXSEQLEN, sizeof(**distmat));
 

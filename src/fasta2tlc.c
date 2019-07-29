@@ -1,3 +1,9 @@
+/* Convert FASTA format file to Three-Letter-Code format */
+
+/* David Jones, June 2012 */
+
+/* Copyright (C) 2012 University College London */
+
 #include <stdio.h>
 #include <ctype.h>
 

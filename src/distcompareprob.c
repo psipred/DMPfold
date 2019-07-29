@@ -1,4 +1,8 @@
-/* Compare PDB structures to distograms - by David Jones, January 2018 */
+/* Compare PDB structures to distograms */
+
+/* David Jones, Jan 2019 */
+
+/* Copyright (C) 2019 University College London */
 
 #include <stdio.h>
 #include <stdlib.h>

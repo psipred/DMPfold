@@ -1,3 +1,10 @@
+/* Filter gaps from alignment file - David Jones, 2011 */
+
+/* David Jones, June 2011 */
+
+/* Copyright (C) 2011 University College London */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,3 +1,10 @@
+/* pdbhfilt - strip hydrogen atom records from PDB file */
+
+/* David Jones, June 2008 */
+
+/* Copyright (C) 2008 University College London */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

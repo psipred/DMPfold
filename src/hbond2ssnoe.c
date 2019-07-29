@@ -1,4 +1,9 @@
-/* Protein Chain Superposition - by David Jones, February 1992 */
+/* Convert H-bond prediction file to CNS Distance Constraints */
+
+/* David Jones, June 2018 */
+
+/* Copyright (C) 2018 University College London */
+
 
 #include <stdio.h>
 #include <stdlib.h>

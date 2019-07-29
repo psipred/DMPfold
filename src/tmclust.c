@@ -1,4 +1,6 @@
-/* Protein Chain Clustering Program by David Jones, May 2004 */
+/* TM-Score-based Protein Chain Clustering Program by David Jones, May 2004 */
+
+/* Copyright (C) 2004 University College London */
 
 #include <stdio.h>
 #include <stdlib.h>

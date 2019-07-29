@@ -1,4 +1,8 @@
-/* Filter gaps relative to 1st sequence from FASTA format alignment DTJ July 2011 */
+/* Convert aln format file to fasta format file */
+
+/* David Jones, July 2011 */
+
+/* Copyright (C) 2011 University College London */
 
 #include <stdio.h>
 #include <stdlib.h>
