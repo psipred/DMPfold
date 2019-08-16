@@ -40,7 +40,7 @@
 #define BIG (1000000)
 #define VBIG (1e32F)
 
-#define MAXSEQLEN 1000
+#define MAXSEQLEN 5000
 
 #define MAXNMOT 20
 
