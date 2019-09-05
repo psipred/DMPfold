@@ -4,7 +4,7 @@
 
 Extending genome-scale de novo protein modelling coverage using iterative deep learning-based prediction of structural constraints
 
-See the [pre-print](https://arxiv.org/abs/1811.12355) for more.
+See our [paper in Nature Communications](https://www.nature.com/articles/s41467-019-11994-0) for more.
 
 ## Installation
 
@@ -18,7 +18,7 @@ These instructions should work for a Linux system:
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda install modeller -c salilab`.
 - Install [CNS](http://cns-online.org/v1.3). We found we had to follow all of the steps in [this comment](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/14) to get CNS working: set `MXFPEPS2` in machvar.inc to 8192, remove `-fastm` flag in the make file, set `MXRTP` in rtf.inc in the source directory to 4000 and in machvar.f add `WRITE (6,’(I6,E10.3,E10.3)’) I, ONEP, ONEM` just above line 67, which looks like `IF (ONE .EQ. ONEP .OR. ONE .EQ. ONEM) THEN`. We also had to install the `flex-devel` package via our system package manager. In addition, you should change two values in `cns_solve_1.3/modules/nmr/readdata` to larger numbers to allow DMPfold to run on larger structures. Change the `nrestraints = 20000` line to something like `nrestraints = 50000` and the `nassign 1600` line to something like `nassign 3000`.
 - Download and patch the required CNS scripts by changing into the `cnsfiles` directory and running `sh installscripts.sh`.
-- Install [CH-HIT](https://github.com/weizhongli/cdhit), which is usually as simple as a clone and `make`. CD-HIT is not required if you don't need to predict the TM-score of generated models.
+- Install [CD-HIT](https://github.com/weizhongli/cdhit), which is usually as simple as a clone and `make`. CD-HIT is not required if you don't need to predict the TM-score of generated models.
 - Install the [legacy BLAST](https://tinyurl.com/y57hq2wo) software, in particular `formatdb`, `blastpgp` and `makemat`. We may update this to BLAST+ in the future.
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation using the makefile if issues arise. Some other standard programs, such as csh shell, are assumed.
 - Change lines 10/13-15/18/21/24 in `seq2maps.csh`, lines 11/14/17/20 in `aln2maps.csh`, lines 4/7 in `bin/runpsipredandsolvwithdb`, lines 10/13 in `run_dmpfold.sh` and lines 7/10 in `predict_tmscore.sh` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh` and `aln2maps.csh`. This sets the number of cores for HHblits, PSICOV, FreeContact and CCMpred - the script will run faster with this set to a value larger than 1 (e.g. 4 or 8).
