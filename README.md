@@ -35,11 +35,19 @@ This can be done in one of two ways:
 - From an alignment: `csh aln2maps.csh example/PF10963.aln` to run PSIPRED, SOLVPRED, PSICOV, FreeContact, CCMpred and alnstats. The file `PF10963.aln` has one sequence per line with the ungapped target sequence as the first line.
 
 Then run `sh run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963` to run DMPfold, where the last parameter is an output directory that will be created.
-The final model is `final_1.pdb` and other structures may or may not be generated as `final_2.pdb` to `final_5.pdb` if they are significantly different.
 Running `sh run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963 5 20` instead runs 5 iterations with 20 models per iteration (default is 3 and 50).
+The final model is `final_1.pdb` and other structures may or may not be generated as `final_2.pdb` to `final_5.pdb` if they are significantly different.
+Many other files are generated totalling around 100 MB - these should be deleted to save disk space if you are running DMPfold on many sequences.
 
 To predict the TM-score of a DMPfold model using our trained predictor, run `sh predict_tmscore.sh example/PF10963.fasta PF10963.aln PF10963/final_1.pdb PF10963/rawdistpred.1`.
 If this predictor estimates that a model has a TM-score of at least 0.5 then there is an 83% chance of this being the case according to cross-validation of the Pfam validation set.
+
+See Supplementary Figure 1 in the paper for estimations on run time.
+It takes around 3 hours on a single core to carry out a complete DMPfold run for a 200 residue protein, but this can occasionally be much longer due to PSICOV not converging.
+8 GB memory is generally sufficient to run DMPfold but more may be required for larger proteins.
+
+Figure 5 in the paper gives some data on how DMPfold performs with respect to sequence length.
+Sequences up to around 600 residues in length can be modelled accurately, with performance degrading above this.
 
 ## Data
 
