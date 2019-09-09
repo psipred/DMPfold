@@ -2,9 +2,10 @@
 
 [![Build Status](https://travis-ci.org/psipred/DMPfold.svg?branch=master)](https://travis-ci.org/psipred/DMPfold)
 
-Extending genome-scale de novo protein modelling coverage using iterative deep learning-based prediction of structural constraints
+Deep learning extends de novo protein modelling coverage of genomes using iteratively predicted structural constraints.
 
 See our [paper in Nature Communications](https://www.nature.com/articles/s41467-019-11994-0) for more.
+Please cite the paper if you use DMPfold.
 
 ## Installation
 
