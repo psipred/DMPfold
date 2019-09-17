@@ -7,6 +7,8 @@ Deep learning extends de novo protein modelling coverage of genomes using iterat
 See our [paper in Nature Communications](https://www.nature.com/articles/s41467-019-11994-0) for more.
 Please cite the paper if you use DMPfold.
 
+You can also run DMPfold via the [PSIPRED web server](http://bioinf.cs.ucl.ac.uk/psipred). This is a good way to get models for a few sequences, but if you want to run DMPfold on many sequences we strongly recommend you run it locally. The server version of DMPfold has restrictions on run time and uses parameters that give faster runs, so should not be used to benchmark DMPfold.
+
 ## Installation
 
 As it makes use of a lot of different software, installation can be a little fiddly.
