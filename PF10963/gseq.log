@@ -1,0 +1,2394 @@
+     1 0.150E+01 0.500E+00
+     2 0.125E+01 0.750E+00
+     3 0.112E+01 0.875E+00
+     4 0.106E+01 0.938E+00
+     5 0.103E+01 0.969E+00
+     6 0.102E+01 0.984E+00
+     7 0.101E+01 0.992E+00
+     8 0.100E+01 0.996E+00
+     9 0.100E+01 0.998E+00
+    10 0.100E+01 0.999E+00
+    11 0.100E+01 0.100E+01
+    12 0.100E+01 0.100E+01
+    13 0.100E+01 0.100E+01
+    14 0.100E+01 0.100E+01
+    15 0.100E+01 0.100E+01
+    16 0.100E+01 0.100E+01
+    17 0.100E+01 0.100E+01
+    18 0.100E+01 0.100E+01
+    19 0.100E+01 0.100E+01
+    20 0.100E+01 0.100E+01
+    21 0.100E+01 0.100E+01
+    22 0.100E+01 0.100E+01
+    23 0.100E+01 0.100E+01
+    24 0.100E+01 0.100E+01
+    25 0.100E+01 0.100E+01
+    26 0.100E+01 0.100E+01
+    27 0.100E+01 0.100E+01
+    28 0.100E+01 0.100E+01
+    29 0.100E+01 0.100E+01
+    30 0.100E+01 0.100E+01
+    31 0.100E+01 0.100E+01
+    32 0.100E+01 0.100E+01
+    33 0.100E+01 0.100E+01
+    34 0.100E+01 0.100E+01
+    35 0.100E+01 0.100E+01
+    36 0.100E+01 0.100E+01
+    37 0.100E+01 0.100E+01
+    38 0.100E+01 0.100E+01
+    39 0.100E+01 0.100E+01
+    40 0.100E+01 0.100E+01
+    41 0.100E+01 0.100E+01
+    42 0.100E+01 0.100E+01
+    43 0.100E+01 0.100E+01
+    44 0.100E+01 0.100E+01
+    45 0.100E+01 0.100E+01
+    46 0.100E+01 0.100E+01
+    47 0.100E+01 0.100E+01
+    48 0.100E+01 0.100E+01
+    49 0.100E+01 0.100E+01
+    50 0.100E+01 0.100E+01
+    51 0.100E+01 0.100E+01
+    52 0.100E+01 0.100E+01
+    53 0.100E+01 0.100E+01
+          ============================================================
+          |                                                          |
+          |            Crystallography & NMR System (CNS)            |
+          |                         CNSsolve                         |
+          |                                                          |
+          ============================================================
+           Version: 1.3
+           Status: General release
+          ============================================================
+           Written by: A.T.Brunger, P.D.Adams, G.M.Clore, W.L.DeLano,
+                       P.Gros, R.W.Grosse-Kunstleve,J.-S.Jiang,J.M.Krahn,
+                       J.Kuszewski, M.Nilges, N.S.Pannu, R.J.Read,
+                       L.M.Rice, G.F.Schroeder, T.Simonson, G.L.Warren.
+           Copyright (c) 1997-2010 Yale University
+          ============================================================
+           Running on machine: hostname unknown (x86_64/Linux,64-bit)
+           Program started by: dbuchan
+           Program started at: 11:33:03 on 10-Jun-2019
+          ============================================================
+
+ FFT3C: Using FFTPACK4.1
+
+ CNSsolve>{+ file: generate_seq.inp +} 
+ CNSsolve>{+ directory: general +} 
+ CNSsolve>{+ description: Generate structure file for protein, dna/rna, water, 
+ CNSsolve>                ligands and/or carbohydrate from sequence information only +} 
+ CNSsolve>{+ comment: modified by Brian Smith (Edinburgh University) to allow protein 
+ CNSsolve>            residue renumbering +} 
+ CNSsolve>{+ authors: Paul Adams, and Axel Brunger +} 
+ CNSsolve>{+ copyright: Yale University +} 
+ CNSsolve>{- Guidelines for using this file: 
+ CNSsolve>   - all strings must be quoted by double-quotes 
+ CNSsolve>   - logical variables (true/false) are not quoted 
+ CNSsolve>   - do not remove any evaluate statements from the file -} 
+ CNSsolve>{- Special patches will have to be entered manually at the relevant points 
+ CNSsolve>   in the file - see comments throughout the file -} 
+ CNSsolve>{- begin block parameter definition -} define( 
+ DEFINE>{============ protein topology, linkage, and parameter files =============} 
+ DEFINE>{* topology files *} 
+ DEFINE>{===>} topology_infile_1="CNS_TOPPAR:protein.top"; 
+ DEFINE>{===>} topology_infile_2="CNS_TOPPAR:dna-rna.top"; 
+ DEFINE>{===>} topology_infile_3="CNS_TOPPAR:water.top"; 
+ DEFINE>{===>} topology_infile_4="CNS_TOPPAR:ion.top"; 
+ DEFINE>{===>} topology_infile_5="CNS_TOPPAR:carbohydrate.top"; 
+ DEFINE>{===>} topology_infile_6=""; 
+ DEFINE>{===>} topology_infile_7=""; 
+ DEFINE>{===>} topology_infile_8=""; 
+ DEFINE>{* linkage files for linear, continuous polymers (protein, DNA, RNA) *} 
+ DEFINE>{===>} link_infile_1="CNS_TOPPAR:protein.link"; 
+ DEFINE>{===>} link_infile_2="CNS_TOPPAR:dna-rna-pho.link"; 
+ DEFINE>{===>} link_infile_3=""; 
+ DEFINE>{* parameter files *} 
+ DEFINE>{===>} parameter_infile_1="CNS_TOPPAR:protein.param"; 
+ DEFINE>{===>} parameter_infile_2="CNS_TOPPAR:dna-rna_rep.param"; 
+ DEFINE>{===>} parameter_infile_3="CNS_TOPPAR:water_rep.param"; 
+ DEFINE>{===>} parameter_infile_4="CNS_TOPPAR:ion.param"; 
+ DEFINE>{===>} parameter_infile_5="CNS_TOPPAR:carbohydrate.param"; 
+ DEFINE>{===>} parameter_infile_6=""; 
+ DEFINE>{===>} parameter_infile_7=""; 
+ DEFINE>{===>} parameter_infile_8=""; 
+ DEFINE>{====================== other linkages and modifications  ==================} 
+ DEFINE>{* extra linkages and modifications by custom patches *} 
+ DEFINE>{===>} patch_infile=""; 
+ DEFINE>{============================= sequence files ==============================} 
+ DEFINE>{* multiple sequence files of the same type can be defined by duplicating 
+ DEFINE>   the entries below and incrementing the file number *} 
+ DEFINE>{* protein sequence file 1 *} 
+ DEFINE>{===>} prot_sequence_infile_1="input.seq"; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prot_segid_1=""; 
+ DEFINE>{* start residue numbering at *} 
+ DEFINE>{===>} renumber_1=1; 
+ DEFINE>{* protein sequence file 2 *} 
+ DEFINE>{===>} prot_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prot_segid_2=""; 
+ DEFINE>{* start residue numbering at *} 
+ DEFINE>{===>} renumber_2=1; 
+ DEFINE>{* protein sequence file 3 *} 
+ DEFINE>{===>} prot_sequence_infile_3=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prot_segid_3=""; 
+ DEFINE>{* start residue numbering at *} 
+ DEFINE>{===>} renumber_3=1; 
+ DEFINE>{* protein sequence file 4 *} 
+ DEFINE>{===>} prot_sequence_infile_4=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prot_segid_4=""; 
+ DEFINE>{* start residue numbering at *} 
+ DEFINE>{===>} renumber_4=1; 
+ DEFINE>{* nucleic acid sequence file 1 *} 
+ DEFINE>{===>} nucl_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} nucl_segid_1=""; 
+ DEFINE>{* nucleic acid sequence file 2 *} 
+ DEFINE>{===>} nucl_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} nucl_segid_2=""; 
+ DEFINE>{* nucleic acid sequence file 3 *} 
+ DEFINE>{===>} nucl_sequence_infile_3=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} nucl_segid_3=""; 
+ DEFINE>{* nucleic acid sequence file 4 *} 
+ DEFINE>{===>} nucl_sequence_infile_4=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} nucl_segid_4=""; 
+ DEFINE>{* water sequence file 1 *} 
+ DEFINE>{===>} water_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} water_segid_1=""; 
+ DEFINE>{* water sequence file 2 *} 
+ DEFINE>{===>} water_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} water_segid_2=""; 
+ DEFINE>{* carbohydrate sequence file 1 *} 
+ DEFINE>{===>} carbo_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} carbo_segid_1=""; 
+ DEFINE>{* carbohydrate sequence file 2 *} 
+ DEFINE>{===>} carbo_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} carbo_segid_2=""; 
+ DEFINE>{* prosthetic group sequence file 1 *} 
+ DEFINE>{===>} prost_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prost_segid_1=""; 
+ DEFINE>{* prosthetic group sequence file 2 *} 
+ DEFINE>{===>} prost_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} prost_segid_2=""; 
+ DEFINE>{* ligand sequence file 1 *} 
+ DEFINE>{===>} lig_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} lig_segid_1=""; 
+ DEFINE>{* ligand sequence file 2 *} 
+ DEFINE>{===>} lig_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} lig_segid_2=""; 
+ DEFINE>{* ion sequence file 1 *} 
+ DEFINE>{===>} ion_sequence_infile_1=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} ion_segid_1=""; 
+ DEFINE>{* ion sequence file 2 *} 
+ DEFINE>{===>} ion_sequence_infile_2=""; 
+ DEFINE>{* segid *} 
+ DEFINE>{===>} ion_segid_2=""; 
+ DEFINE>{============================= output files ================================} 
+ DEFINE>{* output structure file *} 
+ DEFINE>{===>} structure_outfile="extended.mtf"; 
+ DEFINE>{=========================== disulphide bonds ==============================} 
+ DEFINE>{* Select pairs of cysteine residues that form disulphide bonds *} 
+ DEFINE>{* First 2 entries are the segid and resid of the first cysteine (CYS A). *} 
+ DEFINE>{* Second 2 entries are the segid and resid of the second cysteine (CYS B). *} 
+ DEFINE>{+ table: rows=8 numbered 
+ DEFINE>   cols=5 "use" "segid CYS A" "resid CYS A" "segid CYS B" "resid CYS B" +} 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_1=true; 
+ DEFINE>{===>} ss_i_segid_1=""; ss_i_resid_1=11; 
+ DEFINE>{===>} ss_j_segid_1=""; ss_j_resid_1=27; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_2=true; 
+ DEFINE>{===>} ss_i_segid_2=""; ss_i_resid_2=45; 
+ DEFINE>{===>} ss_j_segid_2=""; ss_j_resid_2=73; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_3=false; 
+ DEFINE>{===>} ss_i_segid_3=""; ss_i_resid_3=0; 
+ DEFINE>{===>} ss_j_segid_3=""; ss_j_resid_3=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_4=false; 
+ DEFINE>{===>} ss_i_segid_4=""; ss_i_resid_4=0; 
+ DEFINE>{===>} ss_j_segid_4=""; ss_j_resid_4=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_5=false; 
+ DEFINE>{===>} ss_i_segid_5=""; ss_i_resid_5=0; 
+ DEFINE>{===>} ss_j_segid_5=""; ss_j_resid_5=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_6=false; 
+ DEFINE>{===>} ss_i_segid_6=""; ss_i_resid_6=0; 
+ DEFINE>{===>} ss_j_segid_6=""; ss_j_resid_6=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_7=false; 
+ DEFINE>{===>} ss_i_segid_7=""; ss_i_resid_7=0; 
+ DEFINE>{===>} ss_j_segid_7=""; ss_j_resid_7=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} ss_use_8=false; 
+ DEFINE>{===>} ss_i_segid_8=""; ss_i_resid_8=0; 
+ DEFINE>{===>} ss_j_segid_8=""; ss_j_resid_8=0; 
+ DEFINE>{=========================== carbohydrate links  ===========================} 
+ DEFINE>{* Select pairs of residues that are linked *} 
+ DEFINE>{* First entry is the name of the patch residue. *} 
+ DEFINE>{* Second and third entries are the resid and segid for the atoms 
+ DEFINE>   referenced by "-" in the patch. *} 
+ DEFINE>{* Fourth and fifth entries are the resid and segid for the atoms 
+ DEFINE>   referenced by "+" in the patch *} 
+ DEFINE>{+ table: rows=6 numbered 
+ DEFINE>          cols=6 "use" "patch name" "segid -" "resid -" "segid +" "resid +" +} 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_1=false; 
+ DEFINE>{===>} carbo_patch_1="B1N"; 
+ DEFINE>{===>} carbo_i_segid_1="BBBB"; carbo_i_resid_1=401; 
+ DEFINE>{===>} carbo_j_segid_1="AAAA"; carbo_j_resid_1=56; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_2=false; 
+ DEFINE>{===>} carbo_patch_2="B1N"; 
+ DEFINE>{===>} carbo_i_segid_2="BBBB"; carbo_i_resid_2=402; 
+ DEFINE>{===>} carbo_j_segid_2="AAAA"; carbo_j_resid_2=182; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_3=false; 
+ DEFINE>{===>} carbo_patch_3=""; 
+ DEFINE>{===>} carbo_i_segid_3=""; carbo_i_resid_3=0; 
+ DEFINE>{===>} carbo_j_segid_3=""; carbo_j_resid_3=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_4=false; 
+ DEFINE>{===>} carbo_patch_4=""; 
+ DEFINE>{===>} carbo_i_segid_4=""; carbo_i_resid_4=0; 
+ DEFINE>{===>} carbo_j_segid_4=""; carbo_j_resid_4=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_5=false; 
+ DEFINE>{===>} carbo_patch_5=""; 
+ DEFINE>{===>} carbo_i_segid_5=""; carbo_i_resid_5=0; 
+ DEFINE>{===>} carbo_j_segid_5=""; carbo_j_resid_5=0; 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} carbo_use_6=false; 
+ DEFINE>{===>} carbo_patch_6=""; 
+ DEFINE>{===>} carbo_i_segid_6=""; carbo_i_resid_6=0; 
+ DEFINE>{===>} carbo_j_segid_6=""; carbo_j_resid_6=0; 
+ DEFINE>{========================= generate parameters =============================} 
+ DEFINE>{* hydrogen flag - determines whether hydrogens will be retained *} 
+ DEFINE>{* must be true for NMR, atomic resolution X-ray crystallography 
+ DEFINE>   or modelling.  Set to false for most X-ray crystallographic 
+ DEFINE>   applications at resolution > 1A *} 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} hydrogen_flag=false; 
+ DEFINE>{* set bfactor flag *} 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} set_bfactor=true; 
+ DEFINE>{* set bfactor value *} 
+ DEFINE>{===>} bfactor=15.0; 
+ DEFINE>{* set occupancy flag *} 
+ DEFINE>{+ choice: true false +} 
+ DEFINE>{===>} set_occupancy=true; 
+ DEFINE>{* set occupancy value *} 
+ DEFINE>{===>} occupancy=1.0; 
+ DEFINE>{===========================================================================} 
+ DEFINE>{         things below this line do not need to be changed unless           } 
+ DEFINE>{         you need to apply patches - at the appropriate places marked      } 
+ DEFINE>{===========================================================================} 
+ DEFINE> ) {- end block parameter definition -} 
+ CNSsolve> checkversion 1.3 
+ Program version= 1.3 File version= 1.3
+ CNSsolve> evaluate ($log_level=quiet) 
+ Assuming literal string "QUIET"
+ EVALUATE: symbol $LOG_LEVEL set to "QUIET" (string)
+ CNSsolve> {- read parameter files -} 
+ CNSsolve> parameter 
+ PARRDR>  evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ PARRDR>  evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>         @@&parameter_infile_$counter 
+ ASSFIL: file protein.param opened.
+ PARRDR>remarks file toppar/protein.param 
+ PARRDR>remarks   protein parameters with Lennard-Jones van der Waals parameters 
+ PARRDR>remarks   for crystallographic structure determination 
+ PARRDR> 
+ PARRDR>! 
+ PARRDR>! Please cite the following reference when using these parameters: 
+ PARRDR>! Engh, R.A. and  Huber, R. (1991). Accurate Bond and 
+ PARRDR>!  Angle Parameters for X-ray Protein-Structure Refinement, 
+ PARRDR>!  Acta Cryst. A47, 392-400. 
+ PARRDR>! 
+ PARRDR>! 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>         @@&parameter_infile_$counter 
+ ASSFIL: file dna-rna_rep.param opened.
+ PARRDR>remarks file toppar/dna-rna_rep.param 
+ PARRDR>remarks  nucleic acid rna-dna parameter file for crystallographic 
+ PARRDR>remarks  structure determination using soft (purely repulsive) 
+ PARRDR>remarks  van der Waals parameters. 
+ PARRDR>remarks 
+ PARRDR>remarks Warning: these parameters are not suitable for free MD simulations 
+ PARRDR>remarks 
+ PARRDR> 
+ PARRDR>remarks  Bases 18.75% Sugar  56.6% Phos  154.8% 
+ PARRDR>remarks  K= scale*(kT/sigma**2), scales=Base 0.1875, Sugar 0.566, Phos 1.548 
+ PARRDR>remarks Nonbonded parameters taken from PROLSQ using REPEL function 
+ PARRDR>remarks Note: use water parameters in protein_rep.param 
+ PARRDR> 
+ PARRDR>! removed references to CA, CF, CS, MG, NH3, OS (ATB 12/30/94) 
+ PARRDR>! removed TIP3 water model (ATB 12/30/94) 
+ PARRDR>! mapped NA->NNA, CH3E->CC3E (ATB 12/30/94) 
+ PARRDR> 
+ PARRDR>! 
+ PARRDR>!Please cite the following reference when using these parameters: 
+ PARRDR>!G. Parkinson, J. Vojtechovsky, L. Clowney, A.T. Brunger, H.M. Berman, 
+ PARRDR>!  New Parameters for the Refinement of Nucleic Acid Containing Structures, 
+ PARRDR>!  Acta Cryst. D, 52, 57-64 (1996). 
+ PARRDR>! 
+ PARRDR>! Oct. 8, 1996 - Modified by Alexey Bochkarev (McMaster University) 
+ PARRDR>!                to process properly 5PHO (5'-terminus with phosphate) patch. 
+ PARRDR>!                Geometry and charges of -O5'-PO3 group were taken from 
+ PARRDR>!                Saenger W. 1984.  Principles of Nucleic Acid Structure 
+ PARRDR>!                All modifications are placed between: 
+ PARRDR>!***AB*** 
+ PARRDR>!....included fragment 
+ PARRDR>!***AB end*** 
+ PARRDR>!                New atomic types were introduced (see dna-rna.top) to describe 
+ PARRDR>!                -O5'-PO3 group: O5H (O5') O1PH (O1P) O2PH (O2P) 
+ PARRDR>!                                in addition to existing OH (O5T) 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>         @@&parameter_infile_$counter 
+ ASSFIL: file water_rep.param opened.
+ PARRDR>remarks file toppar/water.param 
+ PARRDR>remarks   water parameters for structure determination 
+ PARRDR>remarks 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    4.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>         @@&parameter_infile_$counter 
+ ASSFIL: file ion.param opened.
+ PARRDR>remarks file toppar/ion.param 
+ PARRDR>remarks nonbonded parameters for common ions 
+ PARRDR>remarks new parameters derived from literature for single atom species 
+ PARRDR>remarks PDA 02/09/99 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    5.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>         @@&parameter_infile_$counter 
+ ASSFIL: file carbohydrate.param opened.
+ PARRDR>remarks file toppar/carbohydrate.param 
+ PARRDR>REMARKS Parameter file for pyranose sugars for crystallographic 
+ PARRDR>remarks structure determination. 
+ PARRDR>remarks 
+ PARRDR> 
+ PARRDR>REMARKS Bill Weis 10-July-1988 
+ PARRDR>REMARKS Additions for atom type combinations not covered in PARAM19X.PRO. 
+ PARRDR>REMARKS Needed additions are for ether oxygen and aliphatic carbon in all-atom 
+ PARRDR>REMARKS representation used for sugars (type CC).  Ditto for type HA. 
+ PARRDR>REMARKS Values from J. Brady glucose parameters unless noted. 
+ PARRDR>REMARKS These should be sufficient for refinement. 
+ PARRDR> 
+ PARRDR>REMARKS Additions 6-March-1992 Bill Weis 
+ PARRDR>REMARKS New atom types CCA, CCE,  OA for the C1 & O1 positions to account 
+ PARRDR>REMARKS for different bond and angle values due to the anomeric effect. 
+ PARRDR>REMARKS More accurate equilibrium values for bond angle around this oxygen 
+ PARRDR>REMARKS in glycosidic linkages.  CCE for equatorial O1, CCA for 
+ PARRDR>REMAKRS axial O1.   For free sugar, keep OH1 as O1 atomtype; changed to OA 
+ PARRDR>REMARKS for linkages. 
+ PARRDR>REMARKS References: G.A. Jeffrey (1990) Acta Cryst B46, 89-103; 
+ PARRDR>REMARKS K. Hirotsu & A.Shimada, (1974) Bull. Chem. Soc. Japan, 47, 1872-1879. 
+ PARRDR> 
+ PARRDR>REMARKS  This set has been modified to be roughly consistent with 
+ PARRDR>REMARKS  the csd-derived protein parameters of Engh and Huber. 
+ PARRDR>REMARKS  New atom type CC6 for exocyclic 6 carbon 
+ PARRDR>REMARKS  Bill Weis 5/11/92 
+ PARRDR> 
+ PARRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ PARRDR>set message=off echo=off end 
+ PARRDR> 
+ PARRDR> 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    6.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ PARRDR>         @@&parameter_infile_$counter 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    7.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ PARRDR>         @@&parameter_infile_$counter 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    8.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ PARRDR>         @@&parameter_infile_$counter 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    9.00000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ PARRDR>         @@&parameter_infile_$counter 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    10.0000     (real)
+ PARRDR>  end loop read 
+ PARRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as false
+ PARRDR>   if ( &exist_parameter_infile_$counter = true ) then 
+ PARRDR>      if ( &BLANK%parameter_infile_$counter = false ) then 
+ PARRDR>         @@&parameter_infile_$counter 
+ PARRDR>      end if 
+ PARRDR>   else 
+ PARRDR>    evaluate ($done=true) 
+ PARRDR>   end if 
+ PARRDR>   evaluate ($counter=$counter+1) 
+ PARRDR>  end loop read 
+ PARRDR> end 
+ CNSsolve> {- read topology files -} 
+ CNSsolve> topology 
+ RTFRDR>  evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ RTFRDR>  evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>         @@&topology_infile_$counter 
+ ASSFIL: file protein.top opened.
+ RTFRDR>remarks file toppar/protein.top 
+ RTFRDR>remarks   protein topology with polar hydrogens 
+ RTFRDR> 
+ RTFRDR>! 
+ RTFRDR>! Please cite the following reference when using these parameters: 
+ RTFRDR>! Engh, R.A. and  Huber, R. (1991). Accurate Bond and 
+ RTFRDR>!  Angle Parameters for X-ray Protein-Structure Refinement, 
+ RTFRDR>!  Acta Cryst. A47, 392-400. 
+ RTFRDR>! 
+ RTFRDR>! 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR> 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>         @@&topology_infile_$counter 
+ ASSFIL: file dna-rna.top opened.
+ RTFRDR>remarks file toppar/dna-rna.top 
+ RTFRDR>remarks   dna/rna topology for crystallographic structure determination 
+ RTFRDR> 
+ RTFRDR>! removed references to CA, CF, CS, MG, NH3, OS (ATB 12/30/94) 
+ RTFRDR>! removed TIP3 water model (ATB 12/30/94) 
+ RTFRDR>! mapped NA->NNA, CH3E->CC3E (ATB 12/30/94) 
+ RTFRDR>! added standard DNA: DC, DG, DA, DT and RNA: C, G, A, U (ATB 12/11/09) 
+ RTFRDR>! renamed THY (=DT) C5A to C7 (ATB 12/11/09) 
+ RTFRDR>! renamed O1P to OP1, O2P to OP2, O5P to OP3 (ATB 12/11/09) 
+ RTFRDR> 
+ RTFRDR>! 
+ RTFRDR>!Please cite the following reference when using these parameters: 
+ RTFRDR>!G. Parkinson, J. Vojtechovsky, L. Clowney, A.T. Brunger, H.M. Berman, 
+ RTFRDR>!  New Parameters for the Refinement of Nucleic Acid Containing Structures, 
+ RTFRDR>!  Acta Cryst. D, 52, 57-64 (1996). 
+ RTFRDR>! 
+ RTFRDR>! Oct. 8, 1996 - Modified by Alexey Bochkarev (McMaster University) 
+ RTFRDR>!                to process properly 5PHO (5'-terminus with phosphate) patch. 
+ RTFRDR>!                Geometry and charges of -O5'-PO3 group were taken from 
+ RTFRDR>!                Saenger W. 1984.  Principles of Nucleic Acid Structure 
+ RTFRDR>!                All modifications are placed between: 
+ RTFRDR>!***AB*** 
+ RTFRDR>!....included fragment 
+ RTFRDR>!***AB end*** 
+ RTFRDR>!                New atomic types were introduced to describe 
+ RTFRDR>!                -O5'-PO3 group: O5H (O5') O1PH (O1P) O2PH (O2P) 
+ RTFRDR>!                                in addition to existing OH (O5T) 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR> 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>         @@&topology_infile_$counter 
+ ASSFIL: file water.top opened.
+ RTFRDR>remarks file toppar/water.top 
+ RTFRDR>remarks   water topology for crystallographic structure determination 
+ RTFRDR>remarks   based on Jorgensen Tip3p water model 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    4.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>         @@&topology_infile_$counter 
+ ASSFIL: file ion.top opened.
+ RTFRDR>remarks file toppar/ion.top 
+ RTFRDR>remarks topology and masses for common ions 
+ RTFRDR>remarks Dingle atom ion residues are given the name of the element. 
+ RTFRDR>remarks By default the atom will be uncharged (eg. the residue MG will 
+ RTFRDR>remarks contain the atom called MG with zero charge). 
+ RTFRDR>remarks To use the charged species the charge state is appended to 
+ RTFRDR>remarks the atom name (eg to use MG2+ the residue name is MG2, and the 
+ RTFRDR>remarks atom name is MG+2 and has charge +2.0). 
+ RTFRDR>remarks NOTE: not all ionic species are represented 
+ RTFRDR>remarks last modification 11-08-2011 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    5.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>         @@&topology_infile_$counter 
+ ASSFIL: file carbohydrate.top opened.
+ RTFRDR>REMARKS toppar/carbohydrate.top {pyranose sugar toplogoy for crystallographic 
+ RTFRDR>remarks structure determination} 
+ RTFRDR>REMARKS for use with carbohydrate.param and protein_rep.param parameters 
+ RTFRDR>REMARKS for N-linked glycans 
+ RTFRDR>REMARKS ========================================================== 
+ RTFRDR> 
+ RTFRDR>REMARKS ---------------------------------------------------------- 
+ RTFRDR>REMARKS Currently supported carbohydrates and their anomers: 
+ RTFRDR>REMARK (codes in parenthesis are commonly used alternatives - currently not recognized by CNS): 
+ RTFRDR>REMARKS GLC:       alpha-D-glucopyranose 
+ RTFRDR>REMARKS BGC:       beta -D-glucopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS GLA:       alpha-D-galactopyranose 
+ RTFRDR>REMARKS GAL (GLB): beta- D-galactopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS MAN:       alpha-D-mannopyranose 
+ RTFRDR>REMARKS BMA:       beta -D-mannopyronose 
+ RTFRDR> 
+ RTFRDR>REMARKS NDG:       2-N-acetyl-alpha-D-glucopyranose 
+ RTFRDR>REMARKS A2G:       2-N-acetyl-alpha-D-glucopyranose, different stereochemistry at C4 
+ RTFRDR>REMARKS NAG:       2-N-acetyl-beta-D-glucopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS FUC:       alpha-L-fucopyranose 
+ RTFRDR>REMARKS FUL:       beta -L-fucopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS FCA:       alpha-D-fucopyranose 
+ RTFRDR>REMARKS FCB:       beta -D-fucopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS SIA:       alpha-N-acetyl neuraminic acid 
+ RTFRDR> 
+ RTFRDR>REMARKS XYP:       beta-D-xylopyranose 
+ RTFRDR> 
+ RTFRDR>REMARKS ---------------------------------------------------------- 
+ RTFRDR>REMARKS Links 
+ RTFRDR> 
+ RTFRDR>REMARKS B1N: N-linked glycan beta link from NAG and NDG to ASN (asparagine) 
+ RTFRDR>!            note: PDB files with unusual NDG to ASN links are likely incorrect assignments 
+ RTFRDR>!            they will be forced into the beta anomer by the B1N link. 
+ RTFRDR> 
+ RTFRDR>REMARKS B12: beta(1,2)  link from BGC, GAL, BMA, NAG, FCB, XYP to any 
+ RTFRDR>REMARKS B14: beta(1,4)  link from BGC, GAL, BMA, NAG, FCB, XYP to any 
+ RTFRDR>REMARKS A12: alpha(1,2) link from GLC, GLA, MAN, NDG, A2G, FCA to any 
+ RTFRDR>REMARKS A13: alpha(1,3) link from GLC, GLA, MAN, NDG, A2G, FCA to any 
+ RTFRDR>REMARKS A14: alpha(1,4) link from GLC, GLA, MAN, NDG, A2G, FCA to any 
+ RTFRDR>REMARKS A16: alpha(1,6) link from GLC, GLA, MAN, NDG, A2G, FCA to any 
+ RTFRDR> 
+ RTFRDR>REMARKS B12L: beta(1,2)  link from FUL to any 
+ RTFRDR>REMARKS B14L: beta(1,4)  link from FUL to any 
+ RTFRDR>REMARKS A12L: alpha(1,2) link from FUC to any 
+ RTFRDR>REMARKS A13L: alpha(1,3) link from FUC to any 
+ RTFRDR>REMARKS A14L: alpha(1,4) link from FUC to any 
+ RTFRDR>REMARKS A16L: alpha(1,6) link from FUC to any 
+ RTFRDR> 
+ RTFRDR>REMARKS A23: alpha(2,3) link from GAL to SIA 
+ RTFRDR>REMARKS A26: alpha(2,6) link from GAL to SIA 
+ RTFRDR> 
+ RTFRDR> 
+ RTFRDR>! History: 
+ RTFRDR>! Bill Weis 10-July-1988: 
+ RTFRDR>! Charges taken from John Brady's glucose topology file for ring, 
+ RTFRDR>!   others from protein parameter file. 
+ RTFRDR>! Idealized values for impropers at ring carbons to allow simple 
+ RTFRDR>!   construction of various anomers/epimers. 
+ RTFRDR>! Any other hexose or link can be easily constructed by analogy to these. 
+ RTFRDR> 
+ RTFRDR>! Additions 6-March-1992 Bill Weis for use with PARAM2.CHO 
+ RTFRDR>! New atom types CCA, CCE,  OA for the C1 & O1 positions to account 
+ RTFRDR>! for different bond and angle values due to the anomeric effect. 
+ RTFRDR>! More accurate equilibrium values for bond angle around this oxygen 
+ RTFRDR>! in glycosidic linkages.  CCE for equatorial O1, CCA for 
+ RTFRDR>! axial O1.   For free sugar, keep OH1 as O1 atomtype; changed to OA 
+ RTFRDR>! for linkages. 
+ RTFRDR>! References: G.A. Jeffrey (1990) Acta Cryst B46, 89-103; 
+ RTFRDR>! K. Hirotsu & A.Shimada, (1974) Bull. Chem. Soc. Japan, 47, 1872-1879. 
+ RTFRDR>! 
+ RTFRDR>! Additional CC6 atomtype for exocyclic carbon 5/11/92 
+ RTFRDR>! New nomenclature, pairs of anomers for each pyranose sugar, generic links, ATB 12-Dec-2009 
+ RTFRDR>! 
+ RTFRDR>! added impropers that define anomers using non-hydrogen atoms, ATB 12/06/09 
+ RTFRDR>! 
+ RTFRDR>! added additional residues: FCA, FCB, A2G, ATB 12/07/09 
+ RTFRDR> 
+ RTFRDR> 
+ RTFRDR>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ RTFRDR>set message=off echo=off end 
+ RTFRDR> 
+ RTFRDR> 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    6.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ RTFRDR>         @@&topology_infile_$counter 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    7.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ RTFRDR>         @@&topology_infile_$counter 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    8.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ RTFRDR>         @@&topology_infile_$counter 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    9.00000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as true
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ RTFRDR>         @@&topology_infile_$counter 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    10.0000     (real)
+ RTFRDR>  end loop read 
+ RTFRDR>  while ( $done = false ) loop read 
+ NEXTCD: condition evaluated as false
+ RTFRDR>   if ( &exist_topology_infile_$counter = true ) then 
+ RTFRDR>      if ( &BLANK%topology_infile_$counter = false ) then 
+ RTFRDR>         @@&topology_infile_$counter 
+ RTFRDR>      end if 
+ RTFRDR>   else 
+ RTFRDR>     evaluate ($done=true) 
+ RTFRDR>   end if 
+ RTFRDR>   evaluate ($counter=$counter+1) 
+ RTFRDR>  end loop read 
+ RTFRDR> end 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>       do (refx=0) (all) 
+ SELRPN:      0 atoms have been selected out of      0
+ CNSsolve>       segment 
+ SEGMENT>         chain 
+ CHAIN>           evaluate ($count=1) 
+ EVALUATE: symbol $COUNT set to    1.00000     (real)
+ CHAIN>           evaluate ($done2=false) 
+ EVALUATE: symbol $DONE2 set to FALSE (logical)
+ CHAIN>           while ( $done2 = false ) loop read 
+ NEXTCD: condition evaluated as true
+ CHAIN>             if ( &exist_link_infile_$count = true ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>               if ( &BLANK%link_infile_$count = false ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>                  @@&link_infile_$count 
+ ASSFIL: file protein.link opened.
+ CHAIN>remarks file toppar/protein.link 
+ CHAIN>remarks 
+ CHAIN>remarks this is a macro to define standard protein peptide bonds 
+ CHAIN>remarks and termini to generate a protein sequence. 
+ CHAIN> 
+ CHAIN>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ CHAIN>set message=off echo=off end 
+ CHAIN>               end if 
+ CHAIN>             else 
+ CHAIN>               evaluate ($done2=true) 
+ CHAIN>             end if 
+ CHAIN>             evaluate ($count=$count+1) 
+ EVALUATE: symbol $COUNT set to    2.00000     (real)
+ CHAIN>           end loop read 
+ CHAIN>           while ( $done2 = false ) loop read 
+ NEXTCD: condition evaluated as true
+ CHAIN>             if ( &exist_link_infile_$count = true ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>               if ( &BLANK%link_infile_$count = false ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>                  @@&link_infile_$count 
+ ASSFIL: file dna-rna-pho.link opened.
+ CHAIN>remarks  file toppar/dna-rna-pho.link 
+ CHAIN>remarks  macro to define nucleic acid links and terminii 
+ CHAIN>remarks  this file uses a 5' phosphate group 
+ CHAIN>remarks 
+ CHAIN> 
+ CHAIN>set message ? end eval ($old_message=$result) set echo ? end eval ($old_echo=$result) 
+ MESSage=NORM
+ EVALUATE: symbol $OLD_MESSAGE set to "NORM" (string)
+ ECHO=TRUE {ON}
+ EVALUATE: symbol $OLD_ECHO set to TRUE (logical)
+ CHAIN>set message=off echo=off end 
+ CHAIN> 
+ CHAIN>               end if 
+ CHAIN>             else 
+ CHAIN>               evaluate ($done2=true) 
+ CHAIN>             end if 
+ CHAIN>             evaluate ($count=$count+1) 
+ EVALUATE: symbol $COUNT set to    3.00000     (real)
+ CHAIN>           end loop read 
+ CHAIN>           while ( $done2 = false ) loop read 
+ NEXTCD: condition evaluated as true
+ CHAIN>             if ( &exist_link_infile_$count = true ) then 
+ NEXTCD: condition evaluated as true
+ CHAIN>               if ( &BLANK%link_infile_$count = false ) then 
+ NEXTCD: condition evaluated as false
+ CHAIN>                  @@&link_infile_$count 
+ CHAIN>               end if 
+ CHAIN>             else 
+ CHAIN>               evaluate ($done2=true) 
+ CHAIN>             end if 
+ CHAIN>             evaluate ($count=$count+1) 
+ EVALUATE: symbol $COUNT set to    4.00000     (real)
+ CHAIN>           end loop read 
+ CHAIN>           while ( $done2 = false ) loop read 
+ NEXTCD: condition evaluated as true
+ CHAIN>             if ( &exist_link_infile_$count = true ) then 
+ NEXTCD: condition evaluated as false
+ CHAIN>               if ( &BLANK%link_infile_$count = false ) then 
+ CHAIN>                  @@&link_infile_$count 
+ CHAIN>               end if 
+ CHAIN>             else 
+ CHAIN>               evaluate ($done2=true) 
+ EVALUATE: symbol $DONE2 set to TRUE (logical)
+ CHAIN>             end if 
+ CHAIN>             evaluate ($count=$count+1) 
+ EVALUATE: symbol $COUNT set to    5.00000     (real)
+ CHAIN>           end loop read 
+ CHAIN>           while ( $done2 = false ) loop read 
+ NEXTCD: condition evaluated as false
+ CHAIN>             if ( &exist_link_infile_$count = true ) then 
+ CHAIN>               if ( &BLANK%link_infile_$count = false ) then 
+ CHAIN>                  @@&link_infile_$count 
+ CHAIN>               end if 
+ CHAIN>             else 
+ CHAIN>               evaluate ($done2=true) 
+ CHAIN>             end if 
+ CHAIN>             evaluate ($count=$count+1) 
+ CHAIN>           end loop read 
+ CHAIN>           sequence @@&prot_sequence_infile_$counter end 
+ ASSFIL: file input.seq opened.
+ SEQUENCE>ILE LYS LEU THR VAL GLY GLY VAL ASP ILE THR PHE GLU 
+ SEQUence-element (terminate with END) =PRO ASN GLN THR ALA TYR ASN LYS PHE ILE ASN GLU MET 
+ SEQUence-element (terminate with END) =ALA MET ASP ASN LYS VAL ALA PRO ALA HIS ASN TYR LEU 
+ SEQUence-element (terminate with END) =THR ARG ILE VAL ALA ALA GLU THR LYS ASP ALA LEU ALA 
+ SEQUence-element (terminate with END) =GLU ILE LEU LYS ARG PRO GLY ALA ALA LEU GLN LEU ALA 
+ SEQUence-element (terminate with END) =GLY LYS VAL ASN GLU ILE TYR ALA PRO GLU LEU GLU ILE 
+ SEQUence-element (terminate with END) =GLU VAL LYS ASN 
+ SEQUence-element (terminate with END) = end 
+ SEGMNT:    82 residues were inserted into segment "    "
+ CHAIN>         end 
+ SEGMENT>       end 
+ Status of internal molecular topology database:
+ -> NATOM=        772(MAXA=     1000000)  NBOND=        781(MAXB=     1000000)
+ -> NTHETA=      1128(MAXT=     2000000)  NGRP=          84(MAXGRP=   1000000)
+ -> NPHI=         454(MAXP=     2000000)  NIMPHI=       353(MAXIMP=   1000000)
+ -> NNB=            0(MAXNB=    1000000) 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ SELRPN:    772 atoms have been selected out of    772
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ EVALUATE: symbol $SEGID set to "T^1" (string)
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ SELRPN>              ( (attr refx=9999) and segid $segid ) 
+ SELRPN:    772 atoms have been selected out of    772
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&prot_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ EVALUATE: symbol $SEGID set to "T^2" (string)
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ SELRPN>              ( (attr refx=9999) and segid $segid ) 
+ SELRPN:      0 atoms have been selected out of    772
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&prot_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ EVALUATE: symbol $SEGID set to "T^3" (string)
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ SELRPN>              ( (attr refx=9999) and segid $segid ) 
+ SELRPN:      0 atoms have been selected out of    772
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    4.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&prot_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ EVALUATE: symbol $SEGID set to "T^4" (string)
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ SELRPN>              ( (attr refx=9999) and segid $segid ) 
+ SELRPN:      0 atoms have been selected out of    772
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    5.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&prot_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ CNSsolve>              ( (attr refx=9999) and segid $segid ) 
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> while ( $done = false ) loop prot 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&prot_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid="T^" + encode($counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     if ( &exist_renumber_$counter = true ) then 
+ CNSsolve>         if ( &BLANK%renumber_$counter = false ) then 
+ CNSsolve>           evaluate ($segid="T^" + encode($counter)) 
+ CNSsolve>           do ( resid = adjustl(format("I4",decode(resid) + &renumber_$counter - 1))) 
+ CNSsolve>              ( (attr refx=9999) and segid $segid ) 
+ CNSsolve>         end if 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prot 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ EVALUATE: symbol $SEGTMP set to "T^1" (string)
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ SELRPN:    772 atoms have been selected out of    772
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    4.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    5.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> while ( $done = false ) loop nseg 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_prot_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%prot_sequence_infile_$counter = false ) then 
+ CNSsolve>       evaluate ($segtmp="T^" + encode($counter)) 
+ CNSsolve>       do (segid=capitalize(&prot_segid_$counter)) (segid $segtmp) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nseg 
+ CNSsolve> evaluate ($ssc=1) 
+ EVALUATE: symbol $SSC set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ EVALUATE: symbol $SEGIDTMP1 set to "" (string)
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ EVALUATE: symbol $SEGIDTMP2 set to "" (string)
+ CNSsolve>       patch disu 
+ PATCH>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ SELRPN:      9 atoms have been selected out of    772
+ PATCH>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ SELRPN:      6 atoms have been selected out of    772
+ PATCH>       end 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %PATCH-ERR: PATCH=DISU
+ %PATCH-ERR: REFErence=1      first atom=(     11   THR  N   )
+ %PATCH-ERR:                   last atom=(     11   THR  O   )
+ %PATCH-ERR: REFErence=2      first atom=(     27   ALA  H   )
+ %PATCH-ERR:                   last atom=(     27   ALA  C   )
+ %PATCH-ERR: to be modified atom 1SG   not found in molecular structure.
+ %PATCH-ERR: to be modified atom 2SG   not found in molecular structure.
+ %PATCH-ERR: to be added bond 1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added angle 1CB   1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added angle 1SG   2SG   2CB   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1CA   1CB   1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1CB   1SG   2SG   2CB   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1SG   2SG   2CB   2CA   not found in molecular structure.
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Status of internal molecular topology database:
+ -> NATOM=        772(MAXA=     1000000)  NBOND=        781(MAXB=     1000000)
+ -> NTHETA=      1128(MAXT=     2000000)  NGRP=          86(MAXGRP=   1000000)
+ -> NPHI=         454(MAXP=     2000000)  NIMPHI=       353(MAXIMP=   1000000)
+ -> NNB=            0(MAXNB=    1000000) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ EVALUATE: symbol $SEGIDTMP1 set to "" (string)
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ EVALUATE: symbol $SEGIDTMP2 set to "" (string)
+ CNSsolve>       patch disu 
+ PATCH>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ SELRPN:      6 atoms have been selected out of    772
+ PATCH>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ SELRPN:      6 atoms have been selected out of    772
+ PATCH>       end 
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %PATCH-ERR: PATCH=DISU
+ %PATCH-ERR: REFErence=1      first atom=(     45   ALA  N   )
+ %PATCH-ERR:                   last atom=(     45   ALA  O   )
+ %PATCH-ERR: REFErence=2      first atom=(     73   ALA  H   )
+ %PATCH-ERR:                   last atom=(     73   ALA  C   )
+ %PATCH-ERR: to be modified atom 1SG   not found in molecular structure.
+ %PATCH-ERR: to be modified atom 2SG   not found in molecular structure.
+ %PATCH-ERR: to be added bond 1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added angle 1CB   1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added angle 1SG   2SG   2CB   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1CA   1CB   1SG   2SG   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1CB   1SG   2SG   2CB   not found in molecular structure.
+ %PATCH-ERR: to be added dihedral 1SG   2SG   2CB   2CA   not found in molecular structure.
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ Status of internal molecular topology database:
+ -> NATOM=        772(MAXA=     1000000)  NBOND=        781(MAXB=     1000000)
+ -> NTHETA=      1128(MAXT=     2000000)  NGRP=          88(MAXGRP=   1000000)
+ -> NPHI=         454(MAXP=     2000000)  NIMPHI=       353(MAXIMP=   1000000)
+ -> NNB=            0(MAXNB=    1000000) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    4.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    5.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    6.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    7.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    8.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ EVALUATE: symbol $SSC set to    9.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> while ( $done = false ) loop ssbr 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_ss_use_$ssc = true ) then 
+ CNSsolve>     if ( &ss_use_$ssc = true ) then 
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&ss_i_segid_$ssc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&ss_j_segid_$ssc)) 
+ CNSsolve>       patch disu 
+ CNSsolve>         reference=1=(segid $QUOTE%segidtmp1 and resid &ss_i_resid_$ssc) 
+ CNSsolve>         reference=2=(segid $QUOTE%segidtmp2 and resid &ss_j_resid_$ssc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($ssc=$ssc+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ssbr 
+ CNSsolve> {* any special protein patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    4.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    5.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> while ( $done = false ) loop nucl 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_nucl_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%nucl_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           evaluate ($count=1) 
+ CNSsolve>           evaluate ($done2=false) 
+ CNSsolve>           while ( $done2 = false ) loop read 
+ CNSsolve>             if ( &exist_link_infile_$count = true ) then 
+ CNSsolve>               if ( &BLANK%link_infile_$count = false ) then 
+ CNSsolve>                  @@&link_infile_$count 
+ CNSsolve>               end if 
+ CNSsolve>             else 
+ CNSsolve>               evaluate ($done2=true) 
+ CNSsolve>             end if 
+ CNSsolve>             evaluate ($count=$count+1) 
+ CNSsolve>           end loop read 
+ CNSsolve>           sequence @@&nucl_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&nucl_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop nucl 
+ CNSsolve> {* patch rna sugars to dna here if needed - select the residues *} 
+ CNSsolve> {===>} 
+ CNSsolve> for $resid in () loop dna 
+ CNSsolve>   patch deox reference=nil=(resid $resid) end 
+ CNSsolve> end loop dna 
+ CNSsolve> {<===} 
+ CNSsolve> {* any special nucleic acid patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop carbo 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%carbo_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&carbo_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&carbo_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop carbo 
+ CNSsolve> while ( $done = false ) loop carbo 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%carbo_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&carbo_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&carbo_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop carbo 
+ CNSsolve> while ( $done = false ) loop carbo 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%carbo_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&carbo_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&carbo_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop carbo 
+ CNSsolve> while ( $done = false ) loop carbo 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_carbo_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%carbo_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&carbo_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&carbo_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop carbo 
+ CNSsolve> evaluate ($carc=1) 
+ EVALUATE: symbol $CARC set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    4.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    5.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    6.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ EVALUATE: symbol $CARC set to    7.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> while ( $done = false ) loop cabr 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_carbo_use_$carc = true ) then 
+ CNSsolve>     if ( &carbo_use_$carc = true ) then 
+ CNSsolve>       evaluate ($segidtmp1=capitalize(&carbo_i_segid_$carc)) 
+ CNSsolve>       evaluate ($segidtmp2=capitalize(&carbo_j_segid_$carc)) 
+ CNSsolve>       patch &carbo_patch_$carc 
+ CNSsolve>         reference=-=(segid $QUOTE%segidtmp1 and 
+ CNSsolve>                      resid &carbo_i_resid_$carc) 
+ CNSsolve>         reference=+=(segid $QUOTE%segidtmp2 and 
+ CNSsolve>                      resid &carbo_j_resid_$carc) 
+ CNSsolve>       end 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($carc=$carc+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop cabr 
+ CNSsolve> {* any special carbohydrate patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop prost 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prost_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prost_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&prost_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&prost_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prost 
+ CNSsolve> while ( $done = false ) loop prost 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prost_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%prost_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&prost_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&prost_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prost 
+ CNSsolve> while ( $done = false ) loop prost 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_prost_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%prost_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&prost_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&prost_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop prost 
+ CNSsolve> while ( $done = false ) loop prost 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_prost_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%prost_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&prost_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&prost_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop prost 
+ CNSsolve> {* any special prosthetic group patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop liga 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_lig_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%lig_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&lig_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&lig_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop liga 
+ CNSsolve> while ( $done = false ) loop liga 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_lig_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%lig_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&lig_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&lig_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop liga 
+ CNSsolve> while ( $done = false ) loop liga 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_lig_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%lig_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&lig_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&lig_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop liga 
+ CNSsolve> while ( $done = false ) loop liga 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_lig_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%lig_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&lig_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&lig_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop liga 
+ CNSsolve> {* any special ligand patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop ion 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ion_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%ion_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&ion_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&ion_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ion 
+ CNSsolve> while ( $done = false ) loop ion 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ion_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%ion_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&ion_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&ion_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ion 
+ CNSsolve> while ( $done = false ) loop ion 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_ion_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%ion_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&ion_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&ion_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop ion 
+ CNSsolve> while ( $done = false ) loop ion 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_ion_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%ion_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&ion_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&ion_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop ion 
+ CNSsolve> {* any special ion patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> evaluate ($counter=1) 
+ EVALUATE: symbol $COUNTER set to    1.00000     (real)
+ CNSsolve> evaluate ($done=false) 
+ EVALUATE: symbol $DONE set to FALSE (logical)
+ CNSsolve> while ( $done = false ) loop water 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_water_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%water_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&water_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&water_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    2.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop water 
+ CNSsolve> while ( $done = false ) loop water 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_water_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>     if ( &BLANK%water_sequence_infile_$counter = false ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&water_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&water_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ EVALUATE: symbol $COUNTER set to    3.00000     (real)
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop water 
+ CNSsolve> while ( $done = false ) loop water 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   if ( &exist_water_sequence_infile_$counter = true ) then 
+ NEXTCD: condition evaluated as false
+ CNSsolve>     if ( &BLANK%water_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&water_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&water_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ EVALUATE: symbol $DONE set to TRUE (logical)
+ CNSsolve>   end if 
+ CNSsolve> end loop water 
+ CNSsolve> while ( $done = false ) loop water 
+ NEXTCD: condition evaluated as false
+ CNSsolve>   if ( &exist_water_sequence_infile_$counter = true ) then 
+ CNSsolve>     if ( &BLANK%water_sequence_infile_$counter = false ) then 
+ CNSsolve>       do (refx=0) (all) 
+ CNSsolve>       segment 
+ CNSsolve>         chain 
+ CNSsolve>           sequence @@&water_sequence_infile_$counter end 
+ CNSsolve>         end 
+ CNSsolve>       end 
+ CNSsolve>       do (segid=capitalize(&water_segid_$counter)) (attr refx=9999) 
+ CNSsolve>     end if 
+ CNSsolve>     evaluate ($counter=$counter+1) 
+ CNSsolve>   else 
+ CNSsolve>     evaluate ($done=true) 
+ CNSsolve>   end if 
+ CNSsolve> end loop water 
+ CNSsolve> {* any special water patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> {* any final patches can be applied here *} 
+ CNSsolve> {===>} 
+ CNSsolve> {<===} 
+ CNSsolve> if (&hydrogen_flag=false) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve> end if 
+ CNSsolve> if (&set_bfactor=true) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   do (b=&bfactor) ( all ) 
+ SELRPN:    772 atoms have been selected out of    772
+ CNSsolve> end if 
+ CNSsolve> if (&set_occupancy=true) then 
+ NEXTCD: condition evaluated as true
+ CNSsolve>   do (q=&occupancy) ( all ) 
+ SELRPN:    772 atoms have been selected out of    772
+ CNSsolve> end if 
+ CNSsolve> write structure output=&structure_outfile end 
+ ASSFIL: file extended.mtf opened.
+ CNSsolve> stop 
+          ============================================================
+           Maximum dynamic memory allocation:     8258080 bytes
+           Maximum dynamic memory overhead:           288 bytes
+           Program started at: 11:33:03 on 10-Jun-2019
+           Program stopped at: 11:33:03 on 10-Jun-2019
+           CPU time used:       0.1146 seconds
+          ============================================================

@@ -1,0 +1,1158 @@
+
+========================[ Jun 10, 2019 11:04 AM ]========================
+Version 2.2.26 [Sep-21-2011]
+Started database file "PF10963.a3m"
+ERROR: [000.000] Could not open PF10963.a3m
+
+
+========================[ Jun 10, 2019 11:06 AM ]========================
+Version 2.2.26 [Sep-21-2011]
+Started database file "PF10963.a3m"
+WARNING: [000.000] Sequence number 2 (lcl|2_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 22 (lcl|22_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 33 (lcl|33_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 63 (lcl|63_PF10963.a3m), 7 illegal characters were removed:
+7 -s
+
+WARNING: [000.000] Sequence number 85 (lcl|85_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 93 (lcl|93_PF10963.a3m), 12 illegal characters were removed:
+12 -s
+
+WARNING: [000.000] Sequence number 109 (lcl|109_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 110 (lcl|110_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 111 (lcl|111_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 112 (lcl|112_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 113 (lcl|113_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 114 (lcl|114_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 115 (lcl|115_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 116 (lcl|116_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 117 (lcl|117_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 118 (lcl|118_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 119 (lcl|119_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 120 (lcl|120_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 121 (lcl|121_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 122 (lcl|122_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 123 (lcl|123_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 124 (lcl|124_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 125 (lcl|125_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 126 (lcl|126_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 127 (lcl|127_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 128 (lcl|128_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 129 (lcl|129_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 130 (lcl|130_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 131 (lcl|131_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 132 (lcl|132_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 133 (lcl|133_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 134 (lcl|134_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 135 (lcl|135_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 136 (lcl|136_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 137 (lcl|137_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 138 (lcl|138_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 139 (lcl|139_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 140 (lcl|140_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 141 (lcl|141_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 142 (lcl|142_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 143 (lcl|143_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 144 (lcl|144_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 145 (lcl|145_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 146 (lcl|146_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 147 (lcl|147_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 148 (lcl|148_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 149 (lcl|149_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 150 (lcl|150_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 151 (lcl|151_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 152 (lcl|152_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 153 (lcl|153_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 154 (lcl|154_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 155 (lcl|155_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 156 (lcl|156_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 157 (lcl|157_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 158 (lcl|158_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 159 (lcl|159_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 160 (lcl|160_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 161 (lcl|161_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 162 (lcl|162_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 163 (lcl|163_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 164 (lcl|164_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 165 (lcl|165_PF10963.a3m), 4 illegal characters were removed:
+4 -s
+
+WARNING: [000.000] Sequence number 166 (lcl|166_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 167 (lcl|167_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 169 (lcl|169_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 170 (lcl|170_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 171 (lcl|171_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 172 (lcl|172_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 173 (lcl|173_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 174 (lcl|174_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 175 (lcl|175_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 176 (lcl|176_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 177 (lcl|177_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 178 (lcl|178_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 179 (lcl|179_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 180 (lcl|180_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 181 (lcl|181_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 182 (lcl|182_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 183 (lcl|183_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 184 (lcl|184_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 185 (lcl|185_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 186 (lcl|186_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 187 (lcl|187_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 188 (lcl|188_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 189 (lcl|189_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 190 (lcl|190_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 191 (lcl|191_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 192 (lcl|192_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 193 (lcl|193_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 194 (lcl|194_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 195 (lcl|195_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 196 (lcl|196_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 197 (lcl|197_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+Formatted 197 sequences in volume 0
+SUCCESS: formatted database PF10963.a3m
+
+========================[ Jun 10, 2019 11:07 AM ]========================
+Version 2.2.26 [Sep-21-2011]
+Started database file "PF10963.a3m"
+WARNING: [000.000] Sequence number 2 (lcl|2_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 22 (lcl|22_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 33 (lcl|33_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 63 (lcl|63_PF10963.a3m), 7 illegal characters were removed:
+7 -s
+
+WARNING: [000.000] Sequence number 85 (lcl|85_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 93 (lcl|93_PF10963.a3m), 12 illegal characters were removed:
+12 -s
+
+WARNING: [000.000] Sequence number 109 (lcl|109_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 110 (lcl|110_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 111 (lcl|111_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 112 (lcl|112_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 113 (lcl|113_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 114 (lcl|114_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 115 (lcl|115_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 116 (lcl|116_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 117 (lcl|117_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 118 (lcl|118_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 119 (lcl|119_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 120 (lcl|120_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 121 (lcl|121_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 122 (lcl|122_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 123 (lcl|123_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 124 (lcl|124_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 125 (lcl|125_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 126 (lcl|126_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 127 (lcl|127_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 128 (lcl|128_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 129 (lcl|129_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 130 (lcl|130_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 131 (lcl|131_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 132 (lcl|132_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 133 (lcl|133_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 134 (lcl|134_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 135 (lcl|135_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 136 (lcl|136_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 137 (lcl|137_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 138 (lcl|138_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 139 (lcl|139_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 140 (lcl|140_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 141 (lcl|141_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 142 (lcl|142_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 143 (lcl|143_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 144 (lcl|144_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 145 (lcl|145_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 146 (lcl|146_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 147 (lcl|147_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 148 (lcl|148_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 149 (lcl|149_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 150 (lcl|150_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 151 (lcl|151_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 152 (lcl|152_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 153 (lcl|153_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 154 (lcl|154_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 155 (lcl|155_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 156 (lcl|156_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 157 (lcl|157_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 158 (lcl|158_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 159 (lcl|159_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 160 (lcl|160_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 161 (lcl|161_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 162 (lcl|162_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 163 (lcl|163_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 164 (lcl|164_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 165 (lcl|165_PF10963.a3m), 4 illegal characters were removed:
+4 -s
+
+WARNING: [000.000] Sequence number 166 (lcl|166_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 167 (lcl|167_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 169 (lcl|169_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 170 (lcl|170_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 171 (lcl|171_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 172 (lcl|172_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 173 (lcl|173_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 174 (lcl|174_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 175 (lcl|175_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 176 (lcl|176_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 177 (lcl|177_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 178 (lcl|178_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 179 (lcl|179_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 180 (lcl|180_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 181 (lcl|181_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 182 (lcl|182_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 183 (lcl|183_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 184 (lcl|184_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 185 (lcl|185_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 186 (lcl|186_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 187 (lcl|187_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 188 (lcl|188_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 189 (lcl|189_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 190 (lcl|190_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 191 (lcl|191_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 192 (lcl|192_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 193 (lcl|193_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 194 (lcl|194_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 195 (lcl|195_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 196 (lcl|196_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 197 (lcl|197_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+Formatted 197 sequences in volume 0
+SUCCESS: formatted database PF10963.a3m
+
+========================[ Jun 10, 2019 11:11 AM ]========================
+Version 2.2.26 [Sep-21-2011]
+Started database file "PF10963.a3m"
+WARNING: [000.000] Sequence number 2 (lcl|2_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 22 (lcl|22_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 33 (lcl|33_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 63 (lcl|63_PF10963.a3m), 7 illegal characters were removed:
+7 -s
+
+WARNING: [000.000] Sequence number 85 (lcl|85_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 93 (lcl|93_PF10963.a3m), 12 illegal characters were removed:
+12 -s
+
+WARNING: [000.000] Sequence number 109 (lcl|109_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 110 (lcl|110_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 111 (lcl|111_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 112 (lcl|112_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 113 (lcl|113_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 114 (lcl|114_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 115 (lcl|115_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 116 (lcl|116_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 117 (lcl|117_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 118 (lcl|118_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 119 (lcl|119_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 120 (lcl|120_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 121 (lcl|121_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 122 (lcl|122_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 123 (lcl|123_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 124 (lcl|124_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 125 (lcl|125_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 126 (lcl|126_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 127 (lcl|127_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 128 (lcl|128_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 129 (lcl|129_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 130 (lcl|130_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 131 (lcl|131_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 132 (lcl|132_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 133 (lcl|133_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 134 (lcl|134_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 135 (lcl|135_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 136 (lcl|136_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 137 (lcl|137_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 138 (lcl|138_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 139 (lcl|139_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 140 (lcl|140_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 141 (lcl|141_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 142 (lcl|142_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 143 (lcl|143_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 144 (lcl|144_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 145 (lcl|145_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 146 (lcl|146_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 147 (lcl|147_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 148 (lcl|148_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 149 (lcl|149_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 150 (lcl|150_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 151 (lcl|151_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 152 (lcl|152_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 153 (lcl|153_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 154 (lcl|154_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 155 (lcl|155_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 156 (lcl|156_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 157 (lcl|157_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 158 (lcl|158_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 159 (lcl|159_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 160 (lcl|160_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 161 (lcl|161_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 162 (lcl|162_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 163 (lcl|163_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 164 (lcl|164_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 165 (lcl|165_PF10963.a3m), 4 illegal characters were removed:
+4 -s
+
+WARNING: [000.000] Sequence number 166 (lcl|166_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 167 (lcl|167_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 169 (lcl|169_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 170 (lcl|170_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 171 (lcl|171_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 172 (lcl|172_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 173 (lcl|173_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 174 (lcl|174_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 175 (lcl|175_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 176 (lcl|176_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 177 (lcl|177_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 178 (lcl|178_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 179 (lcl|179_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 180 (lcl|180_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 181 (lcl|181_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 182 (lcl|182_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 183 (lcl|183_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 184 (lcl|184_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 185 (lcl|185_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 186 (lcl|186_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 187 (lcl|187_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 188 (lcl|188_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 189 (lcl|189_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 190 (lcl|190_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 191 (lcl|191_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 192 (lcl|192_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 193 (lcl|193_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 194 (lcl|194_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 195 (lcl|195_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 196 (lcl|196_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 197 (lcl|197_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+Formatted 197 sequences in volume 0
+SUCCESS: formatted database PF10963.a3m
+
+========================[ Jun 10, 2019 11:13 AM ]========================
+Version 2.2.26 [Sep-21-2011]
+Started database file "PF10963.a3m"
+WARNING: [000.000] Sequence number 2 (lcl|2_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 22 (lcl|22_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 33 (lcl|33_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 63 (lcl|63_PF10963.a3m), 7 illegal characters were removed:
+7 -s
+
+WARNING: [000.000] Sequence number 85 (lcl|85_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 93 (lcl|93_PF10963.a3m), 12 illegal characters were removed:
+12 -s
+
+WARNING: [000.000] Sequence number 109 (lcl|109_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 110 (lcl|110_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 111 (lcl|111_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 112 (lcl|112_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 113 (lcl|113_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 114 (lcl|114_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 115 (lcl|115_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 116 (lcl|116_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 117 (lcl|117_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 118 (lcl|118_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 119 (lcl|119_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 120 (lcl|120_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 121 (lcl|121_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 122 (lcl|122_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 123 (lcl|123_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 124 (lcl|124_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 125 (lcl|125_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 126 (lcl|126_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 127 (lcl|127_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 128 (lcl|128_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 129 (lcl|129_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 130 (lcl|130_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 131 (lcl|131_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 132 (lcl|132_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 133 (lcl|133_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 134 (lcl|134_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 135 (lcl|135_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 136 (lcl|136_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 137 (lcl|137_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 138 (lcl|138_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 139 (lcl|139_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 140 (lcl|140_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 141 (lcl|141_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 142 (lcl|142_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 143 (lcl|143_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 144 (lcl|144_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 145 (lcl|145_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 146 (lcl|146_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 147 (lcl|147_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 148 (lcl|148_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 149 (lcl|149_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 150 (lcl|150_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 151 (lcl|151_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 152 (lcl|152_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 153 (lcl|153_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 154 (lcl|154_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 155 (lcl|155_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 156 (lcl|156_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 157 (lcl|157_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 158 (lcl|158_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 159 (lcl|159_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 160 (lcl|160_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 161 (lcl|161_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 162 (lcl|162_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 163 (lcl|163_PF10963.a3m), 1 illegal character was removed:
+1 -
+
+WARNING: [000.000] Sequence number 164 (lcl|164_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 165 (lcl|165_PF10963.a3m), 4 illegal characters were removed:
+4 -s
+
+WARNING: [000.000] Sequence number 166 (lcl|166_PF10963.a3m), 5 illegal characters were removed:
+5 -s
+
+WARNING: [000.000] Sequence number 167 (lcl|167_PF10963.a3m), 2 illegal characters were removed:
+2 -s
+
+WARNING: [000.000] Sequence number 169 (lcl|169_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 170 (lcl|170_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 171 (lcl|171_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 172 (lcl|172_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 173 (lcl|173_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 174 (lcl|174_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 175 (lcl|175_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 176 (lcl|176_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 177 (lcl|177_PF10963.a3m), 20 illegal characters were removed:
+20 -s
+
+WARNING: [000.000] Sequence number 178 (lcl|178_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 179 (lcl|179_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 180 (lcl|180_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 181 (lcl|181_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 182 (lcl|182_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 183 (lcl|183_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 184 (lcl|184_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 185 (lcl|185_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 186 (lcl|186_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 187 (lcl|187_PF10963.a3m), 21 illegal characters were removed:
+21 -s
+
+WARNING: [000.000] Sequence number 188 (lcl|188_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 189 (lcl|189_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 190 (lcl|190_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 191 (lcl|191_PF10963.a3m), 25 illegal characters were removed:
+25 -s
+
+WARNING: [000.000] Sequence number 192 (lcl|192_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 193 (lcl|193_PF10963.a3m), 22 illegal characters were removed:
+22 -s
+
+WARNING: [000.000] Sequence number 194 (lcl|194_PF10963.a3m), 9 illegal characters were removed:
+9 -s
+
+WARNING: [000.000] Sequence number 195 (lcl|195_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 196 (lcl|196_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+WARNING: [000.000] Sequence number 197 (lcl|197_PF10963.a3m), 23 illegal characters were removed:
+23 -s
+
+Formatted 197 sequences in volume 0
+SUCCESS: formatted database PF10963.a3m
