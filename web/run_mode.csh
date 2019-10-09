@@ -1,7 +1,7 @@
 #!/bin/csh
 
 # Set this to point to the DMPfold directory
-set dmpfolddir = ~/Code/DMPfold
+set dmpfolddir = /data/DMPfold
 set bindir = $dmpfolddir/bin
 set seqfile = $1
 
