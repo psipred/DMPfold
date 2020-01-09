@@ -15,7 +15,7 @@ script:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
+  - conda create -q -n dmpfold python=3.7 numpy scipy # Create environment with NumPy and SciPy
   - conda activate dmpfold
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-*/modlib/modeller/config.py
