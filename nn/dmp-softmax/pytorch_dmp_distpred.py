@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # Predict first stage distance probabilities
 
 # By David T. Jones, Jan 2019
@@ -5,7 +7,8 @@
 # Copyright (C) 2019 University College London
 
 # License: GPLv3
-import numpy as np
+
+from __future__ import print_function
 
 import sys
 import os
