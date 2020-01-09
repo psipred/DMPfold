@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # Predict first stage distance probabilities
 
 # By David T. Jones, Jan 2019
