@@ -1,5 +1,10 @@
 #!/bin/bash
 
+conda env list
+which python3
+which python
+python3 -c "import sys; print(sys.version)"
+
 # DMPfold
 # Iteratively generate models using CNS and deep neural nets to
 #  generate updated constraints
