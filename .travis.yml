@@ -11,14 +11,14 @@ script:
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
   - source miniconda/etc/profile.d/conda.sh
-  - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
+  - hash -r
   - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
   - conda info -a
   - yes | pip install numpy scipy # Install NumPy and SciPy
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-*/modlib/modeller/config.py
   - conda install pytorch-cpu torchvision-cpu -c pytorch # Install Pytorch
-  - export PYTHONHOME="~/build/psipred/DMPfold/miniconda"
   - python3 -c "import torch"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
   - tar -zxvf cns_solve_1.3.tgz
