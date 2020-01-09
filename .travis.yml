@@ -11,7 +11,7 @@ script:
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda
   - bash miniconda.sh -b -p ./miniconda
   - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
-  - export PYTHONHOME="~/build/psipred/DMPfold/miniconda"
+  - export PYTHONHOME="~/build/psipred/DMPfold/miniconda:$PYTHONHOME"
   - conda config --set always_yes yes --set changeps1 no
   - yes | pip install numpy scipy # Install NumPy and SciPy
   - conda install modeller -c salilab # Install MODELLER
