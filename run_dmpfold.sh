@@ -14,14 +14,21 @@
 
 # Set this to point to the DMPfold directory
 dmpfolddir=~/DMPfold
-which python3
 
 # Set this to point to the CNS setup script
+STOREPATH=$PATH
+echo $PATH
+echo "store"
+echo $STOREPATH
 source ~/cns_solve_1.3/.cns_solve_env_sh
+echo $PATH
+export PATH="$STOREPATH:$PATH"
+echo "restore"
+echo $PATH
+
 bindir=$dmpfolddir/bin
 cnsdir=$dmpfolddir/cnsfiles
 export CNS_CUSTOMMODULE=$cnsdir
-which python3
 
 # Number of cycles
 ncycles=3
@@ -39,7 +46,6 @@ if [ "$#" -lt 2 ]; then
     echo "Usage: run_dmpfold.sh target.fasta target.21c target.map outdir [ncycles nmodels-per-cycle]"
     exit 1
 fi
-which python3
 
 DIR="$( cd "$( dirname "$1" )" && pwd )"
 target=$(basename "${1%.*}")
@@ -48,6 +54,7 @@ DIR="$( cd "$( dirname "$2" )" && pwd )"
 targ21c=$DIR/$(basename $2)
 DIR="$( cd "$( dirname "$3" )" && pwd )"
 targmap=$DIR/$(basename $3)
+
 outdir=$4
 
 if [ "$#" -gt 5 ]; then
@@ -64,13 +71,13 @@ if [ -e $outdir ]; then
     echo "Directory $outdir already exists."
     exit 1
 fi
-which python3
 
 mkdir $outdir
+
 cd $outdir
+
 $bindir/fasta2tlc < $targseq > input.seq
 
-which python3
 cns < $cnsdir/gseq.inp > gseq.log
 if [ $? -ne 0 ]; then
     echo $?
@@ -83,7 +90,6 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-which python3
 python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
 cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc1 > contacts.current
