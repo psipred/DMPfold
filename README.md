@@ -20,12 +20,12 @@ These instructions should work for a Linux system:
 - Install [CCMpred](https://github.com/soedinglab/CCMpred).
 - Install [MODELLER](https://salilab.org/modeller), which requires a license key. Only the Python package is required so this can be installed with `conda install modeller -c salilab`.
 - Install [CNS](http://cns-online.org/v1.3). We found we had to follow all of the steps in [this comment](https://ask.bioexcel.eu/t/cns-errors-before-after-recompilation/54/14) to get CNS working: 
-  - As per documentation, set the `CNS_SOLVE` environment variable to the appropriate location in both `cns_solve_env` (for csh, used for building CNS) and in `.cns_solve_env_sh` (for bash, used when running DMPfold)
+  - As per documentation, set the `CNS_SOLVE` environment variable to the appropriate location in both `cns_solve_env` (for csh, used for building CNS) and in `.cns_solve_env_sh` (for Bash, used when running DMPfold)
   - set `MXFPEPS2` in `machvar.inc` to 8192,
   - set `MXRTP` in `rtf.inc` in the `source` directory to 4000 and in `machvar.f` add `WRITE (6,'(I6,E10.3,E10.3)') I, ONEP, ONEM` just above line 67, which looks like `IF (ONE .EQ. ONEP .OR. ONE .EQ. ONEM) THEN`. 
   - We also had to install the `flex-devel` package via our system package manager. 
   - you should change two values in `cns_solve_1.3/modules/nmr/readdata` to larger numbers to allow DMPfold to run on larger structures. Change the `nrestraints = 20000` line to something like `nrestraints = 50000` and the `nassign 1600` line to something like `nassign 3000`.
-  - To build CNS, in `csh` type `source cns_solve_env; make install`
+  - To build CNS, in `csh` type `source cns_solve_env; make install`, or in Bash, `source .cns_solve_env_sh; make install`. Either csh or Bash can be used for building.
 - Download and patch the required CNS scripts by changing into the `cnsfiles` directory and running `sh installscripts.sh`.
 - Install [CD-HIT](https://github.com/weizhongli/cdhit), which is usually as simple as a clone and `make`. CD-HIT is not required if you don't need to predict the TM-score of generated models.
 - Install the [legacy BLAST](https://tinyurl.com/y57hq2wo) software, in particular `formatdb`, `blastpgp` and `makemat`. We may update this to BLAST+ in the future.
