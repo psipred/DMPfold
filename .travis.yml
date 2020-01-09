@@ -54,6 +54,7 @@ script:
   - sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" predict_tmscore.sh
   - sed -i "s/cdhitcmd=~\/cdhit\/cd-hit/cdhitcmd=.\/cdhit\/cd-hit/" predict_tmscore.sh
   - sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
+  - chmod +x run_dmpfold.sh predict_tmscore.sh
   - cp example/PF10963.a3m .
   - ulimit -s unlimited
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files from single sequence
