@@ -16,6 +16,9 @@ script:
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-*/modlib/modeller/config.py
   - conda install pytorch-cpu torchvision-cpu -c pytorch # Install Pytorch
+  - echo $PYTHONPATH
+  - echo $PYTHONHOME
+  - export PYTHONHOME="~/build/psipred/DMPfold/miniconda"
   - python3 -c "import torch"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
   - tar -zxvf cns_solve_1.3.tgz
