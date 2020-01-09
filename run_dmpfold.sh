@@ -7,7 +7,6 @@ which python
 python3 -c "import sys; print(sys.version)"
 python3 -c "import numpy as np; print('Done')"
 python3 test.py
-python3 test2.py
 
 # DMPfold
 # Iteratively generate models using CNS and deep neural nets to
@@ -91,6 +90,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+python3 test2.py
 python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
 cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc1 > contacts.current
