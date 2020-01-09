@@ -58,9 +58,9 @@ script:
   - ulimit -s unlimited
   - csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files from single sequence
   - du -h PF10963.* # Check files generated okay
-  - bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
+  - ./run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
   - head PF10963_fasta/final_1.pdb
-  - bash predict_tmscore.sh example/PF10963.fasta PF10963.aln PF10963_fasta/final_1.pdb PF10963_fasta/rawdistpred.1 # Predict TM-score
+  - ./predict_tmscore.sh example/PF10963.fasta PF10963.aln PF10963_fasta/final_1.pdb PF10963_fasta/rawdistpred.1 # Predict TM-score
   - curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign # Download TMalign
   - chmod +x TMalign
   - ./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb # Check model accuracy
@@ -72,7 +72,7 @@ script:
   - csh ../aln2maps.csh ../example/PF10963.aln # Generate map and 21c files from alignment
   - du -h PF10963.* # Check files generated okay
   - cd ../temp2
-  - bash ../run_dmpfold.sh ../example/PF10963.fasta ../temp1/PF10963.21c ../temp1/PF10963.map ../PF10963_aln 3 5 # Run DMPfold on new inputs
+  - ../run_dmpfold.sh ../example/PF10963.fasta ../temp1/PF10963.21c ../temp1/PF10963.map ../PF10963_aln 3 5 # Run DMPfold on new inputs
   - cd ..
   - head PF10963_aln/final_1.pdb
   - ./TMalign PF10963_aln/final_1.pdb example/3FGX.pdb # Check model accuracy
