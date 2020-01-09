@@ -17,14 +17,8 @@ dmpfolddir=~/DMPfold
 
 # Set this to point to the CNS setup script
 STOREPATH=$PATH
-echo $PATH
-echo "store"
-echo $STOREPATH
 source ~/cns_solve_1.3/.cns_solve_env_sh
-echo $PATH
-export PATH="$STOREPATH:$PATH"
-echo "restore"
-echo $PATH
+export PATH="$STOREPATH:$PATH" # CNS setup can remove some things from the path
 
 bindir=$dmpfolddir/bin
 cnsdir=$dmpfolddir/cnsfiles
