@@ -15,6 +15,7 @@ script:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
+  - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
   - yes | pip install numpy scipy # Install NumPy and SciPy
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-*/modlib/modeller/config.py
