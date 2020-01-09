@@ -90,7 +90,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-python3 test2.py
+python3 ../test2.py
 python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
 cat rawdistpred.current | perl $bindir/dist2dualbound.pl $perc1 > contacts.current

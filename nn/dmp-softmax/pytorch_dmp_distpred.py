@@ -6,7 +6,6 @@
 
 # License: GPLv3
 import numpy as np
-from __future__ import print_function
 
 import sys
 import os
