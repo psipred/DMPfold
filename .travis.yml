@@ -15,11 +15,12 @@ script:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
-  - yes | pip install numpy scipy # Install NumPy and SciPy
+  - conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
+  - conda activate dmpfold
   - conda install modeller -c salilab # Install MODELLER
   - sed -i "s/XXXX/$MODELLERKEY/g" miniconda/lib/modeller-*/modlib/modeller/config.py
   - conda install pytorch-cpu torchvision-cpu -c pytorch # Install Pytorch
+  - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
   - python3 -c "import torch"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
   - tar -zxvf cns_solve_1.3.tgz
