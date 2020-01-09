@@ -25,7 +25,7 @@ These instructions should work for a Linux system:
   - set `MXRTP` in `rtf.inc` in the `source` directory to 4000 and in `machvar.f` add `WRITE (6,'(I6,E10.3,E10.3)') I, ONEP, ONEM` just above line 67, which looks like `IF (ONE .EQ. ONEP .OR. ONE .EQ. ONEM) THEN`. 
   - We also had to install the `flex-devel` package via our system package manager. 
   - you should change two values in `cns_solve_1.3/modules/nmr/readdata` to larger numbers to allow DMPfold to run on larger structures. Change the `nrestraints = 20000` line to something like `nrestraints = 50000` and the `nassign 1600` line to something like `nassign 3000`.
-  - To build CNS, in `csh` type `source cns_solve_env; make install`, or in Bash, `source .cns_solve_env_sh; make install`. Either csh or Bash can be used for building.
+  - To build CNS, in `csh` type `source cns_solve_env; make install`.
 - Download and patch the required CNS scripts by changing into the `cnsfiles` directory and running `sh installscripts.sh`.
 - Install [CD-HIT](https://github.com/weizhongli/cdhit), which is usually as simple as a clone and `make`. CD-HIT is not required if you don't need to predict the TM-score of generated models.
 - Install the [legacy BLAST](https://tinyurl.com/y57hq2wo) software, in particular `formatdb`, `blastpgp` and `makemat`. We may update this to BLAST+ in the future.
