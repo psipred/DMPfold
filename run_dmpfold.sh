@@ -1,7 +1,5 @@
 #!/bin/bash
 
-conda env list
-
 # DMPfold
 # Iteratively generate models using CNS and deep neural nets to
 #  generate updated constraints
@@ -19,7 +17,6 @@ dmpfolddir=~/DMPfold
 
 # Set this to point to the CNS setup script
 source ~/cns_solve_1.3/.cns_solve_env_sh
-conda env list
 bindir=$dmpfolddir/bin
 cnsdir=$dmpfolddir/cnsfiles
 export CNS_CUSTOMMODULE=$cnsdir
@@ -48,7 +45,6 @@ DIR="$( cd "$( dirname "$2" )" && pwd )"
 targ21c=$DIR/$(basename $2)
 DIR="$( cd "$( dirname "$3" )" && pwd )"
 targmap=$DIR/$(basename $3)
-conda env list
 outdir=$4
 
 if [ "$#" -gt 5 ]; then
@@ -67,11 +63,8 @@ if [ -e $outdir ]; then
 fi
 
 mkdir $outdir
-conda env list
 cd $outdir
-conda env list
 $bindir/fasta2tlc < $targseq > input.seq
-conda env list
 
 cns < $cnsdir/gseq.inp > gseq.log
 if [ $? -ne 0 ]; then
@@ -79,7 +72,6 @@ if [ $? -ne 0 ]; then
     echo "CNS execution failed!"
     exit 1
 fi
-conda env list
 cns < $cnsdir/extn.inp > extn.log
 if [ $? -ne 0 ]; then
     echo "CNS execution failed!"
@@ -87,6 +79,11 @@ if [ $? -ne 0 ]; then
 fi
 
 conda env list
+conda list
+which python
+which python3
+python -c "print('here'); import numpy; print('success')"
+python3 -c "print('here3'); import numpy; print('success3')"
 python3 ../test.py
 python3 $dmpfolddir/nn/dmp-softmax/pytorch_dmp_distpred.py $targ21c $targmap > rawdistpred.current
 
