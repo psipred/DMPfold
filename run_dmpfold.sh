@@ -176,7 +176,7 @@ until [ $counter -gt $ncycles ]; do
     fi
 
     for file in ${target}_[1-9]*.pdb; do
-        $bindir/pdbhfilt < $file | $bindir/pdborder | grep ATOM >> ensemble.$counter.pdb
+        $bindir/pdbhfilt < $file | perl $bindir/pdborder.pl | grep ATOM >> ensemble.$counter.pdb
         echo END >> ensemble.$counter.pdb
     done
 
