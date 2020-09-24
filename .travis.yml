@@ -19,7 +19,7 @@ script:
   - conda activate dmpfold
   - export KEY_MODELLER=$MODELLERKEY
   - conda install modeller -c salilab # Install MODELLER
-  - conda install pytorch-cpu torchvision-cpu -c pytorch # Install Pytorch
+  - conda install pytorch torchvision cpuonly -c pytorch # Install Pytorch
   - export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
   - python3 -c "import torch"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
