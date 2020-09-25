@@ -24,6 +24,8 @@ script:
   - which -a python3
   - python3 -c "import numpy"
   - python3 -c "import torch"
+  - which -a python
+  - python -c "import numpy"
   - curl $DEPENDENCYURL/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
   - tar -zxvf cns_solve_1.3.tgz
   - cd cnsfiles # Download and patch CNS scripts
