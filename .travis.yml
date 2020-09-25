@@ -10,11 +10,12 @@ script:
   - sudo apt-get install -y freecontact # Install FreeContact
   - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda - see Conda docs
   - bash miniconda.sh -b -p ./miniconda
+  - source miniconda/etc/profile.d/conda.sh
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda create -q -n dmpfold python=3.7 numpy scipy # Create environment with NumPy and SciPy
+  - conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
   - conda activate dmpfold
   - export KEY_MODELLER=$MODELLERKEY
   - conda install modeller -c salilab # Install MODELLER
