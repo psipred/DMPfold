@@ -1,6 +1,6 @@
 # DMPfold
 
-[![Build Status](https://travis-ci.org/psipred/DMPfold.svg?branch=master)](https://travis-ci.org/psipred/DMPfold)
+[![Build status](https://github.com/psipred/DMPfold/workflows/CI/badge.svg)](https://github.com/psipred/DMPfold/actions)
 
 Deep learning extends de novo protein modelling coverage of genomes using iteratively predicted structural constraints.
 
@@ -32,7 +32,7 @@ These instructions should work for a Linux system:
 - Other software is pre-compiled and included here (PSIPRED, PSICOV, various utility scripts with the code in `src`). This should run okay but may need separate compilation using the makefile if issues arise. Some other standard programs, such as csh shell, are assumed.
 - Change lines 10/13-15/18/21/24 in `seq2maps.csh`, lines 11/14/17/20 in `aln2maps.csh`, lines 4/7 in `bin/runpsipredandsolvwithdb`, lines 10/13 in `run_dmpfold.sh` and lines 7/10 in `predict_tmscore.sh` to point to the installed locations of the above software. You can also set the number of cores to use in `seq2maps.csh` and `aln2maps.csh`. This sets the number of cores for HHblits, PSICOV, FreeContact and CCMpred - the script will run faster with this set to a value larger than 1 (e.g. 4 or 8).
 
-Check the continuous integration [setup script](.travis.yml) and [logs](https://travis-ci.org/psipred/DMPfold) for additional tips and a step-by-step installation on Ubuntu.
+Check the continuous integration [setup script](.github/workflows/CI.yml) and [logs](https://github.com/psipred/DMPfold/actions) for additional tips and a step-by-step installation on Ubuntu.
 
 ## Usage
 
