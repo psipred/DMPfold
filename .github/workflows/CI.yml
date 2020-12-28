@@ -1,0 +1,95 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+    tags: '*'
+  schedule:
+    - cron: '00 04 * * 1' # 4am every Monday
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+     - uses: actions/checkout@v2
+     - run: sudo apt-get install -y hhsuite # Install HH-suite
+     - run: git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMpred
+     - run: cd CCMpred
+     - run: cmake -DWITH_CUDA=OFF .
+     - run: make
+     - run: cd ..
+     - run: sudo apt-get install -y freecontact # Install FreeContact
+     - run: wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda - see Conda docs
+     - run: bash miniconda.sh -b -p ./miniconda
+     - run: source miniconda/etc/profile.d/conda.sh
+     - run: hash -r
+     - run: conda config --set always_yes yes --set changeps1 no
+     - run: conda update -q conda
+     - run: conda info -a
+     - run: conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
+     - run: conda activate dmpfold
+     - run: export KEY_MODELLER=${{ secrets.MODELLERKEY }}
+     - run: conda install modeller -c salilab # Install MODELLER
+     - run: conda install pytorch torchvision cpuonly -c pytorch # Install Pytorch
+     - run: export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
+     - run: which -a python3
+     - run: python3 -c "import torch"
+     - run: curl ${{ secrets.DEPENDENCYURL }}/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
+     - run: tar -zxvf cns_solve_1.3.tgz
+     - run: cd cnsfiles # Download and patch CNS scripts
+     - run: sh installscripts.sh
+     - run: cd ..
+     - run: git clone https://github.com/weizhongli/cdhit.git # Install CD-HIT
+     - run: cd cdhit
+     - run: make
+     - run: cd ..
+     - run: sudo apt-get install -y csh # Install csh shell
+     - run: sudo apt-get install -y libgfortran3 # Install libgfortran3
+     - run: curl ${{ secrets.DEPENDENCYURL }}/ncbi_legacy.tgz -o ncbi_legacy.tgz # Install legacy NCBI BLAST software
+     - run: tar -zxvf ncbi_legacy.tgz
+     - run: cd src # Test compilation of source files
+     - run: make
+     - run: ls
+     - run: cd ..
+     - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
+     - run: sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
+     - run: sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
+     - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" seq2maps.csh
+     - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" aln2maps.csh
+     - run: sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" aln2maps.csh
+     - run: sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" aln2maps.csh
+     - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" aln2maps.csh
+     - run: sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" bin/runpsipredandsolvwithdb
+     - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
+     - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
+     - run: sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
+     - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" predict_tmscore.sh
+     - run: sed -i "s/cdhitcmd=~\/cdhit\/cd-hit/cdhitcmd=.\/cdhit\/cd-hit/" predict_tmscore.sh
+     - run: sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
+     - run: cp example/PF10963.a3m .
+     - run: ulimit -s unlimited
+     - run: csh seq2maps.csh example/PF10963.fasta # Generate map and 21c files from single sequence
+     - run: du -h PF10963.* # Check files generated okay
+     - run: bash run_dmpfold.sh example/PF10963.fasta PF10963.21c PF10963.map ./PF10963_fasta 3 5 # Run DMPfold
+     - run: head PF10963_fasta/final_1.pdb
+     - run: bash predict_tmscore.sh example/PF10963.fasta PF10963.aln PF10963_fasta/final_1.pdb PF10963_fasta/rawdistpred.1 # Predict TM-score
+     - run: curl https://zhanglab.ccmb.med.umich.edu/TM-align/TMalign.gz | gunzip > TMalign # Download TMalign
+     - run: chmod +x TMalign
+     - run: ./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb # Check model accuracy
+     - run: tma=$(./TMalign PF10963_fasta/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
+     - run: if (( $(echo "$tma >= 0.5" | bc -l) )); then echo "Correct fold, TMalign score $tma"; else echo "Incorrect fold, TMalign score $tma"; exit 1; fi # Throw an error if the model is the wrong fold
+     - run: rm PF10963.*
+     - run: mkdir temp1 temp2 # For the run from an alignment we also check that it works when run in another directory
+     - run: cd temp1
+     - run: csh ../aln2maps.csh ../example/PF10963.aln # Generate map and 21c files from alignment
+     - run: du -h PF10963.* # Check files generated okay
+     - run: cd ../temp2
+     - run: bash ../run_dmpfold.sh ../example/PF10963.fasta ../temp1/PF10963.21c ../temp1/PF10963.map ../PF10963_aln 3 5 # Run DMPfold on new inputs
+     - run: cd ..
+     - run: head PF10963_aln/final_1.pdb
+     - run: ./TMalign PF10963_aln/final_1.pdb example/3FGX.pdb # Check model accuracy
+     - run: tma=$(./TMalign PF10963_aln/final_1.pdb example/3FGX.pdb | grep "if normalized by length of Chain_1" | sed -E 's/^.{10}//' | sed -E 's/.{37}$//')
+     - run: if (( $(echo "$tma >= 0.5" | bc -l) )); then echo "Correct fold, TMalign score $tma"; else echo "Incorrect fold, TMalign score $tma"; exit 1; fi # Throw an error if the model is the wrong fold
