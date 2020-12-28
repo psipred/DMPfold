@@ -31,6 +31,7 @@ jobs:
       - run: conda update -q conda
       - run: conda info -a
       - run: conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
+      - run: conda init bash
       - run: conda activate dmpfold
       - run: export KEY_MODELLER=${{ secrets.MODELLERKEY }}
       - run: conda install modeller -c salilab # Install MODELLER
