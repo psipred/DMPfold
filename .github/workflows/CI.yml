@@ -60,19 +60,19 @@ jobs:
           make
           ls
           cd ..
-      - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" seq2maps.csh # Modify installed locations
+      - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/work\/DMPfold\/DMPfold/" seq2maps.csh # Modify installed locations
       - run: sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" seq2maps.csh
       - run: sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" seq2maps.csh
-      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" seq2maps.csh
-      - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" aln2maps.csh
+      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/work\/DMPfold\/DMPfold\/ncbi_legacy/" seq2maps.csh
+      - run: sed -i "s/set dmpfolddir = ~\/DMPfold/set dmpfolddir = ~\/work\/DMPfold\/DMPfold/" aln2maps.csh
       - run: sed -i "s/set ccmpreddir = ~\/CCMpred\/bin/set ccmpreddir = .\/CCMpred\/bin/" aln2maps.csh
       - run: sed -i "s/set freecontactcmd = ~\/freecontact\/bin\/freecontact/set freecontactcmd = freecontact/" aln2maps.csh
-      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" aln2maps.csh
-      - run: sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/build\/psipred\/DMPfold/" bin/runpsipredandsolvwithdb
-      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/build\/psipred\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
-      - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" run_dmpfold.sh
-      - run: sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env.sh/source ~\/build\/psipred\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
-      - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/build\/psipred\/DMPfold/" predict_tmscore.sh
+      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/work\/DMPfold\/DMPfold\/ncbi_legacy/" aln2maps.csh
+      - run: sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/work\/DMPfold\/DMPfold/" bin/runpsipredandsolvwithdb
+      - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/work\/DMPfold\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
+      - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/work\/DMPfold\/DMPfold/" run_dmpfold.sh
+      - run: sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env.sh/source ~\/work\/DMPfold\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
+      - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/work\/DMPfold\/DMPfold/" predict_tmscore.sh
       - run: sed -i "s/cdhitcmd=~\/cdhit\/cd-hit/cdhitcmd=.\/cdhit\/cd-hit/" predict_tmscore.sh
       - run: sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
       - run: cp example/PF10963.a3m .
