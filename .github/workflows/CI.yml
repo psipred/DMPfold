@@ -19,6 +19,7 @@ jobs:
         with:
           auto-update-conda: true
           activate-environment: dmpfold
+          python-version: 3.8
       - run: sudo apt-get install -y hhsuite # Install HH-suite
       - run: git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMpred
       - run: |
