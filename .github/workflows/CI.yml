@@ -13,13 +13,15 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
           auto-update-conda: true
           activate-environment: dmpfold
-          python-version: 3.8
       - run: sudo apt-get install -y hhsuite # Install HH-suite
       - run: git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMpred
       - run: |
@@ -33,6 +35,7 @@ jobs:
       - run: export KEY_MODELLER=${{ secrets.MODELLERKEY }}
       - run: conda install -y modeller -c salilab # Install MODELLER
       - run: conda install -y pytorch torchvision cpuonly -c pytorch # Install Pytorch
+      - run: conda list
       - run: which -a python3
       - run: python3 -c "import torch"
       - run: curl ${{ secrets.DEPENDENCYURL }}/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
