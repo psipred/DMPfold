@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          activate-environment: dmpfold
       - run: sudo apt-get install -y hhsuite # Install HH-suite
       - run: git clone --recursive https://github.com/soedinglab/CCMpred.git # Install CCMpred
       - run: |
@@ -23,20 +27,11 @@ jobs:
           make
           cd ..
       - run: sudo apt-get install -y freecontact # Install FreeContact
-      - run: wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh # Install Conda - see Conda docs
-      - run: bash miniconda.sh -b -p ./miniconda
-      - run: source miniconda/etc/profile.d/conda.sh
-      - run: hash -r
-      - run: conda config --set always_yes yes --set changeps1 no
-      - run: conda update -q conda
       - run: conda info -a
-      - run: conda create -q -n dmpfold numpy scipy # Create environment with NumPy and SciPy
-      - run: conda init bash
-      - run: conda activate dmpfold
+      - run: conda install -y numpy scipy # Install NumPy and SciPy
       - run: export KEY_MODELLER=${{ secrets.MODELLERKEY }}
-      - run: conda install modeller -c salilab # Install MODELLER
-      - run: conda install pytorch torchvision cpuonly -c pytorch # Install Pytorch
-      - run: export PATH="~/build/psipred/DMPfold/miniconda/bin:$PATH"
+      - run: conda install -y modeller -c salilab # Install MODELLER
+      - run: conda install -y pytorch torchvision cpuonly -c pytorch # Install Pytorch
       - run: which -a python3
       - run: python3 -c "import torch"
       - run: curl ${{ secrets.DEPENDENCYURL }}/cns_solve_1.3.tgz -o cns_solve_1.3.tgz # Install CNS; this is a version with fixes outlined in the README
