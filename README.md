@@ -61,6 +61,7 @@ Sequences up to around 600 residues in length can be modelled accurately, with p
 
 Models for the 1,475 [Pfam](http://pfam.xfam.org) families modelled in the paper can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_models.tgz).
 Additional models for the remainder of the dark Pfam families can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_lowconf_models.tgz) (some were not modelled due to small sequence alignments).
+Models for the Pfam families used for validation can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_val_models.tgz).
 Alignments for the Pfam families without available templates can be downloaded [here](http://bioinf.cs.ucl.ac.uk/downloads/dmpfold/pfam_alignments.tgz).
 The format is one sequence per line with the ungapped target sequence as the first line.
 
