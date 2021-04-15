@@ -34,8 +34,9 @@ jobs:
       - run: sudo apt-get install -y freecontact # Install FreeContact
       - run: conda info -a
       - run: conda install -y numpy scipy # Install NumPy and SciPy
-      - run: export KEY_MODELLER=${{ secrets.MODELLERKEY }}
-      - run: conda install -y modeller -c salilab # Install MODELLER
+      - run: |
+          export KEY_MODELLER=${{ secrets.MODELLERKEY }}
+          conda install -y modeller -c salilab # Install MODELLER
       - run: conda install -y pytorch torchvision cpuonly -c pytorch # Install Pytorch
       - run: conda list
       - run: which -a python3
