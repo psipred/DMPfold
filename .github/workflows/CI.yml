@@ -46,11 +46,6 @@ jobs:
           cd cnsfiles # Download and patch CNS scripts
           sh installscripts.sh
           cd ..
-      - run: ls ~/work/DMPfold/DMPfold/cns_solve_1.3 # Temp
-      - run: echo $PATH # Temp
-      - run: source ~/work/DMPfold/DMPfold/cns_solve_1.3/cns_solve_env_sh # Temp
-      - run: echo $PATH # Temp
-      - run: which cns # Temp
       - run: git clone https://github.com/weizhongli/cdhit.git # Install CD-HIT
       - run: |
           cd cdhit
