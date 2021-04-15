@@ -71,7 +71,7 @@ jobs:
       - run: sed -i "s/set dmpfolddir = ~\/dmpfold/set dmpfolddir = ~\/work\/DMPfold\/DMPfold/" bin/runpsipredandsolvwithdb
       - run: sed -i "s/set ncbidir = ~\/blast\/bin/set ncbidir = ~\/work\/DMPfold\/DMPfold\/ncbi_legacy/" bin/runpsipredandsolvwithdb
       - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/work\/DMPfold\/DMPfold/" run_dmpfold.sh
-      - run: sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env.sh/source ~\/work\/DMPfold\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
+      - run: sed -i "s/source ~\/cns_solve_1.3\/.cns_solve_env_sh/source ~\/work\/DMPfold\/DMPfold\/cns_solve_1.3\/cns_solve_env_sh/" run_dmpfold.sh
       - run: sed -i "s/dmpfolddir=~\/DMPfold/dmpfolddir=~\/work\/DMPfold\/DMPfold/" predict_tmscore.sh
       - run: sed -i "s/cdhitcmd=~\/cdhit\/cd-hit/cdhitcmd=.\/cdhit\/cd-hit/" predict_tmscore.sh
       - run: sed -i "s/\$HHBIN\/hhblits/#\$HHBIN\/hhblits/" seq2maps.csh # For autobuild, eliminate HHblits step and use existing a3m file
