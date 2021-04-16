@@ -40,7 +40,7 @@ dpscorenorm=$($bindir/distcompareprob $model $distpred | awk '{print $3}')
 # Predict TM-score of final model
 python3 $dmpfolddir/nn/dg_ema/pytorch_dgema_pred.py $nres $neff $dpscorenorm $dpscore > $target.ema.txt
 tmest=$(awk '{print $11}' $target.ema.txt)
-tmround=$(python3 -c "print(round($tmest, 2))")
+tmround=$(python3 -c "from math import nan; print(round($tmest, 2))")
 
 echo "nres is $nres"
 echo "neff is $neff"
