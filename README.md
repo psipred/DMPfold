@@ -2,6 +2,8 @@
 
 [![Build status](https://github.com/psipred/DMPfold/workflows/CI/badge.svg)](https://github.com/psipred/DMPfold/actions)
 
+*Consider using [DMPfold2](https://github.com/psipred/DMPfold2) which is faster, more accurate and easier to install.*
+
 Deep learning extends de novo protein modelling coverage of genomes using iteratively predicted structural constraints.
 
 See our [paper in Nature Communications](https://www.nature.com/articles/s41467-019-11994-0) for more.
